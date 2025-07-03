@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ajinkya Furange - Portfolio</title>
+    <meta
+      name="description"
+      content="AJINKYA NITESH FURANGE PORTFOLIO OF COMPUTER ENGINEERING"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=7" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta
+      name="keywords"
+      content="AJINKYA NITESH FURANGE,AJINKYA PORTFOLIO,Python,HTML,CSS,JavaScript,C"
+    />
+    <meta
+      name="keywords"
+      content="Ajinkya Furange, Portfolio, Computer Engineering, Web Development"
+    />
+    <meta name="author" content="Ajinkya Furange" />
+    <meta name="robots" content="index, follow" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="ajinkya.jpeg" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="#" class="nav-logo">AJINKYA FURANGE</a>
+
+        <button class="hamburger" aria-label="Toggle menu">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <a href="#home" class="nav-link active">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="#projects" class="nav-link">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a href="#skills" class="nav-link">Skills</a>
+          </li>
+          <li class="nav-item">
+            <a href="#about" class="nav-link">About</a>
+          </li>
+
+          <li class="nav-item">
+            <a href="#contact" class="nav-link">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="cyber-frame">
+        <div class="hero-content">
+          <div class="glitch-container">
+            <h1 class="glitch" data-text="Ajinkya Furange">Ajinkya Furange</h1>
+          </div>
+          <p class="cyber-text typing-text" id="container">
+            I am a <span id="text"></span><span id="cursor"></span>
+          </p>
+          <div class="tech-badge">
+            Computer Engineering Student at Bhausaheb Vartak Polytechnic
+            <div class="badge-glow"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="project-grid">
+        <!-- E-commerce Project Card -->
+        <div class="project-card">
+          <img
+            src="images/ecommerce.webp"
+            alt="Site desktop view"
+            class="card-screenshot"
+          />
+
+          <div class="card-hologram"></div>
+          <h3>Full Stack E‑commerce for Farming Products</h3>
+          <p>
+            A comprehensive e‑commerce platform designed specifically for
+            agricultural products. Features include inventory management and
+            direct farmer‑to‑consumer sales.
+          </p>
+          <div class="tech-stack">
+            <span class="tech-tag">HTML</span>
+            <span class="tech-tag">CSS</span>
+            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">Node.js</span>
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">MySQL</span>
+          </div>
+          <div class="card-buttons">
+            <a
+              href="https://shivansh-krushi-seva-kendra.onrender.com"
+              class="project-btn demo-btn"
+              target="_blank"
+            >
+              <i class="fas fa-external-link-alt btn-icon"></i>
+              Live Demo
+            </a>
+            <a
+              href="https://github.com/Ajinkya-Furange-Patil/Shivansh-Krushi-Seva-Kendra"
+              class="project-btn github-btn"
+              target="_blank"
+            >
+              <i class="fas fa-code btn-icon"></i>
+              View Code
+            </a>
+          </div>
+        </div>
+
+        <!-- Ajinkya Sampark Project Card -->
+        <div class="project-card">
+          <img
+            src="images/whatsapp.webp"
+            alt="Ajinkya Sampark site desktop preview"
+            class="card-screenshot"
+          />
+
+          <div class="card-hologram"></div>
+          <h3>Chat Application – Ajinkya Sampark</h3>
+          <p>
+            Chat web app designed with modularity and future-readiness in mind.
+            Introduced clean folder-based separation of chats, enabling seamless
+            scalability. Enhanced with integrated WhatsApp-style UI elements.
+          </p>
+
+          <div class="tech-stack">
+            <span class="tech-tag">HTML</span>
+            <span class="tech-tag">CSS</span>
+            <span class="tech-tag">JavaScript</span>
+          </div>
+
+          <div class="card-buttons">
+            <a
+              href="https://ajinkya-sampark.netlify.app/"
+              class="project-btn demo-btn"
+              target="_blank"
+            >
+              <i class="fas fa-external-link-alt btn-icon"></i>
+              Live Demo
+            </a>
+            <a
+              href="https://github.com/Ajinkya-Furange-Patil/sampark"
+              class="project-btn github-btn"
+              target="_blank"
+            >
+              <i class="fas fa-code btn-icon"></i>
+              View Code
+            </a>
+          </div>
+        </div>
+
+        <!-- Medical Payment Tracker Project Card -->
+        <div class="project-card">
+          <img
+            src="images/medical-tracker.webp"
+            alt="Medical Payment Tracker UI preview"
+            class="card-screenshot"
+          />
+
+          <div class="card-hologram"></div>
+          <h3>Medical Payment Tracker</h3>
+          <p>
+            A smart and intuitive system for tracking and managing patient
+            medical payments. real-time payment updates, and reminder alerts —
+            all built using only HTML, CSS, and JavaScript.
+          </p>
+
+          <div class="tech-stack">
+            <span class="tech-tag">HTML</span>
+            <span class="tech-tag">CSS</span>
+            <span class="tech-tag">JavaScript</span>
+          </div>
+
+          <div class="card-buttons">
+            <a
+              href="https://payment-list.netlify.app/"
+              class="project-btn demo-btn"
+              target="_blank"
+            >
+              <i class="fas fa-external-link-alt btn-icon"></i>
+              Live Demo
+            </a>
+            <a
+              href="https://github.com/Ajinkya-Furange-Patil/medical-payment-tracker"
+              class="project-btn github-btn"
+              target="_blank"
+            >
+              <i class="fas fa-code btn-icon"></i>
+              View Code
+            </a>
+          </div>
+        </div>
+
+        <!-- Weather App Project Card -->
+        <div class="project-card">
+          <img
+            src="images/whether.webp"
+            alt="Weather App Desktop Preview"
+            class="card-screenshot"
+          />
+
+          <div class="card-hologram"></div>
+          <h3>Global Weather Dashboard</h3>
+          <p>
+            A real-time weather monitoring app that fetches live climate
+            conditions using OpenWeather API. While the UI is minimalist, it
+            efficiently delivers accurate updates for any global city or region.
+          </p>
+          <div class="tech-stack">
+            <span class="tech-tag">HTML</span>
+            <span class="tech-tag">CSS</span>
+            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">OpenWeather API</span>
+          </div>
+          <div class="card-buttons">
+            <a
+              href="https://weather-app-ajinkya-furange.netlify.app/"
+              class="project-btn demo-btn"
+              target="_blank"
+            >
+              <i class="fas fa-external-link-alt btn-icon"></i>
+              Live Demo
+            </a>
+            <a
+              href="https://github.com/Ajinkya-Furange-Patil/whether"
+              class="project-btn github-btn"
+              target="_blank"
+            >
+              <i class="fas fa-code btn-icon"></i>
+              View Code
+            </a>
+          </div>
+        </div>
+
+        <!-- College Timetable Management -->
+        <div class="project-card">
+          <img
+            src="images/timetable.webp"
+            alt="College Timetable Desktop Preview"
+            class="card-screenshot"
+          />
+
+          <div class="card-hologram"></div>
+          <h3>College Timetable System</h3>
+          <p>
+            A smart and responsive timetable manager for college students. Users
+            can view their full week at a glance, get real-time lecture alerts,
+            and personalize themes or select their specific batch timetable
+            dynamically.
+          </p>
+          <div class="tech-stack">
+            <span class="tech-tag">HTML</span>
+            <span class="tech-tag">CSS</span>
+            <span class="tech-tag">JavaScript</span>
+          </div>
+          <div class="card-buttons">
+            <a
+              href="https://co1-tt.netlify.app/"
+              class="project-btn demo-btn"
+              target="_blank"
+            >
+              <i class="fas fa-external-link-alt btn-icon"></i>
+              <span>Live Demo</span>
+            </a>
+            <a
+              href="https://github.com/Ajinkya-Furange-Patil/timetable"
+              class="project-btn github-btn"
+              target="_blank"
+            >
+              <i class="fas fa-code btn-icon"></i>
+              <span>View Code</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- More Projects Explorer Card -->
+        <div class="project-card more-projects-card" style="height: 300px">
+          <div class="card-hologram"></div>
+          <h3>Explore More Projects</h3>
+          <p>
+            Curious to see more? Dive into my full collection of real-world
+            projects — from web apps to APIs, utilities, and side experiments.
+          </p>
+          <div class="card-buttons">
+            <a
+              href="projects.html"
+              class="project-btn demo-btn"
+              target="_blank"
+            >
+              <i class="fas fa-folder-open btn-icon"></i>
+              <span>Explore More</span>
+            </a>
+            <a
+              href="https://ajinkyafurange.netlify.app/"
+              class="project-btn github-btn"
+              target="_blank"
+            >
+              <i class="fas fa-user btn-icon"></i>
+              <span>My Portfolio</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="skills">
+      <h2 class="section-title glitch">Technical Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h3>Frontend Development</h3>
+          <div class="skill-item">
+            <div class="skill-header">
+              <span class="skill-name">HTML5</span>
+              <span class="skill-percentage">87%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 87%"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-header">
+              <span class="skill-name">CSS3</span>
+              <span class="skill-percentage">90%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 90%"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-header">
+              <span class="skill-name">JavaScript</span>
+              <span class="skill-percentage">95%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 95%"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-header">
+              <span class="skill-name">JQUERY</span>
+              <span class="skill-percentage">82%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 82%"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-header">
+              <span class="skill-name">BOOTSTRAP 5</span>
+              <span class="skill-percentage">78%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 78%"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3>Backend Development</h3>
+          <div class="skill-item">
+            <div class="skill-header">
+              <span class="skill-name">PHP</span>
+              <span class="skill-percentage">37%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 37%"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-header">
+              <span class="skill-name">Python</span>
+              <span class="skill-percentage">63%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 63%"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-header">
+              <span class="skill-name">C Programming</span>
+              <span class="skill-percentage">77%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 77%"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-header">
+              <span class="skill-name">Node JS</span>
+              <span class="skill-percentage">60%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 60%"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-header">
+              <span class="skill-name">Express JS</span>
+              <span class="skill-percentage">67%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 67%"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3>Tools & Technologies</h3>
+          <div class="skill-item">
+            <div class="skill-header">
+              <span class="skill-name">Git & GitHub</span>
+              <span class="skill-percentage">85%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 85%"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-header">
+              <span class="skill-name">Responsive Design</span>
+              <span class="skill-percentage">90%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 90%"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-header">
+              <span class="skill-name">AI Expert + Prompt Engineer</span>
+              <span class="skill-percentage">100%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 100%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+      <h2 class="section-title glitch" data-text="About Me">About Me</h2>
+      <br />
+      <div class="about-content">
+        <div class="profile-container">
+          <div class="profile-frame">
+            <div class="profile-placeholder">
+              <span class="cyber-icon"
+                ><img src="images/ajinkya.webp" alt="AF"
+              /></span>
+            </div>
+          </div>
+          <div class="cyber-badge">
+            <span>Computer Engineering Student</span>
+            <div class="badge-glow"></div>
+          </div>
+        </div>
+
+        <div class="about-text-container">
+          <div class="cyber-panel">
+            <p class="intro-text">
+              Hello! I'm <span class="highlight">Ajinkya Nitesh Furange</span>,
+              a passionate computer engineering student from Virar, Maharashtra,
+              currently pursuing my diploma at Bhausaheb Vartak Polytechnic,
+              Vasai.
+            </p>
+
+            <div class="journey-section">
+              <h3 class="sub-heading">My Journey</h3>
+              <p>
+                My tech journey began with curiosity about web development,
+                leading me to master HTML, CSS, and JavaScript in 2024. This
+                foundation has enabled me to create impactful projects that
+                solve real-world problems.
+              </p>
+            </div>
+
+            <div class="current-projects">
+              <h3 class="sub-heading">Current Endeavors</h3>
+              <ul class="cyber-list">
+                <li>
+                  <span class="project-status">In Development</span>
+                  Emergency Medical Support System
+                </li>
+                <li>
+                  <span class="project-status">Ongoing</span>
+                  E-commerce Platform for Eysta Glasswear
+                </li>
+              </ul>
+            </div>
+
+            <div class="vision-section">
+              <h3 class="sub-heading">Vision & Goals</h3>
+              <p>
+                Beyond coding, I'm driven by the potential of technology to
+                create meaningful impact. I'm particularly fascinated by
+                futuristic and efficient design, striving to merge functionality
+                with aesthetics in every project.
+              </p>
+            </div>
+
+            <div class="connect-section">
+              <h3 class="sub-heading">Let's Connect</h3>
+              <p>
+                I'm always eager to collaborate on innovative projects and
+                exchange ideas. Whether you're interested in tech, design, or
+                creating impactful solutions, I'd love to connect!
+              </p>
+              <a href="mailto:ajinkyafurange58@gmail.com" class="mail-me-link"
+                >Mail Me</a
+              >
+              <a href="tel:+918108171769" class="contact-me-link">Contact Me</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="form" id="contact">
+      <h2>Get in Touch</h2>
+      <br />
+      <div>
+        <form action="https://formspree.io/f/xyzzwjvz" method="POST">
+          <label>
+            You're Name:
+            <input
+              type="text"
+              name="Name"
+              required
+              placeholder="Example Name"
+            />
+          </label>
+          <label>
+            Your email:
+            <input
+              type="email"
+              name="Email"
+              required
+              placeholder="example@gmail.com"
+            />
+          </label>
+          <label>
+            Your message:
+            <!-- <input type="text" rows="5" placeholder="Hey, I am Alex. I want to invite to my team as a leader of team"> -->
+            <textarea
+              name="Message"
+              rows="5"
+              required
+              placeholder="Hey, I am Alex. I want to invite to my team as a leader of team"
+            >
+            </textarea>
+          </label>
+          <button type="submit" class="send-msg">Send</button>
+        </form>
+      </div>
+    </section>
+
+    <script src="scripts.js"></script>
+  </body>
+</html>
