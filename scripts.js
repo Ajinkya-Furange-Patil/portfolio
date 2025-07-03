@@ -1,26 +1,31 @@
-<<<<<<< HEAD
-// DOM Elements
+// ------------------------ DOM ELEMENTS ------------------------
 const typedText = document.querySelector(".typing-text");
 const progressBars = document.querySelectorAll(".progress-fill");
+const navbar = document.querySelector(".navbar");
+const hamburger = document.querySelector(".hamburger");
+const navMenu = document.querySelector(".nav-menu");
+const navLinks = document.querySelectorAll(".nav-link");
+const body = document.body;
+const themeToggle = document.querySelector(".theme-toggle");
 
-// Smooth Scrolling
+// ------------------------ SMOOTH SCROLL ------------------------
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener("click", function (e) {
     e.preventDefault();
-    document.querySelector(this.getAttribute("href")).scrollIntoView({
-      behavior: "smooth",
-    });
+    const target = document.querySelector(this.getAttribute("href"));
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth" });
+    }
   });
 });
 
-// Parallax Effect for Background
+// ------------------------ PARALLAX BACKGROUND ------------------------
 document.addEventListener("mousemove", (e) => {
   const { clientX, clientY } = e;
   const centerX = window.innerWidth / 2;
   const centerY = window.innerHeight / 2;
 
-  const gradientSpheres = document.querySelectorAll(".gradient-sphere");
-  gradientSpheres.forEach((sphere, index) => {
+  document.querySelectorAll(".gradient-sphere").forEach((sphere, index) => {
     const speed = (index + 1) * 0.03;
     const x = (clientX - centerX) * speed;
     const y = (clientY - centerY) * speed;
@@ -28,10 +33,8 @@ document.addEventListener("mousemove", (e) => {
   });
 });
 
-// Typing Effect
-
-// List of sentences
-var _CONTENT = [
+// ------------------------ TYPING EFFECT ------------------------
+const TEXTS = [
   "Computer Engineering Student",
   "Web Developer",
   "AI Expert",
@@ -41,41 +44,45 @@ var _CONTENT = [
   "Problem Solver",
 ];
 
-var _PART = 0;
-var _PART_INDEX = 0;
-var _INTERVAL_VAL;
-var _ELEMENT = document.querySelector("#text");
-var _CURSOR = document.querySelector("#cursor");
-function Type() {
-  var text = _CONTENT[_PART].substring(0, _PART_INDEX + 1);
-  _ELEMENT.innerHTML = text;
-  _PART_INDEX++;
-  if (text === _CONTENT[_PART]) {
-    _CURSOR.style.display = "none";
-    clearInterval(_INTERVAL_VAL);
-    setTimeout(function () {
-      _INTERVAL_VAL = setInterval(Delete, 50);
+let textIndex = 0;
+let charIndex = 0;
+let typingInterval;
+const typingElement = document.querySelector("#text");
+const cursor = document.querySelector("#cursor");
+
+function type() {
+  const currentText = TEXTS[textIndex].substring(0, charIndex + 1);
+  typingElement.innerHTML = currentText;
+  charIndex++;
+
+  if (currentText === TEXTS[textIndex]) {
+    cursor.style.display = "none";
+    clearInterval(typingInterval);
+    setTimeout(() => {
+      typingInterval = setInterval(deleteText, 50);
     }, 1000);
   }
 }
-function Delete() {
-  var text = _CONTENT[_PART].substring(0, _PART_INDEX - 1);
-  _ELEMENT.innerHTML = text;
-  _PART_INDEX--;
-  if (text === "") {
-    clearInterval(_INTERVAL_VAL);
-    if (_PART == _CONTENT.length - 1) _PART = 0;
-    else _PART++;
-    _PART_INDEX = 0;
-    setTimeout(function () {
-      _CURSOR.style.display = "inline-block";
-      _INTERVAL_VAL = setInterval(Type, 100);
+
+function deleteText() {
+  const currentText = TEXTS[textIndex].substring(0, charIndex - 1);
+  typingElement.innerHTML = currentText;
+  charIndex--;
+
+  if (currentText === "") {
+    clearInterval(typingInterval);
+    textIndex = (textIndex + 1) % TEXTS.length;
+    charIndex = 0;
+    setTimeout(() => {
+      cursor.style.display = "inline-block";
+      typingInterval = setInterval(type, 100);
     }, 200);
   }
 }
-_INTERVAL_VAL = setInterval(Type, 100);
 
-// Intersection Observer for Animations
+typingInterval = setInterval(type, 100);
+
+// ------------------------ INTERSECTION OBSERVER ------------------------
 const observerOptions = {
   threshold: 0.1,
   rootMargin: "0px",
@@ -86,404 +93,115 @@ const observer = new IntersectionObserver((entries) => {
     if (entry.isIntersecting) {
       entry.target.classList.add("in-view");
 
-      // Handle progress bars
       if (entry.target.classList.contains("skill-category")) {
-        const progressBars = entry.target.querySelectorAll(".progress-fill");
-        progressBars.forEach((bar) => {
-          const percentage =
-            bar.parentElement.previousElementSibling.querySelector(
-              ".skill-percentage"
-            ).textContent;
+        const bars = entry.target.querySelectorAll(".progress-fill");
+        bars.forEach((bar) => {
+          const percentage = bar.parentElement.previousElementSibling.querySelector(".skill-percentage")?.textContent || "0%";
           bar.style.width = percentage;
         });
-      }
-
-      // Handle typing effect
-      if (entry.target.classList.contains("typing-text")) {
-        typeWriter(
-          entry.target,
-          entry.target.dataset.text || entry.target.textContent
-        );
       }
     }
   });
 }, observerOptions);
 
-// Observe elements
-document
-  .querySelectorAll(
-    ".project-card, .skill-category, .section-title, .typing-text"
-  )
-  .forEach((element) => observer.observe(element));
+document.querySelectorAll(".project-card, .skill-category, .section-title, .typing-text").forEach((el) => {
+  observer.observe(el);
+});
 
-// Initialize theme from saved preference
+// ------------------------ THEME INITIALIZATION ------------------------
 if (localStorage.getItem("darkMode") === "true") {
   document.body.classList.add("light-mode");
-  themeToggle.classList.add("active");
+  themeToggle?.classList.add("active");
 }
 
-// Form Submission
+// ------------------------ FORM SUBMISSION ------------------------
 document.querySelector(".contact-form")?.addEventListener("submit", (e) => {
   e.preventDefault();
-
-  // Add your form submission logic here
   const formData = new FormData(e.target);
   console.log("Form submitted:", Object.fromEntries(formData));
-
-  // Reset form
   e.target.reset();
-
-  // Show success message
   alert("Message sent successfully!");
 });
 
-// Project Card Hover Effects
+// ------------------------ PROJECT CARD HOVER ------------------------
 document.querySelectorAll(".project-card").forEach((card) => {
   card.addEventListener("mouseenter", (e) => {
     const { left, top } = card.getBoundingClientRect();
     const x = e.clientX - left;
     const y = e.clientY - top;
-
     card.style.setProperty("--mouse-x", `${x}px`);
     card.style.setProperty("--mouse-y", `${y}px`);
   });
 });
 
-// DOM Elements
-const navbar = document.querySelector(".navbar");
-const hamburger = document.querySelector(".hamburger");
-const navMenu = document.querySelector(".nav-menu");
-const navLinks = document.querySelectorAll(".nav-link");
-const body = document.body;
-
+// ------------------------ NAVIGATION CLASS ------------------------
 class Navigation {
   constructor() {
-    this.initializeEventListeners();
+    this.init();
   }
 
-  initializeEventListeners() {
-    // Toggle mobile menu
-    hamburger.addEventListener("click", () => this.toggleMobileMenu());
+  init() {
+    hamburger?.addEventListener("click", () => this.toggleMenu());
 
-    // Handle navigation link clicks
     navLinks.forEach((link) => {
-      link.addEventListener("click", (e) => this.handleNavLinkClick(e, link));
+      link.addEventListener("click", (e) => this.handleLinkClick(e, link));
     });
 
-    // Close menu when clicking outside
-    document.addEventListener("click", (e) => this.handleOutsideClick(e));
-
-    // Handle scroll events
+    document.addEventListener("click", (e) => this.closeOnClickOutside(e));
     window.addEventListener("scroll", () => {
-      this.handleNavbarScroll();
-      this.highlightActiveSection();
+      this.handleScroll();
+      this.highlightSection();
     });
   }
 
-  toggleMobileMenu() {
+  toggleMenu() {
     hamburger.classList.toggle("active");
     navMenu.classList.toggle("active");
     body.classList.toggle("menu-open");
   }
 
-  closeMobileMenu() {
+  closeMenu() {
     hamburger.classList.remove("active");
     navMenu.classList.remove("active");
     body.classList.remove("menu-open");
   }
 
-  handleNavLinkClick(e, clickedLink) {
-    this.closeMobileMenu();
-
-    // Update active link
-    navLinks.forEach((link) => link.classList.remove("active"));
-    clickedLink.classList.add("active");
+  handleLinkClick(e, link) {
+    this.closeMenu();
+    navLinks.forEach((nav) => nav.classList.remove("active"));
+    link.classList.add("active");
   }
 
-  handleOutsideClick(e) {
+  closeOnClickOutside(e) {
     if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
-      this.closeMobileMenu();
+      this.closeMenu();
     }
   }
 
-  handleNavbarScroll() {
-    const scrollThreshold = 50;
-    if (window.scrollY > scrollThreshold) {
-      navbar.classList.add("scrolled");
-    } else {
-      navbar.classList.remove("scrolled");
-    }
+  handleScroll() {
+    navbar.classList.toggle("scrolled", window.scrollY > 50);
   }
 
-  highlightActiveSection() {
+  highlightSection() {
     const sections = document.querySelectorAll("section");
-    let currentSectionId = "";
+    let currentId = "";
 
-    sections.forEach((section) => {
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.clientHeight;
-      const scrollPosition = window.scrollY;
-
-      // Consider a section active when we've scrolled 1/3 into it
-      if (scrollPosition >= sectionTop - sectionHeight / 3) {
-        currentSectionId = section.getAttribute("id");
+    sections.forEach((sec) => {
+      const top = sec.offsetTop;
+      const height = sec.clientHeight;
+      if (window.scrollY >= top - height / 3) {
+        currentId = sec.getAttribute("id");
       }
     });
 
-    // Update active nav link
     navLinks.forEach((link) => {
       link.classList.remove("active");
-      if (link.getAttribute("href") === `#${currentSectionId}`) {
+      if (link.getAttribute("href") === `#${currentId}`) {
         link.classList.add("active");
       }
     });
   }
 }
 
-// Initialize navigation
-const navigation = new Navigation();
-=======
-// DOM Elements
-const typedText = document.querySelector(".typing-text");
-const progressBars = document.querySelectorAll(".progress-fill");
-
-// Smooth Scrolling
-document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-  anchor.addEventListener("click", function (e) {
-    e.preventDefault();
-    document.querySelector(this.getAttribute("href")).scrollIntoView({
-      behavior: "smooth",
-    });
-  });
-});
-
-// Parallax Effect for Background
-document.addEventListener("mousemove", (e) => {
-  const { clientX, clientY } = e;
-  const centerX = window.innerWidth / 2;
-  const centerY = window.innerHeight / 2;
-
-  const gradientSpheres = document.querySelectorAll(".gradient-sphere");
-  gradientSpheres.forEach((sphere, index) => {
-    const speed = (index + 1) * 0.03;
-    const x = (clientX - centerX) * speed;
-    const y = (clientY - centerY) * speed;
-    sphere.style.transform = `translate(${x}px, ${y}px)`;
-  });
-});
-
-// Typing Effect
-
-// List of sentences
-var _CONTENT = [
-  "Computer Engineering Student",
-  "Web Developer",
-  "AI Expert",
-  "Tech Enthusiast",
-  "Freelancer",
-  "Startup Enthusiast",
-  "Problem Solver",
-];
-
-var _PART = 0;
-var _PART_INDEX = 0;
-var _INTERVAL_VAL;
-var _ELEMENT = document.querySelector("#text");
-var _CURSOR = document.querySelector("#cursor");
-function Type() {
-  var text = _CONTENT[_PART].substring(0, _PART_INDEX + 1);
-  _ELEMENT.innerHTML = text;
-  _PART_INDEX++;
-  if (text === _CONTENT[_PART]) {
-    _CURSOR.style.display = "none";
-    clearInterval(_INTERVAL_VAL);
-    setTimeout(function () {
-      _INTERVAL_VAL = setInterval(Delete, 50);
-    }, 1000);
-  }
-}
-function Delete() {
-  var text = _CONTENT[_PART].substring(0, _PART_INDEX - 1);
-  _ELEMENT.innerHTML = text;
-  _PART_INDEX--;
-  if (text === "") {
-    clearInterval(_INTERVAL_VAL);
-    if (_PART == _CONTENT.length - 1) _PART = 0;
-    else _PART++;
-    _PART_INDEX = 0;
-    setTimeout(function () {
-      _CURSOR.style.display = "inline-block";
-      _INTERVAL_VAL = setInterval(Type, 100);
-    }, 200);
-  }
-}
-_INTERVAL_VAL = setInterval(Type, 100);
-
-// Intersection Observer for Animations
-const observerOptions = {
-  threshold: 0.1,
-  rootMargin: "0px",
-};
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("in-view");
-
-      // Handle progress bars
-      if (entry.target.classList.contains("skill-category")) {
-        const progressBars = entry.target.querySelectorAll(".progress-fill");
-        progressBars.forEach((bar) => {
-          const percentage =
-            bar.parentElement.previousElementSibling.querySelector(
-              ".skill-percentage"
-            ).textContent;
-          bar.style.width = percentage;
-        });
-      }
-
-      // Handle typing effect
-      if (entry.target.classList.contains("typing-text")) {
-        typeWriter(
-          entry.target,
-          entry.target.dataset.text || entry.target.textContent
-        );
-      }
-    }
-  });
-}, observerOptions);
-
-// Observe elements
-document
-  .querySelectorAll(
-    ".project-card, .skill-category, .section-title, .typing-text"
-  )
-  .forEach((element) => observer.observe(element));
-
-// Initialize theme from saved preference
-if (localStorage.getItem("darkMode") === "true") {
-  document.body.classList.add("light-mode");
-  themeToggle.classList.add("active");
-}
-
-// Form Submission
-document.querySelector(".contact-form")?.addEventListener("submit", (e) => {
-  e.preventDefault();
-
-  // Add your form submission logic here
-  const formData = new FormData(e.target);
-  console.log("Form submitted:", Object.fromEntries(formData));
-
-  // Reset form
-  e.target.reset();
-
-  // Show success message
-  alert("Message sent successfully!");
-});
-
-// Project Card Hover Effects
-document.querySelectorAll(".project-card").forEach((card) => {
-  card.addEventListener("mouseenter", (e) => {
-    const { left, top } = card.getBoundingClientRect();
-    const x = e.clientX - left;
-    const y = e.clientY - top;
-
-    card.style.setProperty("--mouse-x", `${x}px`);
-    card.style.setProperty("--mouse-y", `${y}px`);
-  });
-});
-
-// DOM Elements
-const navbar = document.querySelector(".navbar");
-const hamburger = document.querySelector(".hamburger");
-const navMenu = document.querySelector(".nav-menu");
-const navLinks = document.querySelectorAll(".nav-link");
-const body = document.body;
-
-class Navigation {
-  constructor() {
-    this.initializeEventListeners();
-  }
-
-  initializeEventListeners() {
-    // Toggle mobile menu
-    hamburger.addEventListener("click", () => this.toggleMobileMenu());
-
-    // Handle navigation link clicks
-    navLinks.forEach((link) => {
-      link.addEventListener("click", (e) => this.handleNavLinkClick(e, link));
-    });
-
-    // Close menu when clicking outside
-    document.addEventListener("click", (e) => this.handleOutsideClick(e));
-
-    // Handle scroll events
-    window.addEventListener("scroll", () => {
-      this.handleNavbarScroll();
-      this.highlightActiveSection();
-    });
-  }
-
-  toggleMobileMenu() {
-    hamburger.classList.toggle("active");
-    navMenu.classList.toggle("active");
-    body.classList.toggle("menu-open");
-  }
-
-  closeMobileMenu() {
-    hamburger.classList.remove("active");
-    navMenu.classList.remove("active");
-    body.classList.remove("menu-open");
-  }
-
-  handleNavLinkClick(e, clickedLink) {
-    this.closeMobileMenu();
-
-    // Update active link
-    navLinks.forEach((link) => link.classList.remove("active"));
-    clickedLink.classList.add("active");
-  }
-
-  handleOutsideClick(e) {
-    if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
-      this.closeMobileMenu();
-    }
-  }
-
-  handleNavbarScroll() {
-    const scrollThreshold = 50;
-    if (window.scrollY > scrollThreshold) {
-      navbar.classList.add("scrolled");
-    } else {
-      navbar.classList.remove("scrolled");
-    }
-  }
-
-  highlightActiveSection() {
-    const sections = document.querySelectorAll("section");
-    let currentSectionId = "";
-
-    sections.forEach((section) => {
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.clientHeight;
-      const scrollPosition = window.scrollY;
-
-      // Consider a section active when we've scrolled 1/3 into it
-      if (scrollPosition >= sectionTop - sectionHeight / 3) {
-        currentSectionId = section.getAttribute("id");
-      }
-    });
-
-    // Update active nav link
-    navLinks.forEach((link) => {
-      link.classList.remove("active");
-      if (link.getAttribute("href") === `#${currentSectionId}`) {
-        link.classList.add("active");
-      }
-    });
-  }
-}
-
-// Initialize navigation
-const navigation = new Navigation();
->>>>>>> 8cc8e2f71b99b65113d2a793dc5eb45be95726b7
+// ------------------------ INITIALIZE ------------------------
+new Navigation();
