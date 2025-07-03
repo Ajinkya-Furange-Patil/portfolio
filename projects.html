@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -720,6 +721,642 @@
           element.style.left = Math.random() * 100 + "%";
           element.style.animationDelay = Math.random() * 5 + "s";
           container.appendChild(element);
+        }
+      }
+
+      // Add CSS animation for floating elements
+      const style = document.createElement("style");
+      style.textContent = `
+        @keyframes float {
+          0% {
+            transform: translateY(100vh) translateX(0);
+            opacity: 0;
+          }
+          10% {
+            opacity: 0.3;
+          }
+          90% {
+            opacity: 0.3;
+          }
+          100% {
+            transform: translateY(-100px) translateX(${
+              Math.random() * 200 - 100
+            }px);
+            opacity: 0;
+          }
+        }
+      `;
+      document.head.appendChild(style);
+
+      // Initialize floating animation
+      createFloatingElements();
+    </script>
+  </body>
+</html>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Ajinkya Furange</title>
+    <meta name="description" content="Complete showcase of Ajinkya Furange's projects - Individual developments and Team leadership in hackathons">
+    <meta name="keywords" content="Ajinkya Furange, Projects, Web Development, Hackathon, Team Leader, Full Stack">
+    <meta name="author" content="Ajinkya Furange">
+    <link rel="shortcut icon" href="ajinkya.jpeg" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" 
+          integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" 
+          crossorigin="anonymous" referrerpolicy="no-referrer">
+<link rel="stylesheet" href="projects.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">AJINKYA FURANGE</a>
+            <a href="index.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i>
+                Back to Portfolio
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <h1 class="page-title">Project Arsenal</h1>
+            <p class="page-subtitle">
+                Explore my complete collection of projects - from individual innovations to team-led hackathon victories
+            </p>
+        </section>
+
+        <!-- Filter Tabs -->
+        <div class="filter-tabs">
+            <button class="filter-btn active" onclick="filterProjects('all')">All Projects</button>
+            <button class="filter-btn" onclick="filterProjects('individual')">Individual Work</button>
+            <button class="filter-btn" onclick="filterProjects('team')">Team Leadership</button>
+            <button class="filter-btn" onclick="filterProjects('hackathon')">Hackathons</button>
+        </div>
+
+        <!-- Projects Container -->
+        <div class="projects-container">
+            <!-- Individual Projects Section -->
+            <section class="category-section" data-category="individual">
+                <h2 class="category-title">Individual Projects</h2>
+                <p class="category-description">Self-initiated projects showcasing personal skills and innovation</p>
+                
+                <div class="project-grid">
+                    <!-- E-commerce Project -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3 class="project-title">Full Stack E‑commerce for Farming Products</h3>
+                            <span class="project-type">Full Stack</span>
+                        </div>
+                        <p class="project-description">
+                            A comprehensive e‑commerce platform designed specifically for agricultural products. 
+                            Features include inventory management and direct farmer‑to‑consumer sales.
+                        </p>
+                        <div class="project-features">
+                            <div class="features-title">Key Features:</div>
+                            <ul class="features-list">
+                                <li>Shopping cart & checkout system</li>
+                                <li>Order management dashboard</li>
+                                <li>Responsive design</li>
+                            </ul>
+                        </div>
+                        <div class="tech-stack">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">Express.js</span>
+                            <span class="tech-tag">MySQL</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://shivansh-krushi-seva-kendra.onrender.com" class="project-btn demo-btn" target="_blank">
+                                <i class="fas fa-external-link-alt"></i>
+                                Live Demo
+                            </a>
+                            <a href="https://github.com/Ajinkya-Furange-Patil/Shivansh-Krushi-Seva-Kendra" class="project-btn github-btn" target="_blank">
+                                <i class="fas fa-code"></i>
+                                View Code
+                            </a>
+                        </div>
+                    </div>
+<!-- 🛒 Order Placing System (Pure PHP) -->
+<div class="project-card">
+  <div class="project-header">
+    <h3 class="project-title">Order Placing System</h3>
+    <span class="project-type">PHP Form Handling</span>
+  </div>
+
+  <p class="project-description">
+    A beginner-friendly project that simulates the order placement process using pure PHP. 
+    This system allows users to enter product and contact details, processes the data server-side, 
+    and displays the submitted order instantly — without using a database.
+  </p>
+
+  <div class="project-features">
+    <div class="features-title">Key Features:</div>
+    <ul class="features-list">
+      <li>Order placement form (name, product, quantity, etc.)</li>
+      <li>Data handling with core PHP</li>
+      <li>Form validation and confirmation display</li>
+      <li>No database required — beginner friendly</li>
+      <li>Perfect for learning POST/GET, $_REQUEST, and server response</li>
+    </ul>
+  </div>
+
+  <div class="tech-stack">
+    <span class="tech-tag">PHP</span>
+    <span class="tech-tag">HTML5</span>
+    <span class="tech-tag">CSS3</span>
+  </div>
+
+  <div class="project-links">
+    <a href="https://github.com/Ajinkya-Furange-Patil/order-placing-php" class="project-btn github-btn" target="_blank">
+      <i class="fas fa-code"></i>
+      View Code
+    </a>
+  </div>
+</div>
+<!-- 🤖 AI Chat Bot using Gemini API -->
+<div class="project-card">
+  <div class="project-header">
+    <h3 class="project-title">AI Chat Bot</h3>
+    <span class="project-type">AI Integration | Gemini API</span>
+  </div>
+
+  <p class="project-description">
+    A fully functional AI chatbot built using Google’s Gemini API. 
+    This project demonstrates real-time AI conversations through a clean and responsive web interface. 
+    It handles user prompts, fetches intelligent replies, and simulates smooth chat-like interactions — 
+    all using modern JavaScript and Gemini’s powerful AI engine.
+  </p>
+
+  <div class="project-features">
+    <div class="features-title">Key Features:</div>
+    <ul class="features-list">
+      <li>Real-time chat with Google Gemini AI</li>
+      <li>Handles dynamic user input</li>
+      <li>Displays bot responses instantly</li>
+      <li>Async API handling with loading animations</li>
+      <li>Sleek, mobile-friendly UI</li>
+    </ul>
+  </div>
+
+  <div class="tech-stack">
+    <span class="tech-tag">HTML5</span>
+    <span class="tech-tag">CSS3</span>
+    <span class="tech-tag">JavaScript</span>
+    <span class="tech-tag">Gemini API</span>
+    <span class="tech-tag">Fetch API</span>
+  </div>
+
+  <div class="project-links">
+    <a href="https://github.com/Ajinkya-Furange-Patil/Ai-Chat-Bot" class="project-btn github-btn" target="_blank">
+      <i class="fas fa-code"></i>
+      View Code
+    </a>
+  </div>
+</div>
+
+                    <!-- Chat Application -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3 class="project-title">Chat Application – Ajinkya Sampark</h3>
+                            <span class="project-type">Frontend</span>
+                        </div>
+                        <p class="project-description">
+                            A modern chat web app designed with modularity and future-readiness in mind. 
+                            Features clean folder-based chat separation and WhatsApp-style UI elements.
+                        </p>
+                        <div class="project-features">
+                            <div class="features-title">Key Features:</div>
+                            <ul class="features-list">
+                                <li>WhatsApp-inspired user interface</li>
+                                <li>Modular chat architecture</li>
+                                <li>Responsive design</li>
+                                <li>Real-time messaging simulation</li>
+                                <li>Clean folder-based organization</li>
+                            </ul>
+                        </div>
+                        <div class="tech-stack">
+                            <span class="project-type">New Innovation</span>
+
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">JavaScript</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://ajinkya-sampark.netlify.app/" class="project-btn demo-btn" target="_blank">
+                                <i class="fas fa-external-link-alt"></i>
+                                Live Demo
+                            </a>
+                            <a href="https://github.com/Ajinkya-Furange-Patil/sampark" class="project-btn github-btn" target="_blank">
+                                <i class="fas fa-code"></i>
+                                View Code
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Medical Payment Tracker -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3 class="project-title">Medical Payment Tracker</h3>
+                            <span class="project-type">Web App</span>
+                        </div>
+                        <p class="project-description">
+                            A smart and intuitive system for tracking and managing patient medical payments 
+                            with real-time updates and reminder alerts.
+                        </p>
+                        <div class="project-features">
+                            <div class="features-title">Key Features:</div>
+                            <ul class="features-list">
+                                <li>Patient payment tracking</li>
+                                <li>Real-time payment updates</li>
+                                <li>Reminder alert system</li>
+                                <li>Payment history management</li>
+                            </ul>
+                        </div>
+                        <div class="tech-stack">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">JavaScript</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://payment-list.netlify.app/" class="project-btn demo-btn" target="_blank">
+                                <i class="fas fa-external-link-alt"></i>
+                                Live Demo
+                            </a>
+                            <a href="https://github.com/Ajinkya-Furange-Patil/medical-payment-tracker" class="project-btn github-btn" target="_blank">
+                                <i class="fas fa-code"></i>
+                                View Code
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Weather App -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3 class="project-title">Global Weather Dashboard</h3>
+                            <span class="project-type">API Integration</span>
+                        </div>
+                        <p class="project-description">
+                            A real-time weather monitoring app that fetches live climate conditions using OpenWeather API 
+                            for any global city or region.
+                        </p>
+                        <div class="project-features">
+                            <div class="features-title">Key Features:</div>
+                            <ul class="features-list">
+                                <li>Real-time weather data</li>
+                                <li>Global city search</li>
+                                <li>Temperature unit conversion</li>
+                                <li>Weather condition icons</li>
+                            </ul>
+                        </div>
+                        <div class="tech-stack">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">OpenWeather API</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://weather-app-ajinkya-furange.netlify.app/" class="project-btn demo-btn" target="_blank">
+                                <i class="fas fa-external-link-alt"></i>
+                                Live Demo
+                            </a>
+                            <a href="https://github.com/Ajinkya-Furange-Patil/whether" class="project-btn github-btn" target="_blank">
+                                <i class="fas fa-code"></i>
+                                View Code
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- College Timetable -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3 class="project-title">College Timetable System</h3>
+                            <span class="project-type">Educational</span>
+                        </div>
+                        <p class="project-description">
+                            A smart and responsive timetable manager for college students with real-time lecture alerts 
+                            and personalized themes.
+                        </p>
+                        <div class="project-features">
+                            <div class="features-title">Key Features:</div>
+                            <ul class="features-list">
+                                <li>Weekly timetable view</li>
+                                <li>Real-time lecture alerts</li>
+                                <li>Batch-specific timetables</li>
+                                <li>Theme customization</li>
+                                <li>Mobile-responsive design</li>
+                            </ul>
+                        </div>
+                        <div class="tech-stack">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">JavaScript</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://co1-tt.netlify.app/" class="project-btn demo-btn" target="_blank">
+                                <i class="fas fa-external-link-alt"></i>
+                                Live Demo
+                            </a>
+                            <a href="https://github.com/Ajinkya-Furange-Patil/timetable" class="project-btn github-btn" target="_blank">
+                                <i class="fas fa-code"></i>
+                                View Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Team Leadership & Hackathon Projects Section -->
+            <section class="category-section" data-category="team hackathon">
+                <h2 class="category-title">Team Leadership & Hackathons</h2>
+                <p class="category-description">Projects where I led teams and developed innovative solutions under pressure</p>
+                
+                <div class="project-grid">
+                   <!-- OTP Phishing Awareness Simulator -->
+<div class="project-card">
+  <div class="project-header">
+    <h3 class="project-title">OTP Phishing Awareness Simulator</h3>
+    <span class="project-type">Cyber Security | Simulation</span>
+  </div>
+
+  <div class="team-info">
+    <div class="team-role">Role: Simulation Developer & UI/UX Designer</div>
+    <div class="team-members">Team: CodeWave | Hackathon Duration: 48 hours</div>
+  </div>
+
+  <p class="project-description">
+    A web-based interactive simulator designed to raise awareness about OTP-based phishing scams.
+    It lets users experience both the scammer and victim sides of a phishing attempt, highlighting common
+    social engineering tactics and emphasizing the importance of 2FA safety.
+  </p>
+
+  <div class="project-features">
+    <div class="features-title">Key Features:</div>
+    <ul class="features-list">
+      <li>Dual role simulation: Victim and Scammer</li>
+      <li>Real-time OTP prompt flow</li>
+      <li>Educational end screen with takeaways</li>
+      <li>Interactive UI with app-like buttons</li>
+      <li>Two distinct simulation modes</li>
+    </ul>
+  </div>
+
+  <div class="tech-stack">
+    <span class="tech-tag">HTML5</span>
+    <span class="tech-tag">CSS3</span>
+    <span class="tech-tag">JavaScript</span>
+    <span class="tech-tag">JQUERY</span>
+  </div>
+
+  <div class="project-links">
+    <a href="https://simsetu.netlify.app/" class="project-btn demo-btn" target="_blank">
+      <i class="fas fa-external-link-alt"></i>
+      Live Demo
+    </a>
+    <a href="https://github.com/samruddhidurge05/codewave-hackthon" class="project-btn github-btn" target="_blank">
+      <i class="fas fa-code"></i>
+      View Code
+    </a>
+  </div>
+</div>
+
+<!-- Skill-Swap – Learn. Teach. Grow. -->
+<div class="project-card">
+  <div class="project-header">
+    <h3 class="project-title">Skill-Swap – Learn. Teach. Grow.</h3>
+    <span class="project-type">EdTech | Peer Learning</span>
+  </div>
+
+  <div class="team-info">
+    <div class="team-role">Role: Full Stack Developer & Project Coordinator</div>
+    <div class="team-members">Team SkillSwap | Duration: 48 hours (Hackathon)</div>
+  </div>
+
+  <p class="project-description">
+    A collaborative peer-to-peer learning platform where students can host or join skill-sharing sessions.
+    Whether you're a design newbie or a coding pro, Skill-Swap empowers users to teach, learn, and grow together — 
+    building both community and confidence.
+  </p>
+
+  <div class="project-features">
+    <div class="features-title">Key Features:</div>
+    <ul class="features-list">
+      <li>Session Scheduler to organize or join learning sessions</li>
+      <li>Teach & Learn modes for flexible participation</li>
+      <li>Dynamic session display with instant updates</li>
+      <li>Personal stats tracking dashboard</li>
+      <li>Mobile-optimized layout & friendly UI</li>
+      <li>Backend and authentication coming soon</li>
+    </ul>
+  </div>
+
+  <div class="tech-stack">
+    <span class="tech-tag">HTML5</span>
+    <span class="tech-tag">CSS3</span>
+    <span class="tech-tag">JavaScript</span>
+    <span class="tech-tag">Node.js (Planned)</span>
+    <span class="tech-tag">Express.js (Planned)</span>
+    <span class="tech-tag">MongoDB (Planned)</span>
+  </div>
+
+  <div class="project-links">
+    <a href="https://skilllswap.netlify.app/" class="project-btn demo-btn" target="_blank">
+      <i class="fas fa-external-link-alt"></i>
+      Live Demo
+    </a>
+    <a href="https://github.com/Avikapawar/SKILL-SWAP" class="project-btn github-btn" target="_blank">
+      <i class="fas fa-code"></i>
+      View Code
+    </a>
+  </div>
+</div>
+<!-- 🧠💊 ExpiryWatchDog -->
+<div class="project-card">
+  <div class="project-header">
+    <h3 class="project-title">ExpiryWatchDog</h3>
+    <span class="project-type">MVP | Product Expiry Tracker</span>
+  </div>
+
+  <div class="team-info">
+    <div class="team-role">Role: Trio Developer & Concept Designer</div>
+    <div class="team-members">Built with ❤️ for real-world utility</div>
+  </div>
+
+  <p class="project-description">
+    ExpiryWatchDog is a smart MVP tool that helps users track product expiry dates 
+    with a simple and clean interface. It’s ideal for households, pharmacies, grocery stores,
+    and food outlets that want to reduce waste and improve safety by managing expiry dates efficiently.
+  </p>
+
+  <div class="project-features">
+    <div class="features-title">Key Features:</div>
+    <ul class="features-list">
+      <li>Manually add product name & expiry date</li>
+      <li>Table view of all tracked products</li>
+      <li>Real-time expiry countdown</li>
+      <li>Data stored using Local Storage</li>
+      <li>Responsive UI for all screen sizes</li>
+      <li>Notification system (Coming Soon)</li>
+    </ul>
+                          </div>
+
+                        <div class="tech-stack">
+                             <span class="tech-tag">HTML5</span>
+                             <span class="tech-tag">CSS3</span>
+                             <span class="tech-tag">JavaScript</span>
+                             <span class="tech-tag">LocalStorage</span>
+                         </div>
+
+                          <div class="project-links">
+                            <a href="https://expirywatchdog.netlify.app/" class="project-btn demo-btn" target="_blank">
+                                <i class="fas fa-external-link-alt"></i>
+                               Live Demo
+                            </a>
+                            <a href="https://github.com/Ajinkya-Furange-Patil/ExpiryWatchDog" class="project-btn github-btn" target="_blank">
+                                <i class="fas fa-code"></i>
+                                View Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        // Filter functionality
+        function filterProjects(category) {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const categorySections = document.querySelectorAll('.category-section');
+            
+            // Update active button
+            filterBtns.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Show/hide sections based on category
+            categorySections.forEach(section => {
+                const sectionCategories = section.dataset.category.split(' ');
+                
+                if (category === 'all') {
+                    section.style.display = 'block';
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                } else if (sectionCategories.includes(category)) {
+                    section.style.display = 'block';
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                } else {
+                    section.style.opacity = '0';
+                    section.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        section.style.display = 'none';
+                    }, 300);
+                }
+            });
+        }
+
+        // Smooth animations on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all project cards
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
+        });
+
+        // Add dynamic background particles
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.style.position = 'fixed';
+            particle.style.width = '2px';
+            particle.style.height = '2px';
+            particle.style.background = 'rgba(0, 255, 242, 0.3)';
+            particle.style.borderRadius = '50%';
+            particle.style.pointerEvents = 'none';
+            particle.style.zIndex = '-1';
+            particle.style.left = Math.random() * 100 + 'vw';
+            particle.style.top = '100vh';
+            particle.style.animation = `floatUp ${3 + Math.random() * 4}s linear forwards`;
+            
+            document.body.appendChild(particle);
+            
+            setTimeout(() => {
+                particle.remove();
+            }, 7000);
+        }
+
+        // Add CSS animation for particles
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes floatUp {
+                to {
+                    transform: translateY(-100vh) translateX(${Math.random() * 200 - 100}px);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Create particles periodically
+        setInterval(createParticle, 2000);
+
+        // Add navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(10, 10, 31, 0.95)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0, 255, 242, 0.1)';
+            } else {
+                navbar.style.background = 'rgba(10, 10, 31, 0.9)';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+
+        // Add hover effect to project cards
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-8px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Add loading animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+</body>
+</ht
+>>>>>>> 8cc8e2f71b99b65113d2a793dc5eb45be95726b7
+
         }
       }
 
