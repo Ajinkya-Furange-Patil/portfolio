@@ -50,7 +50,7 @@
       .logo {
         font-size: 1.8rem;
         font-weight: bold;
-        background: linear-gradient(135deg, #000, #2e8b9e);
+        background: linear-gradient(135deg, #000, #333);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -59,6 +59,7 @@
       nav ul {
         display: flex;
         list-style: none;
+        list-style-type: none;
         gap: 2rem;
       }
 
@@ -67,28 +68,167 @@
         color: var(--text-dark);
         font-weight: 500;
         position: relative;
-        transition: color 0.3s;
+        transition: all 0.3s ease;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        display: inline-block;
+      }
+
+      nav a:hover {
+        color: #000;
+        background: rgba(0, 0, 0, 0.1);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      nav a::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #000, #333);
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+      }
+
+      nav a:hover::before {
+        width: 100%;
       }
 
       nav a::after {
         content: "";
         position: absolute;
-        bottom: -5px;
+        top: 0;
         left: 0;
-        width: 0;
-        height: 2px;
-        background: #2e8b9e;
-        transition: width 0.3s;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          rgba(0, 0, 0, 0.1),
+          rgba(51, 51, 51, 0.05)
+        );
+        border-radius: 8px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: -1;
       }
 
-      nav a:hover::after {
+      nav a.active {
+        color: #000;
+        background: rgba(0, 0, 0, 0.1);
+      }
+
+      nav a.active::before {
         width: 100%;
+      }
+
+      /* Hamburger Menu */
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 4px;
+      }
+
+      .hamburger span {
+        width: 25px;
+        height: 3px;
+        background: var(--text-dark);
+        transition: 0.3s;
+      }
+
+      /* Mobile Navigation */
+      .mobile-menu {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 250px;
+        height: 100vh;
+        background: var(--primary-bg);
+        padding: 5rem 2rem 2rem;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+        z-index: 999;
+        transition: left 0.3s ease;
+      }
+
+      .mobile-menu.active {
+        left: 0;
+      }
+
+      .mobile-menu ul {
+        flex-direction: column;
+        gap: 2rem;
+        align-items: flex-start;
+        list-style: none;
+      }
+
+      .mobile-menu a {
+        font-size: 1.1rem;
+        padding: 0.75rem 1rem;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        position: relative;
+        display: block;
+        width: 100%;
+        margin-bottom: 0.5rem;
+      }
+
+      .mobile-menu a:hover {
+        color: #000;
+        background: rgba(0, 0, 0, 0.1);
+        transform: translateX(10px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      .mobile-menu a::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #000, #333);
+        transition: width 0.3s ease;
+        transform: translateY(-50%);
+      }
+
+      .mobile-menu a:hover::before {
+        width: 20px;
+      }
+
+      /* Overlay */
+      .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 998;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s, visibility 0.3s;
+      }
+
+      .overlay.active {
+        opacity: 1;
+        visibility: visible;
       }
 
       @media (max-width: 768px) {
         nav ul {
-          gap: 1rem;
-          font-size: 0.9rem;
+          display: none;
+          list-style: none;
+        }
+
+        .hamburger {
+          display: flex;
+        }
+
+        .mobile-menu {
+          display: block;
         }
       }
 
@@ -217,7 +357,7 @@
       }
 
       .journey-list li::before {
-        content: "→";
+        /* content: "→"; */
         position: absolute;
         left: 0;
         color: #2e8b9e;
@@ -754,6 +894,7 @@
         nav ul {
           gap: 1rem;
           font-size: 0.85rem;
+          list-style: none;
         }
 
         .contact-info {
@@ -868,6 +1009,7 @@
       }
       a {
         text-decoration: none;
+        color: rgb(85, 61, 61);
       }
     </style>
   </head>
@@ -875,6 +1017,11 @@
     <!-- Navigation -->
     <nav>
       <div class="logo">AF</div>
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
       <ul>
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
@@ -887,6 +1034,24 @@
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+      <ul>
+        <li><a href="#home" onclick="closeMenu()">Home</a></li>
+        <li><a href="#about" onclick="closeMenu()">About</a></li>
+        <li><a href="#projects" onclick="closeMenu()">Projects</a></li>
+        <li><a href="#skills" onclick="closeMenu()">Skills</a></li>
+        <li><a href="#internship" onclick="closeMenu()">Internship</a></li>
+        <li><a href="#achievements" onclick="closeMenu()">Awards</a></li>
+        <li><a href="#code-quality" onclick="closeMenu()">Standards</a></li>
+        <li><a href="#pricing" onclick="closeMenu()">Services</a></li>
+        <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay" onclick="closeMenu()"></div>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
@@ -901,8 +1066,7 @@
           style="font-size: 1.1rem; color: #555; margin-bottom: 2rem"
           class="hero-description"
         >
-          Building scalable solutions with Web Development, Cloud andAgentic
-          AI
+          Building scalable solutions with Web Development, Cloud andAgentic AI
         </p>
         <div class="cta-buttons">
           <a href="#projects" class="btn btn-primary scale-in">View My Work</a>
@@ -1075,8 +1239,8 @@
             <strong>Solution:</strong> Created a responsive web application
             using HTML, CSS andJavaScript with local storage for data
             persistence. Built interactive dashboards for payment logging,
-            reminder alerts andfinancial summaries. Ensured mobile-first
-            design for on-the-go access.<br />
+            reminder alerts andfinancial summaries. Ensured mobile-first design
+            for on-the-go access.<br />
             <strong>Impact:</strong> Streamlined payment tracking for a local
             clinic, reducing errors by 60% and improving cash flow visibility.
             Adopted by 2 healthcare facilities, saving 10+ hours weekly in
@@ -1773,7 +1937,7 @@
       });
 
       // Smooth scroll behavior for nav links
-      document.querySelectorAll("nav a").forEach((link) => {
+      document.querySelectorAll("nav a, .mobile-menu a").forEach((link) => {
         link.addEventListener("click", (e) => {
           const href = link.getAttribute("href");
           if (href.startsWith("#")) {
@@ -1830,8 +1994,93 @@
           });
         });
 
-      // Scroll to top on page load
-      window.scrollTo(0, 0);
+      // Mobile menu toggle with GSAP animation
+      function toggleMenu() {
+        const menu = document.getElementById("mobileMenu");
+        const overlay = document.getElementById("overlay");
+        const hamburger = document.querySelector(".hamburger");
+
+        if (menu.classList.contains("active")) {
+          closeMenu();
+        } else {
+          // Animate menu in from left
+          gsap.to(menu, {
+            left: 0,
+            duration: 0.3,
+            ease: "power2.out",
+          });
+          gsap.to(overlay, {
+            opacity: 1,
+            visibility: "visible",
+            duration: 0.3,
+          });
+
+          menu.classList.add("active");
+          overlay.classList.add("active");
+
+          // Animate hamburger to X
+          gsap.to(hamburger.children[0], { rotation: 45, y: 8, duration: 0.3 });
+          gsap.to(hamburger.children[1], { opacity: 0, duration: 0.3 });
+          gsap.to(hamburger.children[2], {
+            rotation: -45,
+            y: -8,
+            duration: 0.3,
+          });
+        }
+      }
+
+      function closeMenu() {
+        const menu = document.getElementById("mobileMenu");
+        const overlay = document.getElementById("overlay");
+        const hamburger = document.querySelector(".hamburger");
+
+        // Animate menu out to left
+        gsap.to(menu, {
+          left: "-100%",
+          duration: 0.3,
+          ease: "power2.in",
+        });
+        gsap.to(overlay, {
+          opacity: 0,
+          visibility: "hidden",
+          duration: 0.3,
+        });
+
+        menu.classList.remove("active");
+        overlay.classList.remove("active");
+
+        // Reset hamburger
+        gsap.to(hamburger.children[0], { rotation: 0, y: 0, duration: 0.3 });
+        gsap.to(hamburger.children[1], { opacity: 1, duration: 0.3 });
+        gsap.to(hamburger.children[2], { rotation: 0, y: 0, duration: 0.3 });
+      }
+
+      // Highlight active section in navbar
+      function updateActiveSection() {
+        const sections = document.querySelectorAll("section[id]");
+        const navLinks = document.querySelectorAll(
+          'nav a[href^="#"], .mobile-menu a[href^="#"]'
+        );
+
+        let current = "";
+
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop - 100;
+          if (window.pageYOffset >= sectionTop) {
+            current = section.getAttribute("id");
+          }
+        });
+
+        navLinks.forEach((link) => {
+          link.classList.remove("active");
+          if (link.getAttribute("href") === `#${current}`) {
+            link.classList.add("active");
+          }
+        });
+      }
+
+      window.addEventListener("scroll", updateActiveSection);
+      window.addEventListener("load", updateActiveSection);
     </script>
   </body>
 </html>
