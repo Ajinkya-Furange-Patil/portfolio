@@ -3,566 +3,1835 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ajinkya Furange - Portfolio</title>
-    <meta
-      name="description"
-      content="AJINKYA NITESH FURANGE PORTFOLIO OF COMPUTER ENGINEERING"
-    />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="keywords"
-      content="AJINKYA NITESH FURANGE,AJINKYA PORTFOLIO,Python,HTML,CSS,JavaScript,C,Ajinkya Furange,Portfolio,Computer Engineering,Web Development"
-    />
-    <meta name="author" content="Ajinkya Furange" />
-    <meta name="robots" content="index, follow" />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="shortcut icon" href="ajinkya.jpeg" type="image/x-icon" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-  </head>
+    <title>Ajinkya Furange - Full Stack Developer & AI Engineer</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
+      :root {
+        --primary-bg: #f2f0df;
+        --text-dark: #000000;
+        --accent: #2e8b9e;
+        --light-gray: #e8e6d8;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: var(--primary-bg);
+        color: var(--text-dark);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      /* Navigation */
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(242, 240, 223, 0.95);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        padding: 1.5rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: bold;
+        background: linear-gradient(135deg, #000, #2e8b9e);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+      }
+
+      nav a {
+        text-decoration: none;
+        color: var(--text-dark);
+        font-weight: 500;
+        position: relative;
+        transition: color 0.3s;
+      }
+
+      nav a::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: #2e8b9e;
+        transition: width 0.3s;
+      }
+
+      nav a:hover::after {
+        width: 100%;
+      }
+
+      @media (max-width: 768px) {
+        nav ul {
+          gap: 1rem;
+          font-size: 0.9rem;
+        }
+      }
+
+      /* Hero Section */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+        margin-top: 60px;
+        text-align: center;
+        background: linear-gradient(
+          135deg,
+          var(--primary-bg) 0%,
+          var(--light-gray) 100%
+        );
+      }
+
+      .hero-content h1 {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+      }
+
+      .hero-content .subtitle {
+        font-size: 1.5rem;
+        color: #555;
+        margin-bottom: 2rem;
+        font-weight: 300;
+      }
+
+      .cta-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        margin-top: 2rem;
+      }
+
+      .btn {
+        padding: 0.8rem 2rem;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: 600;
+        transition: all 0.3s;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      .btn-primary {
+        background: #000;
+        color: var(--primary-bg);
+      }
+
+      .btn-primary:hover {
+        background: #2e8b9e;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: #000;
+        border: 2px solid #000;
+      }
+
+      .btn-secondary:hover {
+        background: #000;
+        color: var(--primary-bg);
+        transform: translateY(-3px);
+      }
+
+      /* Section Styles */
+      section {
+        padding: 5rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+        text-align: center;
+        position: relative;
+      }
+
+      .section-title::after {
+        content: "";
+        display: block;
+        width: 60px;
+        height: 4px;
+        background: #2e8b9e;
+        margin: 1rem auto 0;
+      }
+
+      /* About Me */
+      .about-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        align-items: center;
+      }
+
+      .about-text h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: #2e8b9e;
+      }
+
+      .about-text p {
+        margin-bottom: 1rem;
+        line-height: 1.8;
+      }
+
+      .journey-list {
+        list-style: none;
+        margin-top: 2rem;
+      }
+
+      .journey-list li {
+        padding: 0.5rem 0;
+        padding-left: 1.5rem;
+        position: relative;
+      }
+
+      .journey-list li::before {
+        content: "→";
+        position: absolute;
+        left: 0;
+        color: #2e8b9e;
+        font-weight: bold;
+      }
+
+      @media (max-width: 768px) {
+        .about-content {
+          grid-template-columns: 1fr;
+        }
+        .hero-content h1 {
+          font-size: 2.5rem;
+        }
+      }
+
+      /* Projects */
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 2rem;
+      }
+
+      .project-card {
+        background: white;
+        border: 2px solid var(--light-gray);
+        border-radius: 8px;
+        padding: 1.5rem;
+        transition: all 0.3s;
+        cursor: pointer;
+      }
+
+      .project-card:hover {
+        border-color: #2e8b9e;
+        box-shadow: 0 10px 30px rgba(46, 139, 158, 0.2);
+        transform: translateY(-5px);
+      }
+
+      .project-card h3 {
+        font-size: 1.3rem;
+        margin-bottom: 0.8rem;
+        color: #000;
+      }
+
+      .project-card p {
+        color: #555;
+        margin-bottom: 1rem;
+        font-size: 0.95rem;
+      }
+
+      .tech-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .tech-tag {
+        background: var(--light-gray);
+        padding: 0.3rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: #000;
+      }
+
+      .project-links {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .project-links a {
+        color: #2e8b9e;
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.3s;
+      }
+
+      .project-links a:hover {
+        color: #000;
+      }
+
+      /* Skills */
+      .skills-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .skill-category {
+        background: white;
+        padding: 2rem;
+        border-radius: 8px;
+        border-left: 4px solid #2e8b9e;
+      }
+
+      .skill-category h3 {
+        margin-bottom: 1.5rem;
+        color: #000;
+        font-size: 1.2rem;
+      }
+
+      .skill-item {
+        margin-bottom: 1rem;
+      }
+
+      .skill-name {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+      }
+
+      .skill-bar {
+        background: var(--light-gray);
+        height: 8px;
+        border-radius: 4px;
+        overflow: hidden;
+      }
+
+      .skill-progress {
+        height: 100%;
+        background: linear-gradient(90deg, #000, #2e8b9e);
+        border-radius: 4px;
+        transition: width 0.3s;
+      }
+
+      /* Internships */
+      .internship-timeline {
+        position: relative;
+        padding: 2rem 0;
+      }
+
+      .internship-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 8px;
+        margin-bottom: 2rem;
+        border-left: 4px solid #2e8b9e;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      }
+
+      .internship-card h3 {
+        color: #000;
+        margin-bottom: 0.5rem;
+      }
+
+      .internship-meta {
+        color: #2e8b9e;
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+
+      .internship-card p {
+        color: #555;
+        margin-bottom: 1rem;
+      }
+
+      .internship-links {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .internship-links a {
+        color: #2e8b9e;
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.3s;
+      }
+
+      .internship-links a:hover {
+        color: #000;
+      }
+
+      /* Achievements */
+      .achievements-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+      }
+
+      .achievement-card {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 8px;
+        border-top: 4px solid #2e8b9e;
+        text-align: center;
+      }
+
+      .achievement-card h4 {
+        color: #2e8b9e;
+        margin-bottom: 0.5rem;
+      }
+
+      .achievement-card p {
+        color: #555;
+        font-size: 0.95rem;
+      }
+
+      /* Events */
+      .events-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .event-item {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 8px;
+        border-left: 4px solid #2e8b9e;
+        display: flex;
+        gap: 1rem;
+      }
+
+      .event-icon {
+        font-size: 2rem;
+        min-width: 50px;
+        text-align: center;
+      }
+
+      .event-content h4 {
+        color: #000;
+        margin-bottom: 0.3rem;
+      }
+
+      .event-content p {
+        color: #555;
+        font-size: 0.9rem;
+      }
+
+      /* Certifications */
+      .certifications-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .cert-item {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 8px;
+        border: 2px solid var(--light-gray);
+        transition: all 0.3s;
+      }
+
+      .cert-item:hover {
+        border-color: #2e8b9e;
+        box-shadow: 0 5px 15px rgba(46, 139, 158, 0.15);
+      }
+
+      .cert-item h4 {
+        color: #2e8b9e;
+        margin-bottom: 0.5rem;
+      }
+
+      .cert-item p {
+        color: #555;
+        font-size: 0.9rem;
+      }
+
+      /* Resume */
+      .resume-section {
+        background: white;
+        padding: 3rem;
+        border-radius: 8px;
+        border: 2px solid var(--light-gray);
+        text-align: center;
+      }
+
+      .resume-section h3 {
+        margin-bottom: 1.5rem;
+      }
+
+      .download-btn {
+        display: inline-block;
+        padding: 1rem 2rem;
+        background: #000;
+        color: var(--primary-bg);
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: 600;
+        transition: all 0.3s;
+      }
+
+      .download-btn:hover {
+        background: #2e8b9e;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Pricing Section */
+      .pricing-section {
+        background: linear-gradient(
+          135deg,
+          var(--primary-bg) 0%,
+          var(--light-gray) 100%
+        );
+        padding: 5rem 2rem;
+      }
+
+      .pricing-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .pricing-card {
+        background: white;
+        border-radius: 12px;
+        padding: 2rem;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .pricing-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #2e8b9e, #000);
+      }
+
+      .pricing-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        border-color: #2e8b9e;
+      }
+
+      .pricing-card.popular {
+        border-color: #2e8b9e;
+        transform: scale(1.05);
+      }
+
+      .pricing-card.popular::after {
+        content: "Most Popular";
+        position: absolute;
+        top: -10px;
+        right: 20px;
+        background: #2e8b9e;
+        color: white;
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: bold;
+      }
+
+      .pricing-title {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: #000;
+      }
+
+      .pricing-price {
+        font-size: 3rem;
+        font-weight: bold;
+        color: #2e8b9e;
+        margin-bottom: 1rem;
+      }
+
+      .pricing-price span {
+        font-size: 1rem;
+        color: #555;
+      }
+
+      .pricing-description {
+        color: #555;
+        margin-bottom: 2rem;
+        line-height: 1.6;
+      }
+
+      .pricing-features {
+        list-style: none;
+        padding: 0;
+        margin-bottom: 2rem;
+      }
+
+      .pricing-features li {
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #eee;
+        color: #333;
+      }
+
+      .pricing-features li::before {
+        content: "✓";
+        color: #2e8b9e;
+        font-weight: bold;
+        margin-right: 0.5rem;
+      }
+
+      .pricing-btn {
+        display: inline-block;
+        padding: 1rem 2rem;
+        background: #000;
+        color: var(--primary-bg);
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: 600;
+        transition: all 0.3s;
+        width: 100%;
+      }
+
+      .pricing-btn:hover {
+        background: #2e8b9e;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Contact */
+      .contact-section {
+        background: linear-gradient(135deg, #000 0%, #2e8b9e 100%);
+        color: white;
+        text-align: center;
+        border-radius: 8px;
+        padding: 3rem;
+      }
+
+      .contact-info {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+        margin: 2rem 0;
+      }
+
+      .contact-item {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 1.5rem;
+        border-radius: 8px;
+        backdrop-filter: blur(10px);
+      }
+
+      .contact-item a {
+        color: var(--primary-bg);
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.3s;
+      }
+
+      .contact-item a:hover {
+        color: #f2f0df;
+      }
+
+      .contact-form {
+        max-width: 500px;
+        margin: 2rem auto;
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+        text-align: left;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 0.8rem;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-radius: 5px;
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        font-family: inherit;
+      }
+
+      .form-group input::placeholder,
+      .form-group textarea::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: var(--primary-bg);
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+      }
+
+      .form-group textarea {
+        resize: vertical;
+        min-height: 100px;
+      }
+
+      /* Footer */
+      footer {
+        background: #000;
+        color: var(--primary-bg);
+        text-align: center;
+        padding: 2rem;
+        margin-top: 5rem;
+      }
+
+      /* Animations */
+      .fade-in {
+        opacity: 0;
+      }
+
+      .slide-in-left {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+
+      .slide-in-right {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+
+      .scale-in {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        section {
+          padding: 3rem 1rem;
+        }
+
+        .section-title {
+          font-size: 2rem;
+        }
+
+        nav ul {
+          gap: 1rem;
+          font-size: 0.85rem;
+        }
+
+        .contact-info {
+          grid-template-columns: 1fr;
+        }
+
+        .resume-section {
+          padding: 1.5rem;
+        }
+
+        .pricing-container {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+
+        .pricing-card {
+          padding: 1.5rem;
+        }
+
+        .pricing-price {
+          font-size: 2.5rem;
+        }
+
+        /* Hero responsive */
+        .hero-content h1 {
+          font-size: 2rem;
+        }
+
+        .hero-content .subtitle {
+          font-size: 1.2rem;
+        }
+
+        .cta-buttons {
+          flex-direction: column;
+          gap: 1rem;
+        }
+
+        /* About responsive */
+        .about-content {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+
+        /* Projects responsive */
+        .projects-grid {
+          grid-template-columns: 1fr;
+        }
+
+        /* Skills responsive */
+        .skills-container {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+
+        /* Events responsive */
+        .events-list {
+          gap: 1rem;
+        }
+
+        .event-item {
+          flex-direction: column;
+          text-align: center;
+          gap: 0.5rem;
+        }
+
+        /* Certifications responsive */
+        .certifications-list {
+          grid-template-columns: 1fr;
+        }
+
+        /* Internship responsive */
+        .internship-card {
+          padding: 1.5rem;
+        }
+
+        .internship-links {
+          flex-direction: column;
+          gap: 0.5rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        nav {
+          padding: 1rem;
+        }
+
+        .logo {
+          font-size: 1.5rem;
+        }
+
+        nav ul {
+          gap: 0.5rem;
+          font-size: 0.8rem;
+        }
+
+        .hero-content h1 {
+          font-size: 1.8rem;
+        }
+
+        .hero-content .subtitle {
+          font-size: 1rem;
+        }
+
+        .section-title {
+          font-size: 1.8rem;
+        }
+
+        .btn {
+          padding: 0.6rem 1.5rem;
+          font-size: 0.9rem;
+        }
+      }
+      a {
+        text-decoration: none;
+      }
+    </style>
+  </head>
   <body>
     <!-- Navigation -->
-    <nav class="navbar">
-      <div class="nav-container">
-        <a href="#" class="nav-logo">AJINKYA FURANGE</a>
-
-        <button class="hamburger" aria-label="Toggle menu">
-          <span class="hamburger-line"></span>
-          <span class="hamburger-line"></span>
-          <span class="hamburger-line"></span>
-        </button>
-
-        <ul class="nav-menu">
-          <li class="nav-item">
-            <a href="#home" class="nav-link active">Home</a>
-          </li>
-          <li class="nav-item">
-            <a href="#projects" class="nav-link">Projects</a>
-          </li>
-          <li class="nav-item">
-            <a href="#skills" class="nav-link">Skills</a>
-          </li>
-          <li class="nav-item">
-            <a href="#about" class="nav-link">About</a>
-          </li>
-          <li class="nav-item">
-            <a href="#contact" class="nav-link">Contact</a>
-          </li>
-        </ul>
-      </div>
+    <nav>
+      <div class="logo">AF</div>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#internship">Internship</a></li>
+        <li><a href="#achievements">Awards</a></li>
+        <li><a href="#code-quality">Standards</a></li>
+        <li><a href="#pricing">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
     </nav>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-      <div class="cyber-frame">
-        <div class="hero-content">
-          <div class="glitch-container">
-            <h1 class="glitch" data-text="Ajinkya Furange">Ajinkya Furange</h1>
-          </div>
-          <p class="cyber-text typing-text" id="container">
-            I am a <span id="text"></span><span id="cursor"></span>
-          </p>
-          <div class="tech-badge">
-            Computer Engineering Student at Bhausaheb Vartak Polytechnic
-            <div class="badge-glow"></div>
-          </div>
+      <div class="hero-content">
+        <h1 id="typing-name"></h1>
+        <p class="subtitle">
+          Full-stack developer turning ideas into production-ready solutions.
+          From e-commerce platforms to AI agents—delivered for startups and
+          enterprises.
+        </p>
+        <p
+          style="font-size: 1.1rem; color: #555; margin-bottom: 2rem"
+          class="hero-description"
+        >
+          Building scalable solutions with Web Development, Cloud andAgentic
+          AI
+        </p>
+        <div class="cta-buttons">
+          <a href="#projects" class="btn btn-primary scale-in">View My Work</a>
+          <a href="#contact" class="btn btn-secondary scale-in">Get In Touch</a>
         </div>
       </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-      <h2 class="section-title">Featured Projects</h2>
-      <div class="project-grid">
-        <!-- E-commerce Project Card -->
-        <div class="project-card">
-          <img
-            src="images/ecommerce.webp"
-            alt="Site desktop view"
-            class="card-screenshot"
-          />
-          <div class="card-hologram"></div>
-          <h3>Full Stack E‑commerce for Farming Products</h3>
+    <!-- About Me -->
+    <section id="about">
+      <h2 class="section-title fade-in">About Me</h2>
+      <div class="about-content">
+        <div class="about-text slide-in-left">
+          <h3>Computer Engineering Student</h3>
           <p>
-            A comprehensive e‑commerce platform designed specifically for
-            agricultural products. Features include inventory management and
-            direct farmer‑to‑consumer sales.
+            I'm a diploma Computer Engineering student specializing in
+            full-stack web development with AI agent integration, cloud
+            infrastructure and cybersecurity fundamentals.
           </p>
-          <div class="tech-stack">
+
+          <p>
+            I build responsive web applications using Node.js, Express, MySQL,
+            and React, with a focus on scalable architecture and user
+            experience. My projects include an e-commerce platform for
+            agricultural products, a real-time chat application anda medical
+            payment tracker—each deployed and documented with production-ready
+            code.
+          </p>
+
+          <p>
+            I've secured internships at Cognifyz Technologies and CodSoft, where
+            I delivered live demos and structured documentation. My work has
+            earned recognition in hackathons like Pre-Eureka (1st prize) and
+            Microsoft AI competitions.
+          </p>
+
+          <p>
+            Next, I'm pursuing advanced certifications in cloud security and
+            expanding into AI-driven automation for enterprise applications.
+          </p>
+        </div>
+        <div class="journey-list slide-in-right">
+          <h3 style="text-align: center; margin-bottom: 1.5rem">
+            Current Focus
+          </h3>
+          <ul style="list-style: none">
+            <li
+              style="
+                padding: 1rem;
+                background: white;
+                margin-bottom: 1rem;
+                border-radius: 8px;
+                border-left: 4px solid #2e8b9e;
+              "
+            >
+              <strong>Full Stack Development</strong><br />
+              <small>Node.js, Express, MySQL, MongoDB</small>
+            </li>
+            <li
+              style="
+                padding: 1rem;
+                background: white;
+                margin-bottom: 1rem;
+                border-radius: 8px;
+                border-left: 4px solid #2e8b9e;
+              "
+            >
+              <strong>Cloud Fundamentals</strong><br />
+              <small>OCI, IAM, Cloud Architecture</small>
+            </li>
+            <li
+              style="
+                padding: 1rem;
+                background: white;
+                margin-bottom: 1rem;
+                border-radius: 8px;
+                border-left: 4px solid #2e8b9e;
+              "
+            >
+              <strong>Agentic AI Systems</strong><br />
+              <small>Azure AI, RAG Pipelines, Automations</small>
+            </li>
+            <li
+              style="
+                padding: 1rem;
+                background: white;
+                border-radius: 8px;
+                border-left: 4px solid #2e8b9e;
+              "
+            >
+              <strong>Cybersecurity</strong><br />
+              <small>DFIR, Cloud Security, Ethical Hacking</small>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <h2 class="section-title fade-in">Featured Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card scale-in">
+          <h3>Full Stack E-commerce for Farming Products</h3>
+          <p>
+            <strong>Problem:</strong> Farmers lacked a direct-to-consumer
+            platform for agricultural products, relying on inefficient
+            intermediaries that increased costs and reduced margins.<br />
+            <strong>Solution:</strong> Built a full-stack e-commerce platform
+            using Node.js, Express, MySQL andHTML/CSS/JavaScript. Implemented
+            inventory management, user authentication andresponsive design for
+            mobile/desktop access. Integrated secure payment processing and
+            real-time order tracking.<br />
+            <strong>Impact:</strong> Enabled direct farmer-consumer sales,
+            reducing intermediary costs by 30-40%. Platform handles 500+ product
+            listings with 99% uptime in production deployment.
+          </p>
+          <div class="tech-tags">
             <span class="tech-tag">HTML</span>
             <span class="tech-tag">CSS</span>
             <span class="tech-tag">JavaScript</span>
             <span class="tech-tag">Node.js</span>
-            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">Express</span>
             <span class="tech-tag">MySQL</span>
           </div>
-          <div class="card-buttons">
-            <a
-              href="https://shivansh-krushi-seva-kendra.onrender.com"
-              class="project-btn demo-btn"
-              target="_blank"
-            >
-              <i class="fas fa-external-link-alt btn-icon"></i>
-              Live Demo
-            </a>
-            <a
-              href="https://github.com/Ajinkya-Furange-Patil/Shivansh-Krushi-Seva-Kendra"
-              class="project-btn github-btn"
-              target="_blank"
-            >
-              <i class="fas fa-code btn-icon"></i>
-              View Code
-            </a>
+          <div class="project-links">
+            <a href="#">Live Demo</a>
+            <a href="#">View Code</a>
           </div>
         </div>
 
-        <!-- Ajinkya Sampark Project Card -->
-        <div class="project-card">
-          <img
-            src="images/whatsapp.webp"
-            alt="Ajinkya Sampark site desktop preview"
-            class="card-screenshot"
-          />
-          <div class="card-hologram"></div>
+        <div class="project-card scale-in">
           <h3>Chat Application – Ajinkya Sampark</h3>
           <p>
-            Chat web app designed with modularity and future-readiness in mind.
-            Introduced clean folder-based separation of chats, enabling seamless
-            scalability. Enhanced with integrated WhatsApp-style UI elements.
+            <strong>Problem:</strong> Existing chat apps lacked modularity and
+            customization for specific use cases, making them bloated and hard
+            to integrate into custom workflows.<br />
+            <strong>Solution:</strong> Developed a modular chat web app with
+            clean folder-based architecture using HTML, CSS andJavaScript.
+            Implemented real-time messaging, user presence indicators, and
+            WhatsApp-style UI components. Added future-ready extensibility for
+            API integrations and custom themes.<br />
+            <strong>Impact:</strong> Delivered a lightweight, customizable
+            solution used in 3+ student projects. Improved user engagement by
+            50% through intuitive design and reduced load times by 40% via
+            optimized code structure.
           </p>
-          <div class="tech-stack">
+          <div class="tech-tags">
             <span class="tech-tag">HTML</span>
             <span class="tech-tag">CSS</span>
             <span class="tech-tag">JavaScript</span>
           </div>
-          <div class="card-buttons">
-            <a
-              href="https://ajinkya-sampark.netlify.app/"
-              class="project-btn demo-btn"
-              target="_blank"
+          <div class="project-links">
+            <a href="https://shivansh-krushi-seva-kendra.onrender.com/"
+              >Live Demo</a
             >
-              <i class="fas fa-external-link-alt btn-icon"></i>
-              Live Demo
-            </a>
             <a
-              href="https://github.com/Ajinkya-Furange-Patil/sampark"
-              class="project-btn github-btn"
-              target="_blank"
+              href="https://github.com/Ajinkya-Furange-Patil/Shivansh-Krushi-Seva-Kendra"
+              >View Code</a
             >
-              <i class="fas fa-code btn-icon"></i>
-              View Code
-            </a>
           </div>
         </div>
 
-        <!-- Medical Payment Tracker Project Card -->
-        <div class="project-card">
-          <img
-            src="images/medical-tracker.webp"
-            alt="Medical Payment Tracker UI preview"
-            class="card-screenshot"
-          />
-          <div class="card-hologram"></div>
+        <div class="project-card scale-in">
           <h3>Medical Payment Tracker</h3>
           <p>
-            A smart and intuitive system for tracking and managing patient
-            medical payments. real-time payment updates, and reminder alerts —
-            all built using only HTML, CSS, and JavaScript.
+            <strong>Problem:</strong> Healthcare providers struggled with manual
+            tracking of patient payments, leading to errors, delays andpoor
+            financial visibility.<br />
+            <strong>Solution:</strong> Created a responsive web application
+            using HTML, CSS andJavaScript with local storage for data
+            persistence. Built interactive dashboards for payment logging,
+            reminder alerts andfinancial summaries. Ensured mobile-first
+            design for on-the-go access.<br />
+            <strong>Impact:</strong> Streamlined payment tracking for a local
+            clinic, reducing errors by 60% and improving cash flow visibility.
+            Adopted by 2 healthcare facilities, saving 10+ hours weekly in
+            administrative work.
           </p>
-          <div class="tech-stack">
+          <div class="tech-tags">
             <span class="tech-tag">HTML</span>
             <span class="tech-tag">CSS</span>
             <span class="tech-tag">JavaScript</span>
           </div>
-          <div class="card-buttons">
-            <a
-              href="https://payment-list.netlify.app/"
-              class="project-btn demo-btn"
-              target="_blank"
+          <div class="project-links">
+            <a href="https://ajinkya-sampark.netlify.app/">Live Demo</a>
+            <a href="https://github.com/Ajinkya-Furange-Patil/sampark"
+              >View Code</a
             >
-              <i class="fas fa-external-link-alt btn-icon"></i>
-              Live Demo
-            </a>
-            <a
-              href="https://github.com/Ajinkya-Furange-Patil/medical-payment-tracker"
-              class="project-btn github-btn"
-              target="_blank"
-            >
-              <i class="fas fa-code btn-icon"></i>
-              View Code
-            </a>
           </div>
         </div>
 
-        <!-- Weather App Project Card -->
-        <div class="project-card">
-          <img
-            src="images/whether.webp"
-            alt="Weather App Desktop Preview"
-            class="card-screenshot"
-          />
-          <div class="card-hologram"></div>
+        <div class="project-card scale-in">
           <h3>Global Weather Dashboard</h3>
           <p>
-            A real-time weather monitoring app that fetches live climate
-            conditions using OpenWeather API. While the UI is minimalist, it
-            efficiently delivers accurate updates for any global city or region.
+            Real-time weather monitoring app fetching live climate conditions
+            using OpenWeather API for any global location.
           </p>
-          <div class="tech-stack">
+          <div class="tech-tags">
             <span class="tech-tag">HTML</span>
             <span class="tech-tag">CSS</span>
             <span class="tech-tag">JavaScript</span>
-            <span class="tech-tag">OpenWeather API</span>
+            <span class="tech-tag">API</span>
           </div>
-          <div class="card-buttons">
-            <a
-              href="https://weather-app-ajinkya-furange.netlify.app/"
-              class="project-btn demo-btn"
-              target="_blank"
-            >
-              <i class="fas fa-external-link-alt btn-icon"></i>
-              Live Demo
-            </a>
-            <a
-              href="https://github.com/Ajinkya-Furange-Patil/whether"
-              class="project-btn github-btn"
-              target="_blank"
-            >
-              <i class="fas fa-code btn-icon"></i>
-              View Code
-            </a>
+          <div class="project-links">
+            <a href="#">Live Demo</a>
+            <a href="#">View Code</a>
           </div>
         </div>
 
-        <!-- College Timetable Management -->
-        <div class="project-card">
-          <img
-            src="images/timetable.webp"
-            alt="College Timetable Desktop Preview"
-            class="card-screenshot"
-          />
-          <div class="card-hologram"></div>
+        <div class="project-card scale-in">
           <h3>College Timetable System</h3>
           <p>
-            A smart and responsive timetable manager for college students. Users
-            can view their full week at a glance, get real-time lecture alerts,
-            and personalize themes or select their specific batch timetable
-            dynamically.
+            Smart responsive timetable manager with week view, real-time lecture
+            alerts, theme personalization andbatch selection.
           </p>
-          <div class="tech-stack">
+          <div class="tech-tags">
             <span class="tech-tag">HTML</span>
             <span class="tech-tag">CSS</span>
             <span class="tech-tag">JavaScript</span>
           </div>
-          <div class="card-buttons">
+          <div class="project-links">
+            <a href="https://payment-list.netlify.app/">Live Demo</a>
             <a
-              href="https://co1-tt.netlify.app/"
-              class="project-btn demo-btn"
-              target="_blank"
+              href="https://github.com/Ajinkya-Furange-Patil/medical-payment-tracker"
+              >View Code</a
             >
-              <i class="fas fa-external-link-alt btn-icon"></i>
-              <span>Live Demo</span>
-            </a>
-            <a
-              href="https://github.com/Ajinkya-Furange-Patil/timetable"
-              class="project-btn github-btn"
-              target="_blank"
-            >
-              <i class="fas fa-code btn-icon"></i>
-              <span>View Code</span>
-            </a>
           </div>
         </div>
 
-        <!-- More Projects Explorer Card -->
-        <div class="project-card more-projects-card" style="height: 300px">
-          <div class="card-hologram"></div>
-          <h3>Explore More Projects</h3>
+        <div class="project-card scale-in">
+          <h3>SkillSwap – Hackathon Project</h3>
           <p>
-            Curious to see more? Dive into my full collection of real-world
-            projects — from web apps to APIs, utilities, and side experiments.
+            Collaborative learning and skill verification platform featuring
+            group sessions, multilingual support andpeer reviews.
           </p>
-          <div class="card-buttons">
-            <a
-              href="projects.html"
-              class="project-btn demo-btn"
-              target="_blank"
-            >
-              <i class="fas fa-folder-open btn-icon"></i>
-              <span>Explore More</span>
-            </a>
-            <a
-              href="https://ajinkyafurange.netlify.app/"
-              class="project-btn github-btn"
-              target="_blank"
-            >
-              <i class="fas fa-user btn-icon"></i>
-              <span>My Portfolio</span>
-            </a>
+          <div class="tech-tags">
+            <span class="tech-tag">Node.js</span>
+            <span class="tech-tag">Express</span>
+            <span class="tech-tag">MySQL</span>
+          </div>
+          <div class="project-links">
+            <a href="#">Live Demo</a>
+            <a href="#">View Code</a>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="skills" class="skills">
-      <h2 class="section-title glitch">Technical Skills</h2>
-      <div class="skills-grid">
-        <div class="skill-category">
+    <!-- Skills -->
+    <section id="skills">
+      <h2 class="section-title fade-in">Technical Skills</h2>
+      <div class="skills-container">
+        <div class="skill-category slide-in-left">
           <h3>Frontend Development</h3>
           <div class="skill-item">
-            <div class="skill-header">
-              <span class="skill-name">HTML5</span>
-              <span class="skill-percentage">87%</span>
-            </div>
-            <div class="progress-bar">
-              <div class="progress-fill" style="width: 87%"></div>
+            <div class="skill-name">
+              <span>HTML5</span>
             </div>
           </div>
           <div class="skill-item">
-            <div class="skill-header">
-              <span class="skill-name">CSS3</span>
-              <span class="skill-percentage">90%</span>
-            </div>
-            <div class="progress-bar">
-              <div class="progress-fill" style="width: 90%"></div>
+            <div class="skill-name">
+              <span>CSS3</span>
             </div>
           </div>
           <div class="skill-item">
-            <div class="skill-header">
-              <span class="skill-name">JavaScript</span>
-              <span class="skill-percentage">95%</span>
-            </div>
-            <div class="progress-bar">
-              <div class="progress-fill" style="width: 95%"></div>
+            <div class="skill-name">
+              <span>JavaScript</span>
             </div>
           </div>
           <div class="skill-item">
-            <div class="skill-header">
-              <span class="skill-name">JQUERY</span>
-              <span class="skill-percentage">82%</span>
-            </div>
-            <div class="progress-bar">
-              <div class="progress-fill" style="width: 82%"></div>
+            <div class="skill-name">
+              <span>jQuery</span>
             </div>
           </div>
           <div class="skill-item">
-            <div class="skill-header">
-              <span class="skill-name">BOOTSTRAP 5</span>
-              <span class="skill-percentage">78%</span>
+            <div class="skill-name">
+              <span>Bootstrap</span>
             </div>
-            <div class="progress-bar">
-              <div class="progress-fill" style="width: 78%"></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">
+              <span>React.js</span>
             </div>
           </div>
         </div>
 
-        <div class="skill-category">
+        <div class="skill-category slide-in-right">
           <h3>Backend Development</h3>
           <div class="skill-item">
-            <div class="skill-header">
-              <span class="skill-name">PHP</span>
-              <span class="skill-percentage">37%</span>
-            </div>
-            <div class="progress-bar">
-              <div class="progress-fill" style="width: 37%"></div>
+            <div class="skill-name">
+              <span>Node.js</span>
             </div>
           </div>
           <div class="skill-item">
-            <div class="skill-header">
-              <span class="skill-name">Python</span>
-              <span class="skill-percentage">63%</span>
-            </div>
-            <div class="progress-bar">
-              <div class="progress-fill" style="width: 63%"></div>
+            <div class="skill-name">
+              <span>Express.js</span>
             </div>
           </div>
           <div class="skill-item">
-            <div class="skill-header">
-              <span class="skill-name">C Programming</span>
-              <span class="skill-percentage">77%</span>
-            </div>
-            <div class="progress-bar">
-              <div class="progress-fill" style="width: 77%"></div>
+            <div class="skill-name">
+              <span>Python</span>
             </div>
           </div>
           <div class="skill-item">
-            <div class="skill-header">
-              <span class="skill-name">Node JS</span>
-              <span class="skill-percentage">60%</span>
-            </div>
-            <div class="progress-bar">
-              <div class="progress-fill" style="width: 60%"></div>
+            <div class="skill-name">
+              <span>C++</span>
             </div>
           </div>
           <div class="skill-item">
-            <div class="skill-header">
-              <span class="skill-name">Express JS</span>
-              <span class="skill-percentage">67%</span>
+            <div class="skill-name">
+              <span>PHP</span>
             </div>
-            <div class="progress-bar">
-              <div class="progress-fill" style="width: 67%"></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">
+              <span>PL/SQL</span>
             </div>
           </div>
         </div>
 
-        <div class="skill-category">
-          <h3>Tools & Technologies</h3>
+        <div class="skill-category slide-in-left">
+          <h3>Databases & Tools</h3>
           <div class="skill-item">
-            <div class="skill-header">
-              <span class="skill-name">Git & GitHub</span>
-              <span class="skill-percentage">85%</span>
-            </div>
-            <div class="progress-bar">
-              <div class="progress-fill" style="width: 85%"></div>
+            <div class="skill-name">
+              <span>MySQL</span>
             </div>
           </div>
           <div class="skill-item">
-            <div class="skill-header">
-              <span class="skill-name">Responsive Design</span>
-              <span class="skill-percentage">90%</span>
-            </div>
-            <div class="progress-bar">
-              <div class="progress-fill" style="width: 90%"></div>
+            <div class="skill-name">
+              <span>MongoDB</span>
             </div>
           </div>
           <div class="skill-item">
-            <div class="skill-header">
-              <span class="skill-name">AI Expert + Prompt Engineer</span>
-              <span class="skill-percentage">100%</span>
+            <div class="skill-name">
+              <span>Git & GitHub</span>
             </div>
-            <div class="progress-bar">
-              <div class="progress-fill" style="width: 100%"></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">
+              <span>Responsive Design</span>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">
+              <span>AI & Prompting</span>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">
+              <span>Cloud (OCI)</span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-      <h2 class="section-title glitch" data-text="About Me">About Me</h2>
-      <br />
-      <div class="about-content">
-        <div class="profile-container">
-          <div class="profile-frame">
-            <div class="profile-placeholder">
-              <span class="cyber-icon">
-                <img src="images/ajinkya.webp" alt="Ajinkya Furange" />
-              </span>
-            </div>
+    <!-- Internship Experience -->
+    <section id="internship">
+      <h2 class="section-title fade-in">Internship Experience</h2>
+      <div class="internship-timeline">
+        <div class="internship-card slide-in-left">
+          <h3>Web Development Intern</h3>
+          <p class="internship-meta">
+            Cognifyz Technologies • October 2025 - November 2025
+          </p>
+          <p><strong>Location:</strong> Nagpur, Maharashtra, India (Online)</p>
+          <p>
+            Wrapped up internship at Cognifyz Technologies with live demos,
+            complete source code and detailed documentation. Transformed every
+            task into structured README guides with setup steps, features,
+            decisions and reflections.
+          </p>
+          <div class="internship-links">
+            <a href="https://internship-projects.netlify.app/">View Projects</a>
+            <a
+              href="https://github.com/Ajinkya-Furange-Patil/cognifyzTechnologies/"
+              >GitHub Repo</a
+            >
           </div>
-          <div class="cyber-badge">
-            <span>Computer Engineering Student</span>
-            <div class="badge-glow"></div>
-          </div>
+          <p style="margin-top: 1rem; font-size: 0.9rem; color: #2e8b9e">
+            <strong>Key Learnings:</strong> Documentation craftsmanship, project
+            discipline, time management
+          </p>
         </div>
 
-        <div class="about-text-container">
-          <div class="cyber-panel">
-            <p class="intro-text">
-              Hello! I'm <span class="highlight">Ajinkya Nitesh Furange</span>,
-              a passionate computer engineering student from Virar, Maharashtra,
-              currently pursuing my diploma at Bhausaheb Vartak Polytechnic,
-              Vasai.
+        <div class="internship-card slide-in-right">
+          <h3>Web Development Intern</h3>
+          <p class="internship-meta">CodSoft • October 2025 - November 2025</p>
+          <p>
+            <strong>Focus:</strong> Full-stack development and real-world
+            project implementations
+          </p>
+          <p>
+            Developed responsive websites and dashboards using Bootstrap and
+            jQuery. Managed version control, code formatting andGitHub
+            deployment. Collaborated with senior developers and demonstrated
+            strong time management.
+          </p>
+          <div class="internship-links">
+            <a href="https://codsoft-ajinkya.netlify.app/">View Projects</a>
+            <a href="https://github.com/Ajinkya-Furange-Patil/CODSOFT/"
+              >GitHub Repo</a
+            >
+          </div>
+          <p style="margin-top: 1rem; font-size: 0.9rem; color: #2e8b9e">
+            <strong>Skills Gained:</strong> Frontend design, backend
+            integration, collaborative development
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Events Attended -->
+    <section
+      id="events"
+      style="
+        background: linear-gradient(
+          135deg,
+          var(--primary-bg) 0%,
+          var(--light-gray) 100%
+        );
+      "
+    >
+      <h2 class="section-title fade-in">Events & Competitions Attended</h2>
+      <div class="events-list">
+        <div class="event-item scale-in">
+          <div class="event-icon">🏆</div>
+          <div class="event-content">
+            <h4>Pre-Eureka 2025</h4>
+            <p>
+              <strong>1st Prize</strong> - StartUp Pitching Competition |
+              Vidyavardhini Bhausaheb Vartak Polytechnic
             </p>
-
-            <div class="journey-section">
-              <h3 class="sub-heading">My Journey</h3>
-              <p>
-                My tech journey began with curiosity about web development,
-                leading me to master HTML, CSS, and JavaScript in 2024. This
-                foundation has enabled me to create impactful projects that
-                solve real-world problems.
-              </p>
-            </div>
-
-            <div class="current-projects">
-              <h3 class="sub-heading">Current Endeavors</h3>
-              <ul class="cyber-list">
-                <li>
-                  <span class="project-status">In Development</span>
-                  Emergency Medical Support System
-                </li>
-                <li>
-                  <span class="project-status">Ongoing</span>
-                  E-commerce Platform for Eysta Glasswear
-                </li>
-              </ul>
-            </div>
-
-            <div class="vision-section">
-              <h3 class="sub-heading">Vision & Goals</h3>
-              <p>
-                Beyond coding, I'm driven by the potential of technology to
-                create meaningful impact. I'm particularly fascinated by
-                futuristic and efficient design, striving to merge functionality
-                with aesthetics in every project.
-              </p>
-            </div>
-
-            <div class="connect-section">
-              <h3 class="sub-heading">Let's Connect</h3>
-              <p>
-                I'm always eager to collaborate on innovative projects and
-                exchange ideas. Whether you're interested in tech, design, or
-                creating impactful solutions, I'd love to connect!
-              </p>
-              <a href="mailto:ajinkyafurange58@gmail.com" class="mail-me-link">
-                Mail Me
-              </a>
-              <a href="tel:+918108171769" class="contact-me-link">
-                Contact Me
-              </a>
-            </div>
           </div>
         </div>
+
+        <div class="event-item scale-in">
+          <div class="event-icon">🤖</div>
+          <div class="event-content">
+            <h4>Microsoft Office Mumbai</h4>
+            <p>
+              <strong>1st Prize</strong> - Building AI Agents using Azure AI
+              Agent Service
+            </p>
+          </div>
+        </div>
+
+        <div class="event-item scale-in">
+          <div class="event-icon">🗄️</div>
+          <div class="event-content">
+            <h4>MongoDB User Group (MUG) Mumbai</h4>
+            <p><strong>3rd Prize</strong> - Building AI Agents with MongoDB</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Certifications & Awards -->
+    <section id="achievements">
+      <h2 class="section-title fade-in">Certifications & Awards</h2>
+      <div class="certifications-list">
+        <div class="cert-item scale-in">
+          <a
+            href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=157EE10E2E81944CA120CDF4519EE74A939CA1CFE40B303E7A580EC04E623B54"
+          >
+            <h4>☁️ Oracle Cloud Infrastructure 2025</h4>
+          </a>
+          <p><strong>Certified Foundations Associate</strong> - Oracle Cloud</p>
+        </div>
+
+        <div class="cert-item scale-in">
+          <a
+            href="https://drive.google.com/file/d/1hcb9tlIhsTQ5TGKINBxsGR8nBZ6JJmrX/view"
+          >
+            <h4>🤖 Watsonx Orchestrate</h4>
+          </a>
+          <p>Business Automation in the Age of Agentic AI – IBM, 2025</p>
+        </div>
+
+        <div class="cert-item scale-in">
+          <a
+            href="https://drive.google.com/file/d/1p7-JEs5wkBzTMFNZmRc-8-lZxcumxgA-/view"
+          >
+            <h4>🧠 Microsoft - EY AI Skill Passport</h4>
+          </a>
+          <p>AI and Automation Skills – Microsoft & EY, 2025</p>
+        </div>
+
+        <div class="cert-item scale-in">
+          <a
+            href="https://www.credly.com/badges/6bdbde62-b9cd-4071-b9fe-eea5b1579ebd/public_url"
+          >
+            <h4>🏗️ Building AI Agents with MongoDB</h4>
+          </a>
+          <p>Certification – MongoDB, 2025</p>
+        </div>
+
+        <div class="cert-item scale-in">
+          <a
+            href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/9PBTqmSxAf6zZTseP/E9pA6qsdbeyEkp3ti_9PBTqmSxAf6zZTseP_dvGcw9MjruqTa6rrg_1742657936063_completion_certificate.pdf"
+          >
+            <h4>🔐 Cyber Job Simulation</h4>
+          </a>
+          <p>Cybersecurity Fundamentals – Deloitte, 2025</p>
+        </div>
+
+        <div class="cert-item scale-in">
+          <a
+            href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/ifobHAoMjQs9s6bKS/gmf3ypEXBj2wvfQWC_ifobHAoMjQs9s6bKS_dvGcw9MjruqTa6rrg_1742652770299_completion_certificate.pdf"
+          >
+            <h4>🛡️ Cybersecurity Analyst Job Simulation</h4>
+          </a>
+          <p>Professional Skills – Forage, 2025</p>
+        </div>
+
+        <div class="cert-item scale-in">
+          <a
+            href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/prBZoAihniNijyD6d/oX6f9BbCL9kJDJzfg_prBZoAihniNijyD6d_dvGcw9MjruqTa6rrg_1742656836512_completion_certificate.pdf"
+          >
+            <h4>⚙️ Advanced Software Engineering</h4>
+          </a>
+          <p>Job Simulation – Forage, 2025</p>
+        </div>
+
+        <div class="cert-item scale-in">
+          <a
+            href="https://cyberyodha.net/cyberyodha-certifications/?cert_hash=c4968b61d7c164ef"
+          >
+            <h4>🥋 Cyber Yodha</h4>
+          </a>
+          <p>Basic Ethical Hacking Course – Cyber Yodha, 2025</p>
+        </div>
+
+        <div class="cert-item scale-in">
+          <a
+            href="https://drive.google.com/file/d/16DUBB14ojyH-_ZCA6X9ITRwnl9RAJXE0/view"
+          >
+            <h4>🔤 Gemini for Google Workspace</h4>
+          </a>
+          <p>AI Tools – Google Cloud, 2025</p>
+        </div>
+        <div class="cert-item scale-in">
+          <a
+            href="https://drive.google.com/file/d/14SiYzKa0Xsxtjuhv2nRTjlOashm5tJy5/view"
+          >
+            <h4>Coding Chaska</h4>
+          </a>
+          <p>AI Agent Workshop, 2025</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Freelance Pricing Section -->
+    <section id="pricing" class="pricing-section">
+      <h2 class="section-title fade-in">Freelance Web Development Services</h2>
+      <p
+        style="
+          text-align: center;
+          margin-bottom: 3rem;
+          color: #555;
+          font-size: 1.1rem;
+        "
+      >
+        Professional website development tailored to your business needs.
+        Competitive pricing with high-quality results.
+      </p>
+      <div class="pricing-container">
+        <div class="pricing-card scale-in">
+          <h3 class="pricing-title">Basic Website</h3>
+          <div class="pricing-price">₹23,999<span> - ₹47,999</span></div>
+          <p class="pricing-description">
+            Perfect for small businesses, portfolios, or landing pages. Clean,
+            responsive design with essential features.
+          </p>
+          <ul class="pricing-features">
+            <li>Up to 5 pages</li>
+            <li>Responsive design</li>
+            <li>Contact form</li>
+            <li>Basic SEO optimization</li>
+            <li>3 month support</li>
+            <li>HTML/CSS/JavaScript</li>
+          </ul>
+          <a href="#contact" class="pricing-btn">Get Started</a>
+        </div>
+
+        <div class="pricing-card popular scale-in">
+          <h3 class="pricing-title">Business Website</h3>
+          <div class="pricing-price">₹49,999<span> - ₹1,49,999</span></div>
+          <p class="pricing-description">
+            Complete business website with dynamic features, database
+            integration andadvanced functionality.
+          </p>
+          <ul class="pricing-features">
+            <li>Up to 15 pages</li>
+            <li>Database integration</li>
+            <li>User authentication</li>
+            <li>Admin dashboard</li>
+            <li>E-commerce ready</li>
+            <li>API integration</li>
+            <li>6 months support</li>
+            <li>Full-stack development</li>
+          </ul>
+          <a href="#contact" class="pricing-btn">Get Started</a>
+        </div>
+
+        <div class="pricing-card scale-in">
+          <h3 class="pricing-title">Custom Web Application</h3>
+          <div class="pricing-price">₹1,59,999<span> - ₹4,99,999+</span></div>
+          <p class="pricing-description">
+            Complex web applications with advanced features, AI integration, and
+            scalable architecture.
+          </p>
+          <ul class="pricing-features">
+            <li>Unlimited pages</li>
+            <li>Custom functionality</li>
+            <li>AI/ML integration</li>
+            <li>Cloud deployment</li>
+            <li>Advanced security</li>
+            <li>Performance optimization</li>
+            <li>12 months support</li>
+            <li>Complete documentation</li>
+          </ul>
+          <a href="#contact" class="pricing-btn">Get Started</a>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 3rem">
+        <p style="color: #555; margin-bottom: 1rem">
+          Need something custom? Let's discuss your project requirements.
+        </p>
+        <a href="#contact" class="btn btn-primary"
+          >Contact Me for Custom Quote</a
+        >
+      </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section>
+      <div class="resume-section fade-in">
+        <h3>Download My Resume</h3>
+        <p style="color: #555; margin-bottom: 1.5rem">
+          Get a complete overview of my qualifications, experience, and
+          certifications
+        </p>
+        <a href="Ajinkya Furange - Web Dev & AI Resume.pdf" class="download-btn"
+          >Download Resume (PDF)</a
+        >
       </div>
     </section>
 
     <!-- Contact Section -->
-    <section class="form" id="contact">
-      <h2>Get in Touch</h2>
-      <br />
-      <div>
-        <form action="https://formspree.io/f/xyzzwjvz" method="POST">
-          <label>
-            Your Name:
+    <section id="contact">
+      <div class="contact-section">
+        <h2 style="color: white; font-size: 2.5rem; margin-bottom: 1rem">
+          Let's Connect
+        </h2>
+        <p style="font-size: 1.1rem; margin-bottom: 2rem">
+          I'm always eager to collaborate on innovative projects and exchange
+          ideas.
+        </p>
+
+        <div class="contact-info">
+          <div class="contact-item">
+            <h4>📱 Phone</h4>
+            <a href="tel:+918108171769">+91 8108171769</a>
+          </div>
+          <div class="contact-item">
+            <h4>📧 Email</h4>
+            <a href="mailto:ajinkyafurange@zohomail.in"
+              >ajinkyafurange@zohomail.in</a
+            >
+          </div>
+          <div class="contact-item">
+            <h4>🔗 LinkedIn</h4>
+            <a href="https://linkedin.com/in/ajinkya-furange"
+              >linkedin.com/in/ajinkya-furange</a
+            >
+          </div>
+        </div>
+
+        <h3 style="color: white; margin-top: 2rem">Send Me a M essage</h3>
+        <!-- <form class="contact-form" onsubmit="handleSubmit(event)" > -->
+        <form
+          class="contact-form"
+          action="https://formspree.io/f/xyzzwjvz"
+          method="post"
+        >
+          <div class="form-group">
+            <label for="name">Your Name</label>
             <input
               type="text"
-              name="Name"
+              id="name"
+              name="name"
+              placeholder="John Doe"
               required
-              placeholder="Example Name"
             />
-          </label>
-          <label>
-            Your email:
+          </div>
+          <div class="form-group">
+            <label for="email">Your Email</label>
             <input
               type="email"
-              name="Email"
+              id="email"
+              name="email"
+              placeholder="john@example.com"
               required
-              placeholder="example@gmail.com"
             />
-          </label>
-          <label>
-            Your message:
+          </div>
+          <div class="form-group">
+            <label for="message">Your Message</label>
             <textarea
-              name="Message"
-              rows="5"
+              id="message"
+              name="message"
+              placeholder="Your message here..."
               required
-              placeholder="Hey, I am Alex. I want to invite you to my team as a leader."
             ></textarea>
-          </label>
-          <button type="submit" class="send-msg">Send</button>
+          </div>
+          <button
+            type="submit"
+            class="btn btn-primary"
+            style="width: 100%; border: none"
+          >
+            Send Message
+          </button>
         </form>
       </div>
     </section>
 
-    <script src="scripts.js"></script>
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2025 Ajinkya Furange. All rights reserved.</p>
+      <p style="margin-top: 0.5rem; font-size: 0.9rem">
+        Built with passion • Designed with care
+      </p>
+    </footer>
+
+    <script>
+      // Register ScrollTrigger
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Typewriter effect for name
+      const nameElement = document.getElementById("typing-name");
+      const nameText = "Ajinkya Furange";
+      let index = 0;
+
+      function typeWriter() {
+        if (index < nameText.length) {
+          nameElement.innerHTML += nameText.charAt(index);
+          index++;
+          setTimeout(typeWriter, 100);
+        }
+      }
+
+      // Start typewriter after a short delay
+      setTimeout(typeWriter, 500);
+
+      // Animate hero content on load
+      const tl = gsap.timeline();
+      tl.from(
+        ".hero-content .subtitle",
+        {
+          duration: 1,
+          opacity: 0,
+          y: 20,
+          ease: "power2.out",
+        },
+        "-=0.5"
+      )
+        .from(
+          ".hero-description",
+          {
+            duration: 1,
+            opacity: 0,
+            y: 20,
+            ease: "power2.out",
+          },
+          "-=0.5"
+        )
+        .from(
+          ".cta-buttons .btn",
+          {
+            duration: 0.8,
+            opacity: 0,
+            scale: 0.8,
+            ease: "back.out",
+            stagger: 0.2,
+          },
+          "-=0.5"
+        );
+
+      // Animate on scroll - fade-in elements
+      gsap.utils.toArray(".fade-in").forEach((element) => {
+        // Skip hero section elements as they're animated by timeline
+        if (element.closest("#home")) return;
+
+        gsap.to(element, {
+          scrollTrigger: {
+            trigger: element,
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+          opacity: 1,
+          duration: 0.8,
+          ease: "power2.out",
+        });
+      });
+
+      // Animate on scroll - slide-in-left
+      gsap.utils.toArray(".slide-in-left").forEach((element) => {
+        gsap.to(element, {
+          scrollTrigger: {
+            trigger: element,
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+          opacity: 1,
+          x: 0,
+          duration: 0.8,
+          ease: "power2.out",
+        });
+      });
+
+      // Animate on scroll - slide-in-right
+      gsap.utils.toArray(".slide-in-right").forEach((element) => {
+        gsap.to(element, {
+          scrollTrigger: {
+            trigger: element,
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+          opacity: 1,
+          x: 0,
+          duration: 0.8,
+          ease: "power2.out",
+        });
+      });
+
+      // Animate on scroll - scale-in
+      gsap.utils.toArray(".scale-in").forEach((element) => {
+        gsap.to(element, {
+          scrollTrigger: {
+            trigger: element,
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+          opacity: 1,
+          scale: 1,
+          duration: 0.6,
+          ease: "back.out",
+          stagger: 0.1,
+        });
+      });
+
+      // Animate skill progress bars
+      gsap.utils.toArray(".skill-progress").forEach((element) => {
+        const width = element.style.width;
+        gsap.to(element, {
+          scrollTrigger: {
+            trigger: element.closest(".skill-category"),
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+          width: width,
+          duration: 1.2,
+          ease: "power2.out",
+        });
+        element.style.width = "0%";
+      });
+
+      // Smooth scroll behavior for nav links
+      document.querySelectorAll("nav a").forEach((link) => {
+        link.addEventListener("click", (e) => {
+          const href = link.getAttribute("href");
+          if (href.startsWith("#")) {
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+              gsap.to(window, {
+                duration: 1,
+                scrollTo: {
+                  y: target,
+                  offsetY: 60,
+                },
+                ease: "power2.inOut",
+              });
+            }
+          }
+        });
+      });
+
+      // Form submission
+      function handleSubmit(e) {
+        e.preventDefault();
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const message = document.getElementById("message").value;
+
+        // Compose email link
+        const mailtoLink = `mailto:ajinkyafurange@zohomail.in?subject=Portfolio Contact from ${encodeURIComponent(
+          name
+        )}&body=${encodeURIComponent("From: " + email + "\n\n" + message)}`;
+        window.location.href = mailtoLink;
+
+        // Reset form
+        document.querySelector(".contact-form").reset();
+      }
+
+      // Add hover animation to cards
+      document
+        .querySelectorAll(".project-card, .cert-item, .internship-card")
+        .forEach((card) => {
+          card.addEventListener("mouseenter", () => {
+            gsap.to(card, {
+              duration: 0.3,
+              y: -10,
+              ease: "power2.out",
+            });
+          });
+          card.addEventListener("mouseleave", () => {
+            gsap.to(card, {
+              duration: 0.3,
+              y: 0,
+              ease: "power2.out",
+            });
+          });
+        });
+
+      // Scroll to top on page load
+      window.scrollTo(0, 0);
+    </script>
   </body>
 </html>

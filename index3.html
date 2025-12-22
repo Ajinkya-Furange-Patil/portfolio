@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ajinkya Furange - Portfolio</title>
+    <!-- Preconnect for faster font loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Google Fonts link for better performance than @import -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --header-height: 50px;
+        --slide-gap: 20px;
+        --card-width: 180px;
+        --card-height: 250px;
+        --card-left-offset: 67%;
+        --card-offset-step: 200px;
+        --primary-color: #14ff72;
+        --primary-bg-light: #004e92;
+        --primary-bg-dark: #000428;
+        --text-color: #fff;
+        --shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        /* Set a consistent dark background to remove the "white space" at the top */
+        background-color: var(--primary-bg-dark);
+        color: var(--text-color);
+        /* The header is now transparent, so padding is not needed, letting content flow under it */
+      }
+
+      /* Header section - Position fixed for consistent navigation */
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: var(--header-height);
+        display: flex;
+        align-items: center;
+        padding-left: 100px;
+        z-index: 1000;
+        background-color: transparent;
+      }
+
+      header nav a {
+        color: var(--text-color);
+        margin-right: 5px;
+        padding: 5px 10px;
+        font-size: 16px;
+        transition: 0.2s;
+        text-decoration: none;
+        border-radius: 2px;
+      }
+
+      a.active,
+      a:hover,
+      a:focus-visible {
+        background: rgba(var(--primary-color), 0.8);
+        outline: none;
+      }
+
+      /* Carousel container - Using dvh for better mobile support */
+      .carousel {
+        width: 100%;
+        height: 100dvh;
+        height: 100vh;
+        overflow: hidden;
+        position: relative;
+      }
+
+      /* List of slides */
+      .carousel .list {
+        height: 100%;
+        position: relative;
+      }
+
+      .carousel .list .item {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        transform: translate(0, 0);
+        border-radius: 0;
+        box-shadow: none;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        z-index: 100;
+        transition: 1s ease-in-out;
+        filter: brightness(0.6);
+        will-change: transform, opacity;
+      }
+
+      /* Card stack visual effect */
+      .carousel .list .item[data-status="active"] {
+        filter: brightness(1);
+        z-index: 110;
+        transform: scale(1);
+        box-shadow: none;
+      }
+
+      .carousel .list .item[data-status="next"] {
+        top: 80%;
+        transform: translateY(-70%);
+        left: var(--card-left-offset);
+        width: var(--card-width);
+        height: var(--card-height);
+        border-radius: 20px;
+        box-shadow: var(--shadow);
+        z-index: 105;
+      }
+
+      .carousel .list .item[data-status="next2"] {
+        left: calc(var(--card-left-offset) + var(--card-offset-step));
+        z-index: 104;
+      }
+
+      .carousel .list .item[data-status="next3"] {
+        left: calc(var(--card-left-offset) + var(--card-offset-step) * 2);
+        z-index: 103;
+      }
+
+      .carousel .list .item[data-status="next4"] {
+        left: calc(var(--card-left-offset) + var(--card-offset-step) * 3);
+        z-index: 102;
+      }
+
+      .carousel .list .item[data-status="hidden"] {
+        left: calc(var(--card-left-offset) + var(--card-offset-step) * 4);
+        opacity: 0;
+      }
+
+      /* Transitions for card movement */
+      .carousel.transitioning .list .item[data-status="next"] {
+        animation: showCard 1s ease-in-out forwards;
+      }
+
+      .carousel.transitioning .list .item[data-status="active"] {
+        animation: outToLeft 1s ease-in-out forwards;
+      }
+
+      @keyframes outToLeft {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(calc(-1 * var(--card-offset-step)));
+          filter: brightness(0.6);
+          border-radius: 20px;
+          box-shadow: var(--shadow);
+          width: var(--card-width);
+          height: var(--card-height);
+          top: 80%;
+          left: calc(var(--card-left-offset) - 300px);
+        }
+      }
+
+      @keyframes showCard {
+        from {
+          transform: translateY(-70%)
+            translateX(calc(var(--card-offset-step) * 2));
+          opacity: 0;
+        }
+        to {
+          transform: translateY(-70%) translateX(0);
+          opacity: 1;
+        }
+      }
+
+      .list .item .content {
+        position: absolute;
+        top: 50%;
+        left: 100px;
+        transform: translateY(-50%);
+        width: 500px;
+        text-align: left;
+        color: var(--text-color);
+        display: none;
+      }
+
+      .list .item[data-status="active"] .content {
+        display: block;
+      }
+
+      .list .item .content h1,
+      .list .list .item .content h2,
+      .list .item .content .des,
+      .list .item .content .btn,
+      .list .item .content .tech-stack {
+        opacity: 0;
+        transform: translateY(100px) blur(33px);
+      }
+
+      .list .item[data-status="active"] .content h1 {
+        animation: animate 1s ease-in-out 0.3s 1 forwards;
+      }
+
+      .list .item[data-status="active"] .content h2 {
+        animation: animate 1s ease-in-out 0.6s 1 forwards;
+      }
+
+      .list .item[data-status="active"] .content .des {
+        animation: animate 1s ease-in-out 0.9s 1 forwards;
+      }
+
+      .list .item[data-status="active"] .content .btn {
+        animation: animate 1s ease-in-out 1.2s 1 forwards;
+      }
+
+      .list .item[data-status="active"] .content .tech-stack {
+        animation: animate 1s ease-in-out 1.5s 1 forwards;
+      }
+
+      .content h1 {
+        font-size: 80px;
+        text-transform: uppercase;
+        color: rgba(var(--primary-color), 0.8);
+        font-weight: bold;
+        line-height: 1;
+      }
+
+      .content h2 {
+        font-size: 90px;
+        text-transform: uppercase;
+        font-weight: bold;
+        line-height: 1;
+        text-shadow: 3px 4px 4px rgba(255, 255, 255, 0.8);
+      }
+
+      .content .des {
+        margin-top: 15px;
+        margin-bottom: 25px;
+        font-size: 18px;
+        line-height: 1.5;
+      }
+
+      .content .btn a {
+        padding: 12px 25px;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        margin-right: 15px;
+        border-radius: 5px;
+        transition: 0.3s;
+        font-weight: 500;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      .content .btn a.primary-btn {
+        background: rgba(var(--primary-color), 0.8);
+        color: var(--text-color);
+        border: 2px solid rgba(var(--primary-color), 0.8);
+      }
+
+      .content .btn a.primary-btn:hover {
+        background: var(--text-color);
+        color: rgba(var(--primary-color), 0.8);
+        border-color: var(--text-color);
+      }
+
+      .content .btn a.secondary-btn {
+        background: transparent;
+        color: var(--text-color);
+        border: 2px solid var(--text-color);
+      }
+
+      .content .btn a.secondary-btn:hover {
+        background-color: var(--text-color);
+        color: #000;
+      }
+
+      .content .tech-stack {
+        margin-top: 20px;
+      }
+
+      .tech-stack span {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.2);
+        color: var(--text-color);
+        padding: 5px 12px;
+        margin: 5px 5px 5px 0;
+        border-radius: 15px;
+        font-size: 12px;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+      }
+
+      @keyframes animate {
+        from {
+          opacity: 0;
+          transform: translateY(100px);
+          filter: blur(33px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+          filter: blur(0);
+        }
+      }
+
+      /* next prev arrows */
+      .arrows {
+        position: absolute;
+        bottom: 50px;
+        right: 52%;
+        z-index: 1000;
+        width: 300px;
+        max-width: 30%;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .arrows button {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: rgba(var(--primary-color), 0.8);
+        color: var(--text-color);
+        border: none;
+        outline: none;
+        font-size: 16px;
+        font-weight: bold;
+        transition: 0.5s;
+        cursor: pointer;
+      }
+
+      .arrows button:hover,
+      .arrows button:focus-visible {
+        background: var(--text-color);
+        color: #000;
+        outline: 2px solid var(--text-color);
+        outline-offset: 2px;
+      }
+
+      /* time running */
+      .carousel .timeRunning {
+        position: absolute;
+        z-index: 1000;
+        width: 0%;
+        height: 4px;
+        background-color: rgba(var(--primary-color), 0.8);
+        left: 0;
+        top: 0;
+        animation: runningTime 8s linear 1 forwards;
+      }
+
+      @keyframes runningTime {
+        from {
+          width: 0%;
+        }
+        to {
+          width: 100%;
+        }
+      }
+
+      /* Project backgrounds with demo screenshots/mockups */
+      .project-bg-1 {
+        background: linear-gradient(
+            135deg,
+            rgba(102, 126, 234, 0.8) 0%,
+            rgba(118, 75, 162, 0.8) 100%
+          ),
+          url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"><rect width="400" height="300" fill="%23f8f9fa"/><rect x="20" y="60" width="360" height="40" fill="%23e9ecef" rx="4"/><rect x="20" y="120" width="180" height="120" fill="%23dee2e6" rx="8"/><rect x="220" y="120" width="160" height="80" fill="%2328a745" rx="4"/><text x="200" y="30" text-anchor="middle" fill="%23495057" font-family="Arial" font-size="16" font-weight="bold">E-commerce Platform</text><text x="110" y="190" text-anchor="middle" fill="%236c757d" font-size="12">Product Grid</text><text x="300" y="170" text-anchor="middle" fill="white" font-size="12">Add to Cart</text></svg>');
+        background-size: cover, 60% auto;
+        background-position: center, 80% center;
+        background-repeat: no-repeat;
+      }
+
+      .project-bg-2 {
+        background: linear-gradient(
+            135deg,
+            rgba(240, 147, 251, 0.8) 0%,
+            rgba(245, 87, 108, 0.8) 100%
+          ),
+          url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"><rect width="400" height="300" fill="%23ffffff"/><rect x="0" y="0" width="400" height="50" fill="%2325d366"/><rect x="20" y="80" width="200" height="30" fill="%23e1ffc7" rx="15"/><rect x="180" y="130" width="200" height="30" fill="%23dcf8c6" rx="15"/><circle cx="30" cy="95" r="8" fill="%2325d366"/><circle cx="370" cy="145" r="8" fill="%2325d366"/><text x="200" y="25" text-anchor="middle" fill="white" font-family="Arial" font-size="16" font-weight="bold">Ajinkya Sampark</text><text x="50" y="100" fill="%23303030" font-size="10">Hello! How are you?</text><text x="200" y="150" fill="%23303030" font-size="10">Im good, thanks!</text></svg>');
+        background-size: cover, 50% auto;
+        background-position: center, 85% center;
+        background-repeat: no-repeat;
+      }
+
+      .project-bg-3 {
+        background: linear-gradient(
+            135deg,
+            rgba(79, 172, 254, 0.8) 0%,
+            rgba(0, 242, 254, 0.8) 100%
+          ),
+          url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"><rect width="400" height="300" fill="%23f8f9fa"/><rect x="50" y="40" width="300" height="220" fill="white" rx="8" stroke="%23dee2e6"/><rect x="70" y="60" width="260" height="40" fill="%236c757d" rx="4"/><rect x="70" y="120" width="120" height="60" fill="%23007bff" rx="8"/><rect x="210" y="120" width="120" height="60" fill="%2317a2b8" rx="8"/><text x="200" y="25" text-anchor="middle" fill="%23495057" font-family="Arial" font-size="14" font-weight="bold">Medical Payment Tracker</text><text x="200" y="85" text-anchor="middle" fill="white" font-size="12">Patient Dashboard</text><text x="130" y="155" text-anchor="middle" fill="white" font-size="10">Payments</text><text x="270" y="155" text-anchor="middle" fill="white" font-size="10">Reports</text></svg>');
+        background-size: cover, 55% auto;
+        background-position: center, 80% center;
+        background-repeat: no-repeat;
+      }
+
+      .project-bg-4 {
+        background: linear-gradient(
+            135deg,
+            rgba(67, 234, 123, 0.8) 0%,
+            rgba(56, 249, 215, 0.8) 100%
+          ),
+          url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"><rect width="400" height="300" fill="%234a90e2"/><rect x="50" y="50" width="300" height="200" fill="white" rx="12"/><circle cx="120" cy="120" r="25" fill="%23ffc107"/><rect x="160" y="100" width="120" height="20" fill="%23495057" rx="10"/><rect x="160" y="130" width="80" height="15" fill="%236c757d" rx="7"/><rect x="80" y="170" width="60" height="30" fill="%2328a745" rx="4"/><rect x="160" y="170" width="60" height="30" fill="%23dc3545" rx="4"/><rect x="240" y="170" width="60" height="30" fill="%23007bff" rx="4"/><text x="200" y="30" text-anchor="middle" fill="white" font-family="Arial" font-size="14" font-weight="bold">Weather Dashboard</text><text x="200" y="110" text-anchor="middle" fill="%23495057" font-size="12">Mumbai, Maharashtra</text><text x="110" y="190" text-anchor="middle" fill="white" font-size="8">Temp</text><text x="190" y="190" text-anchor="middle" fill="white" font-size="8">Humid</text><text x="270" y="190" text-anchor="middle" fill="white" font-size="8">Wind</text></svg>');
+        background-size: cover, 50% auto;
+        background-position: center, 85% center;
+        background-repeat: no-repeat;
+      }
+
+      .project-bg-5 {
+        background: linear-gradient(
+            135deg,
+            rgba(250, 112, 154, 0.8) 0%,
+            rgba(254, 225, 64, 0.8) 100%
+          ),
+          url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"><rect width="400" height="300" fill="%23f8f9fa"/><rect x="30" y="40" width="340" height="220" fill="white" rx="8" stroke="%23dee2e6"/><rect x="50" y="60" width="100" height="20" fill="%23007bff" rx="10"/><rect x="170" y="60" width="100" height="20" fill="%2328a745" rx="10"/><rect x="290" y="60" width="80" height="20" fill="%23ffc107" rx="10"/><rect x="50" y="100" width="320" height="30" fill="%23e9ecef" rx="4"/><rect x="50" y="150" width="320" height="30" fill="%23f8f9fa" rx="4"/><rect x="50" y="200" width="320" height="30" fill="%23e9ecef" rx="4"/><text x="200" y="25" text-anchor="middle" fill="%23495057" font-family="Arial" font-size="14" font-weight="bold">College Timetable</text><text x="100" y="75" text-anchor="middle" fill="white" font-size="8">Monday</text><text x="220" y="75" text-anchor="middle" fill="white" font-size="8">Tuesday</text><text x="330" y="75" text-anchor="middle" fill="white" font-size="8">Wednesday</text></svg>');
+        background-size: cover, 55% auto;
+        background-position: center, 80% center;
+        background-repeat: no-repeat;
+      }
+
+      .project-bg-6 {
+        background: linear-gradient(
+            135deg,
+            rgba(168, 237, 234, 0.8) 0%,
+            rgba(254, 214, 227, 0.8) 100%
+          ),
+          url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"><rect width="400" height="300" fill="%23212529"/><rect x="80" y="80" width="240" height="140" fill="%23343a40" rx="8"/><rect x="100" y="100" width="200" height="20" fill="%23dc3545" rx="10"/><rect x="100" y="140" width="200" height="40" fill="%23495057" rx="4"/><rect x="150" y="200" width="100" height="30" fill="%23ffc107" rx="15"/><text x="200" y="40" text-anchor="middle" fill="%23dc3545" font-family="Arial" font-size="16" font-weight="bold">⚠️ Security Alert</text><text x="200" y="115" text-anchor="middle" fill="white" font-size="10">OTP Verification Required</text><text x="200" y="160" text-anchor="middle" fill="%23adb5bd" font-size="8">Enter your OTP to continue</text><text x="200" y="220" text-anchor="middle" fill="%23212529" font-size="8">Submit</text></svg>');
+        background-size: cover, 45% auto;
+        background-position: center, 85% center;
+        background-repeat: no-repeat;
+      }
+
+      .project-bg-7 {
+        background: linear-gradient(
+            135deg,
+            rgba(255, 154, 158, 0.8) 0%,
+            rgba(254, 207, 239, 0.8) 100%
+          ),
+          url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"><rect width="400" height="300" fill="%23f8f9fa"/><rect x="40" y="60" width="320" height="180" fill="white" rx="12" stroke="%23dee2e6"/><rect x="60" y="80" width="280" height="30" fill="%23007bff" rx="15"/><rect x="80" y="130" width="120" height="80" fill="%2328a745" rx="8"/><rect x="220" y="130" width="120" height="80" fill="%23ffc107" rx="8"/><text x="200" y="30" text-anchor="middle" fill="%23495057" font-family="Arial" font-size="16" font-weight="bold">Skill-Swap Platform</text><text x="200" y="100" text-anchor="middle" fill="white" font-size="12">Learn. Teach. Grow.</text><text x="140" y="175" text-anchor="middle" fill="white" font-size="10">Host Session</text><text x="280" y="175" text-anchor="middle" fill="%23212529" font-size="10">Join Session</text></svg>');
+        background-size: cover, 50% auto;
+        background-position: center, 85% center;
+        background-repeat: no-repeat;
+      }
+
+      .project-bg-8 {
+        background: linear-gradient(
+            135deg,
+            rgba(102, 126, 234, 0.8) 0%,
+            rgba(118, 75, 162, 0.8) 100%
+          ),
+          url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"><rect width="400" height="300" fill="%23f8f9fa"/><rect x="50" y="50" width="300" height="200" fill="%23212529" rx="12"/><rect x="70" y="70" width="260" height="30" fill="%23495057" rx="15"/><rect x="70" y="120" width="180" height="20" fill="%2314ff72" rx="10"/><rect x="270" y="120" width="60" height="20" fill="%23007bff" rx="10"/><rect x="70" y="160" width="140" height="20" fill="%23495057" rx="10"/><rect x="230" y="160" width="100" height="20" fill="%2314ff72" rx="10"/><rect x="70" y="200" width="260" height="30" fill="%23343a40" rx="15"/><text x="200" y="30" text-anchor="middle" fill="%23495057" font-family="Arial" font-size="14" font-weight="bold">AI Chatbot Interface</text><text x="200" y="90" text-anchor="middle" fill="%2314ff72" font-size="10">AI Assistant</text><text x="160" y="135" text-anchor="middle" fill="%23212529" font-size="8">Hello! How can I help?</text><text x="300" y="135" text-anchor="middle" fill="white" font-size="8">User</text></svg>');
+        background-size: cover, 45% auto;
+        background-position: center, 85% center;
+        background-repeat: no-repeat;
+      }
+
+      /* Intro slide styling */
+      .intro-bg {
+        background: linear-gradient(135deg, #000428 0%, #004e92 100%);
+      }
+
+      /* Responsive Design */
+      @media screen and (max-width: 1200px) {
+        .content h1 {
+          font-size: 70px;
+        }
+        .content h2 {
+          font-size: 80px;
+        }
+        .list .item .content {
+          width: 450px;
+        }
+      }
+
+      @media screen and (max-width: 999px) {
+        header {
+          padding-left: 50px;
+        }
+
+        .list .item .content {
+          left: 50px;
+          width: 400px;
+        }
+
+        .content h1 {
+          font-size: 60px;
+        }
+
+        .content h2 {
+          font-size: 70px;
+        }
+
+        .content .des {
+          font-size: 16px;
+        }
+
+        .arrows {
+          right: 50%;
+          width: 200px;
+        }
+      }
+
+      @media screen and (max-width: 768px) {
+        header {
+          padding-left: 30px;
+        }
+
+        header nav a {
+          font-size: 14px;
+          margin-right: 0;
+          padding: 5px 8px;
+        }
+
+        .list .item .content {
+          top: 45%;
+          left: 30px;
+          width: 320px;
+        }
+
+        .content h1 {
+          font-size: 50px;
+        }
+
+        .content h2 {
+          font-size: 55px;
+        }
+
+        .content .des {
+          font-size: 16px;
+          margin-bottom: 20px;
+        }
+
+        .content .btn a {
+          padding: 10px 18px;
+          font-size: 14px;
+          margin-right: 10px;
+        }
+
+        .arrows {
+          right: 47%;
+          bottom: 20px;
+        }
+
+        .tech-stack span {
+          font-size: 11px;
+          padding: 4px 10px;
+        }
+      }
+
+      @media screen and (max-width: 480px) {
+        header {
+          padding-left: 20px;
+        }
+
+        header nav a {
+          font-size: 12px;
+          padding: 4px 6px;
+        }
+
+        .list .item .content {
+          top: 40%;
+          left: 20px;
+          width: 280px;
+        }
+
+        .content h1 {
+          font-size: 35px;
+        }
+
+        .content h2 {
+          font-size: 40px;
+        }
+
+        .content .des {
+          font-size: 14px;
+          margin-bottom: 15px;
+        }
+
+        .content .btn a {
+          padding: 8px 15px;
+          font-size: 12px;
+          margin-right: 8px;
+          margin-bottom: 8px;
+        }
+
+        .arrows {
+          right: 42%;
+          bottom: 20px;
+          width: 150px;
+        }
+
+        .arrows button {
+          width: 40px;
+          height: 40px;
+          font-size: 14px;
+        }
+
+        .tech-stack span {
+          font-size: 10px;
+          padding: 3px 8px;
+          margin: 3px 3px 3px 0;
+        }
+      }
+
+      @media screen and (max-width: 320px) {
+        .list .item .content {
+          width: 250px;
+          left: 15px;
+        }
+
+        .content h1 {
+          font-size: 28px;
+        }
+
+        .content h2 {
+          font-size: 32px;
+        }
+
+        .content .des {
+          font-size: 13px;
+        }
+
+        .content .btn a {
+          padding: 6px 12px;
+          font-size: 11px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <!-- Nav links with data attributes for robust JS navigation -->
+        <a href="#" class="active" data-index="0">Home</a>
+        <a href="#" data-index="1">Projects</a>
+        <a href="#" data-index="9">Skills</a>
+        <a href="#" data-index="10">About</a>
+        <a href="#" data-index="11">Contact</a>
+      </nav>
+    </header>
+
+    <main class="carousel" role="main" aria-live="polite" aria-atomic="true">
+      <div class="list">
+        <!-- Intro/About Slide -->
+        <section class="item intro-bg" data-index="0">
+          <div class="content">
+            <h1>PORTFOLIO</h1>
+            <h2>AJINKYA FURANGE</h2>
+            <p class="des">
+              Computer Engineering Student at Bhausaheb Vartak Polytechnic.
+              Passionate about creating impactful web solutions and innovative
+              projects.
+            </p>
+            <div class="btn">
+              <a href="#" class="primary-btn view-projects">View Projects</a>
+              <a
+                href="mailto:ajinkyafurange@gmail.com"
+                class="secondary-btn"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Contact Me
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- E-commerce Project -->
+        <section class="item project-bg-1" data-index="1">
+          <div class="content">
+            <h1>PROJECT</h1>
+            <h2>E-COMMERCE</h2>
+            <p class="des">
+              Full Stack e-commerce platform for farming products with inventory
+              management and secure payment processing.
+            </p>
+            <div class="btn">
+              <a href="#" class="primary-btn">Live Demo</a>
+              <a href="#" class="secondary-btn">View Code</a>
+            </div>
+            <div class="tech-stack">
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>JavaScript</span>
+              <span>Node.js</span>
+              <span>Express.js</span>
+              <span>MySQL</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Chat Application -->
+        <section class="item project-bg-2" data-index="2">
+          <div class="content">
+            <h1>PROJECT</h1>
+            <h2>CHAT APP</h2>
+            <p class="des">
+              Ajinkya Sampark - Modular chat application with WhatsApp-style UI
+              and clean folder-based architecture for scalability.
+            </p>
+            <div class="btn">
+              <a href="#" class="primary-btn">Live Demo</a>
+              <a href="#" class="secondary-btn">View Code</a>
+            </div>
+            <div class="tech-stack">
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>JavaScript</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Medical Payment Tracker -->
+        <section class="item project-bg-3" data-index="3">
+          <div class="content">
+            <h1>PROJECT</h1>
+            <h2>MEDICAL TRACKER</h2>
+            <p class="des">
+              Smart healthcare payment tracking system with real-time updates
+              and reminder alerts for patient management.
+            </p>
+            <div class="btn">
+              <a href="#" class="primary-btn">Live Demo</a>
+              <a href="#" class="secondary-btn">View Code</a>
+            </div>
+            <div class="tech-stack">
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>JavaScript</span>
+              <span>LocalStorage</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Weather Dashboard -->
+        <section class="item project-bg-4" data-index="4">
+          <div class="content">
+            <h1>PROJECT</h1>
+            <h2>WEATHER APP</h2>
+            <p class="des">
+              Global weather dashboard with real-time climate data using
+              OpenWeather API for accurate forecasts worldwide.
+            </p>
+            <div class="btn">
+              <a href="#" class="primary-btn">Live Demo</a>
+              <a href="#" class="secondary-btn">View Code</a>
+            </div>
+            <div class="tech-stack">
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>JavaScript</span>
+              <span>OpenWeather API</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- College Timetable -->
+        <section class="item project-bg-5" data-index="5">
+          <div class="content">
+            <h1>PROJECT</h1>
+            <h2>TIMETABLE</h2>
+            <p class="des">
+              Smart college timetable system with weekly view, real-time alerts,
+              and personalized batch selection features.
+            </p>
+            <div class="btn">
+              <a href="#" class="primary-btn">Live Demo</a>
+              <a href="#" class="secondary-btn">View Code</a>
+            </div>
+            <div class="tech-stack">
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>JavaScript</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- OTP Phishing Simulator -->
+        <section class="item project-bg-6" data-index="6">
+          <div class="content">
+            <h1>HACKATHON</h1>
+            <h2>OTP SIMULATOR</h2>
+            <p class="des">
+              Cyber security awareness simulator built in 48 hours, exposing
+              users to phishing tactics to promote 2FA awareness.
+            </p>
+            <div class="btn">
+              <a href="#" class="primary-btn">Live Demo</a>
+              <a href="#" class="secondary-btn">View Code</a>
+            </div>
+            <div class="tech-stack">
+              <span>HTML5</span>
+              <span>CSS3</span>
+              <span>JavaScript</span>
+              <span>jQuery</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Skill-Swap Platform -->
+        <section class="item project-bg-7" data-index="7">
+          <div class="content">
+            <h1>HACKATHON</h1>
+            <h2>SKILL-SWAP</h2>
+            <p class="des">
+              P2P learning platform enabling students to host and join
+              skill-sharing sessions. Built during 48-hour hackathon.
+            </p>
+            <div class="btn">
+              <a href="#" class="primary-btn">Live Demo</a>
+              <a href="#" class="secondary-btn">View Code</a>
+            </div>
+            <div class="tech-stack">
+              <span>HTML5</span>
+              <span>CSS3</span>
+              <span>JavaScript</span>
+              <span>Node.js</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- AI Chat Bot -->
+        <section class="item project-bg-8" data-index="8">
+          <div class="content">
+            <h1>PROJECT</h1>
+            <h2>AI CHATBOT</h2>
+            <p class="des">
+              Intelligent chatbot powered by Google's Gemini API with real-time
+              conversations and smooth chat interface.
+            </p>
+            <div class="btn">
+              <a href="#" class="primary-btn">Live Demo</a>
+              <a href="#" class="secondary-btn">View Code</a>
+            </div>
+            <div class="tech-stack">
+              <span>HTML5</span>
+              <span>CSS3</span>
+              <span>JavaScript</span>
+              <span>Gemini API</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Skills Overview -->
+        <section class="item project-bg-1" data-index="9">
+          <div class="content">
+            <h1>SKILLS</h1>
+            <h2>EXPERTISE</h2>
+            <p class="des">
+              <b> Frontend:</b> HTML5, CSS3, JavaScript, jQuery,Bootstrap.
+              <br />
+              <b> Backend:</b> PHP, Python, NodeJS, C, C++. <br />
+              <b>Dabases:</b> SQL, MongoDB . <br />
+              <b> AI & Prompt Engineering </b>.
+            </p>
+            <div class="btn">
+              <a
+                href="https://github.com/Ajinkya-Furange-Patil"
+                class="primary-btn"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                GitHub
+              </a>
+              <a
+                href="mailto:ajinkyafurange@gmail.com"
+                class="secondary-btn"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Hire Me
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- About section -->
+        <section class="item intro-bg" data-index="10">
+          <div class="content">
+            <h1>ABOUT ME</h1>
+            <h2>BACKGROUND</h2>
+            <p class="des">
+              I am a passionate and dedicated Computer Engineering student
+              currently at Bhausaheb Vartak Polytechnic. My journey in tech is
+              driven by a desire to build creative, impactful, and user-centric
+              web solutions.
+            </p>
+            <div class="btn">
+              <a href="#" class="primary-btn view-projects">View Projects</a>
+              <a
+                href="https://www.linkedin.com/in/ajinkyafurange/"
+                class="secondary-btn"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Connect on LinkedIn
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Contact section -->
+        <section class="item project-bg-2" data-index="11">
+          <div class="content">
+            <h1>CONNECT</h1>
+            <h2>LET'S TALK</h2>
+            <p class="des">
+              Ready to collaborate on innovative projects? I'm from Virar,
+              Maharashtra, and always excited to work on impactful tech
+              solutions.
+            </p>
+            <div class="btn">
+              <a
+                href="mailto:ajinkyafurange@gmail.com"
+                class="primary-btn"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Email Me
+              </a>
+              <a
+                href="https://linkedin.com/in/ajinkyafurange"
+                class="secondary-btn"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                LinkedIn
+              </a>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!--next prev button-->
+      <div class="arrows">
+        <button class="prev" aria-label="Previous slide">&lt;</button>
+        <button class="next" aria-label="Next slide">&gt;</button>
+      </div>
+
+      <!-- time running -->
+      <div class="timeRunning"></div>
+    </main>
+
+    <script>
+      (function () {
+        const nextBtn = document.querySelector(".next");
+        const prevBtn = document.querySelector(".prev");
+        const carousel = document.querySelector(".carousel");
+        const list = document.querySelector(".list");
+        const navLinks = document.querySelectorAll("header nav a");
+        const viewProjectsBtn = document.querySelector(".view-projects");
+
+        // Constants for animation and timing
+        const TIME_RUNNING_MS = 1000;
+        const TIME_AUTO_NEXT_MS = 8000;
+        const TIME_PER_STEP_MS = 10; // Reduced step duration for smoother jumps
+
+        let isAnimating = false;
+        let autoAdvanceTimeout;
+
+        // Function to update active state of nav links
+        function syncNavActive() {
+          const currentActiveItem = list.querySelector(
+            '.item[data-status="active"]'
+          );
+          const currentIndex = currentActiveItem
+            ? currentActiveItem.dataset.index
+            : "0";
+          navLinks.forEach((link) => {
+            if (link.dataset.index === currentIndex) {
+              link.classList.add("active");
+            } else {
+              link.classList.remove("active");
+            }
+          });
+        }
+
+        // Function to reset and restart auto-advance
+        function resetAutoAdvance() {
+          clearTimeout(autoAdvanceTimeout);
+          autoAdvanceTimeout = setTimeout(() => {
+            showSlider("next");
+          }, TIME_AUTO_NEXT_MS);
+          const runningTime = document.querySelector(".carousel .timeRunning");
+          runningTime.style.animation = "none";
+          runningTime.offsetHeight; // Trigger reflow
+          runningTime.style.animation = `runningTime ${
+            TIME_AUTO_NEXT_MS / 1000
+          }s linear 1 forwards`;
+        }
+
+        function updateSlideStatus() {
+          const items = Array.from(list.children);
+          items.forEach((item) => (item.dataset.status = "hidden"));
+          items[0].dataset.status = "active";
+          if (items.length > 1) items[1].dataset.status = "next";
+          if (items.length > 2) items[2].dataset.status = "next2";
+          if (items.length > 3) items[3].dataset.status = "next3";
+          if (items.length > 4) items[4].dataset.status = "next4";
+        }
+
+        // Function to handle slide changes (next/prev)
+        function showSlider(type) {
+          if (isAnimating) return;
+          isAnimating = true;
+
+          carousel.classList.add("transitioning");
+
+          if (type === "next") {
+            list.appendChild(list.firstElementChild);
+          } else {
+            list.prepend(list.lastElementChild);
+          }
+
+          setTimeout(() => {
+            carousel.classList.remove("transitioning");
+            updateSlideStatus();
+            isAnimating = false;
+            syncNavActive();
+          }, TIME_RUNNING_MS);
+
+          resetAutoAdvance();
+        }
+
+        // Function to navigate to a specific slide by index
+        function goToSlide(targetIndex, e) {
+          if (e) e.preventDefault();
+          if (isAnimating) return;
+          const items = Array.from(list.children);
+          const currentActiveEl = items[0];
+          const targetEl = items.find(
+            (el) => +el.dataset.index === +targetIndex
+          );
+          if (!targetEl || targetEl === currentActiveEl) return;
+
+          let steps = items.indexOf(targetEl);
+          if (steps === -1) return;
+
+          isAnimating = true;
+
+          function rotateSlides() {
+            if (steps > 0) {
+              list.appendChild(list.firstElementChild);
+              steps--;
+            } else if (steps < 0) {
+              list.prepend(list.lastElementChild);
+              steps++;
+            } else {
+              // Rotation complete
+              updateSlideStatus();
+              isAnimating = false;
+              syncNavActive();
+              resetAutoAdvance();
+              return;
+            }
+            // Continue rotation until steps = 0
+            setTimeout(() => {
+              rotateSlides();
+            }, TIME_PER_STEP_MS);
+          }
+          rotateSlides();
+        }
+
+        // Event listeners
+        document.addEventListener("DOMContentLoaded", () => {
+          updateSlideStatus();
+          syncNavActive();
+          resetAutoAdvance();
+
+          nextBtn.addEventListener("click", () => showSlider("next"));
+          prevBtn.addEventListener("click", () => showSlider("prev"));
+
+          viewProjectsBtn.addEventListener("click", (e) => {
+            goToSlide(1, e);
+          });
+
+          navLinks.forEach((link) => {
+            link.addEventListener("click", (e) => {
+              goToSlide(link.dataset.index, e);
+            });
+          });
+
+          // Keyboard navigation
+          document.addEventListener("keydown", (e) => {
+            if (e.key === "ArrowRight") {
+              showSlider("next");
+            } else if (e.key === "ArrowLeft") {
+              showSlider("prev");
+            }
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>
