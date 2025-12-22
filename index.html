@@ -636,6 +636,37 @@
         font-size: 0.9rem;
       }
 
+      /* Code Quality Standards */
+      .standards-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .standard-item {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 8px;
+        border: 2px solid var(--light-gray);
+        transition: all 0.3s;
+      }
+
+      .standard-item:hover {
+        border-color: #2e8b9e;
+        box-shadow: 0 5px 15px rgba(46, 139, 158, 0.15);
+      }
+
+      .standard-item h3 {
+        color: #2e8b9e;
+        margin-bottom: 0.5rem;
+      }
+
+      .standard-item p {
+        color: #555;
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
+
       /* Resume */
       .resume-section {
         background: white;
@@ -1035,7 +1066,7 @@
     <!-- Navigation -->
     <nav>
       <div class="logo">
-        <img src="images/ajinkya.png" alt="Ajinkya Furange Logo">
+        <img src="images/ajinkya.png" alt="Ajinkya Furange Logo" />
       </div>
       <div class="hamburger" onclick="toggleMenu()">
         <span></span>
@@ -1213,8 +1244,13 @@
             <span class="tech-tag">MySQL</span>
           </div>
           <div class="project-links">
-            <a href="#">Live Demo</a>
-            <a href="#">View Code</a>
+            <a href="https://shivansh-krushi-seva-kendra.onrender.com/"
+              >Live Demo</a
+            >
+            <a
+              href="https://github.com/Ajinkya-Furange-Patil/Shivansh-Krushi-Seva-Kendra"
+              >View Code</a
+            >
           </div>
         </div>
 
@@ -1240,11 +1276,8 @@
             <span class="tech-tag">JavaScript</span>
           </div>
           <div class="project-links">
-            <a href="https://shivansh-krushi-seva-kendra.onrender.com/"
-              >Live Demo</a
-            >
-            <a
-              href="https://github.com/Ajinkya-Furange-Patil/Shivansh-Krushi-Seva-Kendra"
+            <a href="https://ajinkya-sampark.netlify.app/">Live Demo</a>
+            <a href="https://github.com/Ajinkya-Furange-Patil/sampark"
               >View Code</a
             >
           </div>
@@ -1272,8 +1305,9 @@
             <span class="tech-tag">JavaScript</span>
           </div>
           <div class="project-links">
-            <a href="https://ajinkya-sampark.netlify.app/">Live Demo</a>
-            <a href="https://github.com/Ajinkya-Furange-Patil/sampark"
+            <a href="https://payment-list.netlify.app/">Live Demo</a>
+            <a
+              href="https://github.com/Ajinkya-Furange-Patil/medical-payment-tracker"
               >View Code</a
             >
           </div>
@@ -1292,8 +1326,12 @@
             <span class="tech-tag">API</span>
           </div>
           <div class="project-links">
-            <a href="#">Live Demo</a>
-            <a href="#">View Code</a>
+            <a href="https://weather-app-ajinkya-furange.netlify.app/"
+              >Live Demo</a
+            >
+            <a href="https://github.com/Ajinkya-Furange-Patil/whether"
+              >View Code</a
+            >
           </div>
         </div>
 
@@ -1309,9 +1347,8 @@
             <span class="tech-tag">JavaScript</span>
           </div>
           <div class="project-links">
-            <a href="https://payment-list.netlify.app/">Live Demo</a>
-            <a
-              href="https://github.com/Ajinkya-Furange-Patil/medical-payment-tracker"
+            <a href="">Live Demo</a>
+            <a href="https://github.com/Ajinkya-Furange-Patil/timetable"
               >View Code</a
             >
           </div>
@@ -1329,7 +1366,7 @@
             <span class="tech-tag">MySQL</span>
           </div>
           <div class="project-links">
-            <a href="#">Live Demo</a>
+            <a href="https://skilllswap.netlify.app/">Live Demo</a>
             <a href="#">View Code</a>
           </div>
         </div>
@@ -1636,6 +1673,60 @@
             <h4>Coding Chaska</h4>
           </a>
           <p>AI Agent Workshop, 2025</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Code Quality Standards Section -->
+    <section id="code-quality">
+      <h2 class="section-title fade-in">Code Quality Standards</h2>
+      <div class="standards-container">
+        <div class="standard-item scale-in">
+          <h3>🔧 Clean Code Principles</h3>
+          <p>
+            Following SOLID principles, DRY (Don't Repeat Yourself), and KISS
+            (Keep It Simple, Stupid) for maintainable and readable code.
+          </p>
+        </div>
+
+        <div class="standard-item scale-in">
+          <h3>📱 Responsive Design</h3>
+          <p>
+            Mobile-first approach ensuring websites work perfectly on all
+            devices and screen sizes.
+          </p>
+        </div>
+
+        <div class="standard-item scale-in">
+          <h3>⚡ Performance Optimization</h3>
+          <p>
+            Optimized loading times, efficient algorithms, and best practices
+            for fast, smooth user experiences.
+          </p>
+        </div>
+
+        <div class="standard-item scale-in">
+          <h3>🔒 Security Best Practices</h3>
+          <p>
+            Implementing secure coding practices, input validation, and
+            protection against common vulnerabilities.
+          </p>
+        </div>
+
+        <div class="standard-item scale-in">
+          <h3>♿ Accessibility Standards</h3>
+          <p>
+            WCAG compliant websites ensuring equal access for all users,
+            including those with disabilities.
+          </p>
+        </div>
+
+        <div class="standard-item scale-in">
+          <h3>🔍 SEO Optimization</h3>
+          <p>
+            Search engine friendly code structure, semantic HTML, and meta tags
+            for better discoverability.
+          </p>
         </div>
       </div>
     </section>
