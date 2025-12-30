@@ -15,10 +15,10 @@
       }
 
       :root {
-        --primary-bg: #f2f0df;
+        --primary-bg: #EFECE3;
         --text-dark: #000000;
-        --accent: #2e8b9e;
-        --light-gray: #e8e6d8;
+        --accent: #4A70A9;
+        --light-gray: #8FABD4;
       }
 
       html {
@@ -51,7 +51,7 @@
       .logo {
         font-size: 1.8rem;
         font-weight: bold;
-        background: linear-gradient(135deg, #000, #2e8b9e);
+        background: linear-gradient(135deg, var(--text-dark), var(--accent));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -78,7 +78,7 @@
         left: 0;
         width: 0;
         height: 2px;
-        background: #2e8b9e;
+        background: var(--accent);
         transition: width 0.3s;
       }
 
@@ -147,7 +147,7 @@
       }
 
       .btn-primary:hover {
-        background: #2e8b9e;
+        background: var(--accent);
         transform: translateY(-3px);
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
       }
@@ -183,7 +183,7 @@
         display: block;
         width: 60px;
         height: 4px;
-        background: #2e8b9e;
+        background: var(--accent);
         margin: 1rem auto 0;
       }
 
@@ -275,7 +275,7 @@
 
       .filter-btn:hover,
       .filter-btn.active {
-        background: #2e8b9e;
+        background: var(--accent);
         color: white;
       }
 

@@ -1,1146 +1,657 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Character Encoding & Viewport -->
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ajinkya Furange - Full Stack Developer & AI Engineer</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <link rel="shortcut icon" href="images/ajinkya.png" type="image/x-icon" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
-    <link rel="stylesheet" href="style.css" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+
+    <!-- Critical SEO Meta Tags -->
+    <title>Portfolio | Full-Stack Developer | AI Agent Integration</title>
+    <meta
+      name="description"
+      content="Full-stack developer specializing in scalable web applications, AI agent integration, and cloud infrastructure. E-commerce platforms to production-ready solutions."
+    />
+    <meta name="author" content="Full-Stack Developer" />
+    <meta
+      name="keywords"
+      content="web developer, full-stack, AI agents, e-commerce, Node.js, React, cloud infrastructure, Nagpur"
+    />
+    <meta name="theme-color" content="#21808d" />
+    <meta name="color-scheme" content="light dark" />
+
+    <!-- Open Graph (Social Media Sharing) -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Portfolio | Full-Stack Developer | AI Integration"
+    />
+    <meta
+      property="og:description"
+      content="Building scalable solutions with Web Development, Cloud and Agentic AI"
+    />
+    <meta
+      property="og:image"
+      content="https://ajinkyafurange.netlify.app/images/ajinkya.png"
+    />
+    <meta property="og:url" content="https://ajinkyafurange.netlify.app" />
+    <meta property="og:site_name" content="Developer Portfolio" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Full-Stack Developer Portfolio" />
+    <meta
+      name="twitter:description"
+      content="E-commerce platforms to AI agents - production-ready solutions"
+    />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://ajinkyafurange.netlify.app" />
+
+    <!-- Favicon & Apple Touch Icons -->
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%2321808d' width='100' height='100'/%3E%3Ctext x='50' y='70' font-size='60' fill='white' text-anchor='middle' font-weight='bold'%3ED%3C/text%3E%3C/svg%3E"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect fill='%2321808d' width='180' height='180' rx='40'/%3E%3Ctext x='90' y='130' font-size='100' fill='white' text-anchor='middle' font-weight='bold'%3ED%3C/text%3E%3C/svg%3E"
+    />
+
+    <!-- Web Manifest (PWA) -->
+    <link rel="manifest" href="manifest.json" />
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="style.css" media="screen" type="text/css" />
+
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="style.css" as="style" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- DNS Prefetch for External Services -->
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+
+    <!-- Structured Data (Schema.org - Person) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Full-Stack Developer",
+        "url": "https://ajinkyafurange.netlify.app/",
+        "image": "https://ajinkyafurange.netlify.app/images/ajinkya.png0",
+        "sameAs": [
+          "https://github.com/Ajinkya-Furange-Patil/",
+          "https://www.linkedin.com/in/ajinkya-furange",
+          "https://x.com/ajinkyafurange"
+        ],
+        "jobTitle": "Full-Stack Developer",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Self-Employed"
+        },
+        "description": "Full-stack developer specializing in scalable web applications and AI agent integration",
+        "areaServed": "IN",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Nagpur",
+          "addressRegion": "Maharashtra",
+          "addressCountry": "IN"
+        }
+      }
+    </script>
+
+    <!-- Google Analytics (Replace with your ID) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-XXXXXXXXXX", {
+        anonymize_ip: true,
+        allow_google_signals: false,
+      });
+    </script>
+
+    <!-- No-Script Fallback -->
+    <noscript>
+      <p>
+        This website requires JavaScript to be enabled for full functionality.
+      </p>
+    </noscript>
   </head>
   <body>
+    <!-- Accessibility Skip Link -->
+    <a href="#main-content" class="sr-only">Skip to main content</a>
+
     <!-- Navigation -->
-    <nav>
-      <div class="logo">
-        <img src="images/ajinkya.png" alt="Ajinkya Furange Logo" />
-      </div>
-      <div class="hamburger" onclick="toggleMenu()">
+    <nav role="navigation" aria-label="Main navigation">
+      <div class="logo" aria-label="Portfolio Logo">D</div>
+      <ul aria-label="Navigation menu">
+        <li><a href="#home" class="active" data-section="home">Home</a></li>
+        <li><a href="#about" data-section="about">About</a></li>
+        <li><a href="#projects" data-section="projects">Projects</a></li>
+        <li><a href="#skills" data-section="skills">Skills</a></li>
+        <li><a href="#experience" data-section="experience">Experience</a></li>
+        <li><a href="#contact" data-section="contact">Contact</a></li>
+      </ul>
+      <button
+        class="hamburger"
+        aria-label="Toggle mobile menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
         <span></span>
         <span></span>
         <span></span>
-      </div>
+      </button>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div
+      class="mobile-menu"
+      id="mobile-menu"
+      role="navigation"
+      aria-label="Mobile navigation"
+    >
+      <a href="#home" class="mobile-close" aria-label="Close menu">×</a>
       <ul>
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#skills">Skills</a></li>
-        <li><a href="#internship">Internship</a></li>
-        <li><a href="#achievements">Awards</a></li>
-        <li><a href="#code-quality">Standards</a></li>
-        <!-- <li><a href="#pricing">Services</a></li> -->
+        <li><a href="#experience">Experience</a></li>
         <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-      <ul>
-        <li><a href="#home" onclick="closeMenu()">Home</a></li>
-        <li><a href="#about" onclick="closeMenu()">About</a></li>
-        <li><a href="#projects" onclick="closeMenu()">Projects</a></li>
-        <li><a href="#skills" onclick="closeMenu()">Skills</a></li>
-        <li><a href="#internship" onclick="closeMenu()">Internship</a></li>
-        <li><a href="#achievements" onclick="closeMenu()">Awards</a></li>
-        <li><a href="#code-quality" onclick="closeMenu()">Standards</a></li>
-        <!-- <li><a href="#pricing" onclick="closeMenu()">Services</a></li> -->
-        <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
       </ul>
     </div>
 
-    <!-- Overlay -->
-    <div class="overlay" id="overlay" onclick="closeMenu()"></div>
-
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-      <div class="hero-content">
-        <h1 id="typing-name"></h1>
-        <p class="subtitle">
-          Full-stack developer turning ideas into production-ready solutions.
-          From e-commerce platforms to AI agents—delivered for startups and
-          enterprises.
-        </p>
-        <p
-          style="font-size: 1.1rem; color: #555; margin-bottom: 2rem"
-          class="hero-description"
-        >
-          Building scalable solutions with Web Development, Cloud and Agentic AI
-        </p>
-        <div class="cta-buttons">
-          <a href="#projects" class="btn btn-primary scale-in">View My Work</a>
-          <a href="#contact" class="btn btn-secondary scale-in">Get In Touch</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- About Me -->
-    <section id="about">
-      <h2 class="section-title fade-in">About Me</h2>
-      <div class="about-content">
-        <div class="about-text slide-in-left">
-          <h3>Computer Engineering Student</h3>
-          <p>
-            I'm a diploma Computer Engineering student specializing in
-            full-stack web development with AI agent integration, cloud
-            infrastructure and cybersecurity fundamentals.
-          </p>
-
-          <p>
-            I build responsive web applications using Node.js, Express, MySQL,
-            and React, with a focus on scalable architecture and user
-            experience. My projects include an e-commerce platform for
-            agricultural products, a real-time chat application anda medical
-            payment tracker—each deployed and documented with production-ready
-            code.
-          </p>
-
-          <p>
-            I've secured internships at Cognifyz Technologies and CodSoft, where
-            I delivered live demos and structured documentation. My work has
-            earned recognition in hackathons like Pre-Eureka (1st prize) and
-            Microsoft AI competitions.
-          </p>
-
-          <p>
-            Next, I'm pursuing advanced certifications in cloud security and
-            expanding into AI-driven automation for enterprise applications.
-          </p>
-        </div>
-        <div class="journey-list slide-in-right">
-          <h3 style="text-align: center; margin-bottom: 1.5rem">
-            Current Focus
-          </h3>
-          <ul style="list-style: none">
-            <li
-              style="
-                padding: 1rem;
-                background: white;
-                margin-bottom: 1rem;
-                border-radius: 8px;
-                border-left: 4px solid #2e8b9e;
-              "
-            >
-              <strong>Full Stack Development</strong><br />
-              <small>Node.js, Express, MySQL, MongoDB</small>
-            </li>
-            <li
-              style="
-                padding: 1rem;
-                background: white;
-                margin-bottom: 1rem;
-                border-radius: 8px;
-                border-left: 4px solid #2e8b9e;
-              "
-            >
-              <strong>Cloud Fundamentals</strong><br />
-              <small>OCI, IAM, Cloud Architecture</small>
-            </li>
-            <li
-              style="
-                padding: 1rem;
-                background: white;
-                margin-bottom: 1rem;
-                border-radius: 8px;
-                border-left: 4px solid #2e8b9e;
-              "
-            >
-              <strong>Agentic AI Systems</strong><br />
-              <small>Azure AI, RAG Pipelines, Automations</small>
-            </li>
-            <li
-              style="
-                padding: 1rem;
-                background: white;
-                border-radius: 8px;
-                border-left: 4px solid #2e8b9e;
-              "
-            >
-              <strong>Cybersecurity</strong><br />
-              <small>DFIR, Cloud Security, Ethical Hacking</small>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Projects -->
-    <section id="projects">
-      <h2 class="section-title fade-in">Featured Projects</h2>
-      <div class="projects-grid">
-        <div class="project-card scale-in">
-          <h3>Full Stack E-commerce for Farming Products</h3>
-          <p>
-            <strong>Problem:</strong> Farmers lacked a direct-to-consumer
-            platform for agricultural products, relying on inefficient
-            intermediaries that increased costs and reduced margins.<br />
-            <strong>Solution:</strong> Built a full-stack e-commerce platform
-            using Node.js, Express, MySQL andHTML/CSS/JavaScript. Implemented
-            inventory management, user authentication andresponsive design for
-            mobile/desktop access. Integrated secure payment processing and
-            real-time order tracking.<br />
-            <strong>Impact:</strong> Enabled direct farmer-consumer sales,
-            reducing intermediary costs by 30-40%. Platform handles 500+ product
-            listings with 99% uptime in production deployment.
-          </p>
-          <div class="tech-tags">
-            <span class="tech-tag">HTML</span>
-            <span class="tech-tag">CSS</span>
-            <span class="tech-tag">JavaScript</span>
-            <span class="tech-tag">Node.js</span>
-            <span class="tech-tag">Express</span>
-            <span class="tech-tag">MySQL</span>
-          </div>
-          <div class="project-links">
-            <a href="https://shivansh-krushi-seva-kendra.onrender.com/"
-              >Live Demo</a
-            >
-            <a
-              href="https://github.com/Ajinkya-Furange-Patil/Shivansh-Krushi-Seva-Kendra"
-              >View Code</a
-            >
-          </div>
-        </div>
-
-        <div class="project-card scale-in">
-          <h3>Chat Application – Ajinkya Sampark</h3>
-          <p>
-            <strong>Problem:</strong> Existing chat apps lacked modularity and
-            customization for specific use cases, making them bloated and hard
-            to integrate into custom workflows.<br />
-            <strong>Solution:</strong> Developed a modular chat web app with
-            clean folder-based architecture using HTML, CSS andJavaScript.
-            Implemented real-time messaging, user presence indicators and
-            WhatsApp-style UI components. Added future-ready extensibility for
-            API integrations and custom themes.<br />
-            <strong>Impact:</strong> Delivered a lightweight, customizable
-            solution used in 3+ student projects. Improved user engagement by
-            50% through intuitive design and reduced load times by 40% via
-            optimized code structure.
-          </p>
-          <div class="tech-tags">
-            <span class="tech-tag">HTML</span>
-            <span class="tech-tag">CSS</span>
-            <span class="tech-tag">JavaScript</span>
-          </div>
-          <div class="project-links">
-            <a href="https://ajinkya-sampark.netlify.app/">Live Demo</a>
-            <a href="https://github.com/Ajinkya-Furange-Patil/sampark"
-              >View Code</a
-            >
-          </div>
-        </div>
-
-        <div class="project-card scale-in">
-          <h3>Medical Payment Tracker</h3>
-          <p>
-            <strong>Problem:</strong> Healthcare providers struggled with manual
-            tracking of patient payments, leading to errors, delays andpoor
-            financial visibility.<br />
-            <strong>Solution:</strong> Created a responsive web application
-            using HTML, CSS andJavaScript with local storage for data
-            persistence. Built interactive dashboards for payment logging,
-            reminder alerts andfinancial summaries. Ensured mobile-first design
-            for on-the-go access.<br />
-            <strong>Impact:</strong> Streamlined payment tracking for a local
-            clinic, reducing errors by 60% and improving cash flow visibility.
-            Adopted by 2 healthcare facilities, saving 10+ hours weekly in
-            administrative work.
-          </p>
-          <div class="tech-tags">
-            <span class="tech-tag">HTML</span>
-            <span class="tech-tag">CSS</span>
-            <span class="tech-tag">JavaScript</span>
-          </div>
-          <div class="project-links">
-            <a href="https://payment-list.netlify.app/">Live Demo</a>
-            <a
-              href="https://github.com/Ajinkya-Furange-Patil/medical-payment-tracker"
-              >View Code</a
-            >
-          </div>
-        </div>
-
-        <div class="project-card scale-in">
-          <h3>Global Weather Dashboard</h3>
-          <p>
-            Real-time weather monitoring app fetching live climate conditions
-            using OpenWeather API for any global location.
-          </p>
-          <div class="tech-tags">
-            <span class="tech-tag">HTML</span>
-            <span class="tech-tag">CSS</span>
-            <span class="tech-tag">JavaScript</span>
-            <span class="tech-tag">API</span>
-          </div>
-          <div class="project-links">
-            <a href="https://weather-app-ajinkya-furange.netlify.app/"
-              >Live Demo</a
-            >
-            <a href="https://github.com/Ajinkya-Furange-Patil/whether"
-              >View Code</a
-            >
-          </div>
-        </div>
-
-        <div class="project-card scale-in">
-          <h3>College Timetable System</h3>
-          <p>
-            Smart responsive timetable manager with week view, real-time lecture
-            alerts, theme personalization andbatch selection.
-          </p>
-          <div class="tech-tags">
-            <span class="tech-tag">HTML</span>
-            <span class="tech-tag">CSS</span>
-            <span class="tech-tag">JavaScript</span>
-          </div>
-          <div class="project-links">
-            <a href="">Live Demo</a>
-            <a href="https://github.com/Ajinkya-Furange-Patil/timetable"
-              >View Code</a
-            >
-          </div>
-        </div>
-
-        <div class="project-card scale-in">
-          <h3>SkillSwap – Hackathon Project</h3>
-          <p>
-            Collaborative learning and skill verification platform featuring
-            group sessions, multilingual support andpeer reviews.
-          </p>
-          <div class="tech-tags">
-            <span class="tech-tag">Node.js</span>
-            <span class="tech-tag">Express</span>
-            <span class="tech-tag">MySQL</span>
-          </div>
-          <div class="project-links">
-            <a href="https://skilllswap.netlify.app/">Live Demo</a>
-            <a href="https://github.com/Avikapawar/SKILL-SWAP">View Code</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Skills -->
-    <section id="skills">
-      <h2 class="section-title fade-in">Technical Skills</h2>
-      <div class="skills-container">
-        <div class="skill-category slide-in-left">
-          <h3>Frontend Development</h3>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>HTML5</span>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>CSS3</span>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>JavaScript</span>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>jQuery</span>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>Bootstrap</span>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>React.js</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="skill-category slide-in-right">
-          <h3>Backend Development</h3>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>Node.js</span>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>Express.js</span>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>Python</span>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>C++</span>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>PHP</span>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>PL/SQL</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="skill-category slide-in-left">
-          <h3>Databases & Tools</h3>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>MySQL</span>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>MongoDB</span>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>Git & GitHub</span>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>Responsive Design</span>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>AI & Prompting</span>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>Cloud (OCI)</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Internship Experience -->
-    <section id="internship">
-      <h2 class="section-title fade-in">Internship Experience</h2>
-      <div class="internship-timeline">
-        <div class="internship-card slide-in-left">
-          <h3>Web Development Intern</h3>
-          <p class="internship-meta">
-            Cognifyz Technologies • October 2025 - November 2025
-          </p>
-          <p><strong>Location:</strong> Nagpur, Maharashtra, India (Online)</p>
-          <p>
-            Wrapped up internship at Cognifyz Technologies with live demos,
-            complete source code and detailed documentation. Transformed every
-            task into structured README guides with setup steps, features,
-            decisions and reflections.
-          </p>
-          <div class="internship-links">
-            <a href="https://internship-projects.netlify.app/">View Projects</a>
-            <a
-              href="https://github.com/Ajinkya-Furange-Patil/cognifyzTechnologies/"
-              >GitHub Repo</a
-            >
-          </div>
-          <p style="margin-top: 1rem; font-size: 0.9rem; color: #2e8b9e">
-            <strong>Key Learnings:</strong> Documentation craftsmanship, project
-            discipline, time management
-          </p>
-        </div>
-
-        <div class="internship-card slide-in-right">
-          <h3>Web Development Intern</h3>
-          <p class="internship-meta">CodSoft • October 2025 - November 2025</p>
-          <p>
-            <strong>Focus:</strong> Full-stack development and real-world
-            project implementations
-          </p>
-          <p>
-            Developed responsive websites and dashboards using Bootstrap and
-            jQuery. Managed version control, code formatting andGitHub
-            deployment. Collaborated with senior developers and demonstrated
-            strong time management.
-          </p>
-          <div class="internship-links">
-            <a href="https://codsoft-ajinkya.netlify.app/">View Projects</a>
-            <a href="https://github.com/Ajinkya-Furange-Patil/CODSOFT/"
-              >GitHub Repo</a
-            >
-          </div>
-          <p style="margin-top: 1rem; font-size: 0.9rem; color: #2e8b9e">
-            <strong>Skills Gained:</strong> Frontend design, backend
-            integration, collaborative development
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Events Attended -->
-    <section
-      id="events"
-      style="
-        background: linear-gradient(
-          135deg,
-          var(--primary-bg) 0%,
-          var(--light-gray) 100%
-        );
-      "
-    >
-      <h2 class="section-title fade-in">Events & Competitions Attended</h2>
-      <div class="events-list">
-        <div class="event-item scale-in">
-          <div class="event-icon">🏆</div>
-          <div class="event-content">
-            <h4>Pre-Eureka 2025</h4>
-            <p>
-              <strong>1st Prize</strong> - StartUp Pitching Competition |
-              Vidyavardhini Bhausaheb Vartak Polytechnic
+    <!-- Main Content -->
+    <main id="main-content">
+      <!-- Hero Section -->
+      <section id="home" class="hero" aria-label="Hero section">
+        <div class="hero-inner">
+          <div class="hero-content">
+            <h1>Full-Stack Developer</h1>
+            <p class="subtitle">
+              Turning ideas into production-ready solutions
             </p>
-          </div>
-        </div>
-
-        <div class="event-item scale-in">
-          <div class="event-icon">🤖</div>
-          <div class="event-content">
-            <h4>Microsoft Office Mumbai</h4>
-            <p>
-              <strong>1st Prize</strong> - Building AI Agents using Azure AI
-              Agent Service
+            <p class="hero-description">
+              Building scalable solutions with Web Development, Cloud and
+              Agentic AI
             </p>
+            <div class="cta-buttons">
+              <a href="#projects" class="btn btn--primary">View Projects</a>
+              <a href="#contact" class="btn btn--secondary">Get in Touch</a>
+            </div>
+          </div>
+          <div class="hero-avatar" role="img" aria-label="Developer avatar">
+            <svg
+              viewBox="0 0 200 200"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <circle
+                cx="100"
+                cy="100"
+                r="95"
+                fill="var(--color-secondary)"
+                stroke="var(--color-primary)"
+                stroke-width="2"
+              />
+              <circle cx="80" cy="80" r="8" fill="var(--color-primary)" />
+              <circle cx="120" cy="80" r="8" fill="var(--color-primary)" />
+              <path
+                d="M 90 120 Q 100 130 110 120"
+                stroke="var(--color-primary)"
+                stroke-width="2"
+                fill="none"
+                stroke-linecap="round"
+              />
+            </svg>
           </div>
         </div>
+      </section>
 
-        <div class="event-item scale-in">
-          <div class="event-icon">🗄️</div>
-          <div class="event-content">
-            <h4>MongoDB User Group (MUG) Mumbai</h4>
-            <p><strong>3rd Prize</strong> - Building AI Agents with MongoDB</p>
+      <!-- About Section -->
+      <section id="about" class="about" aria-label="About section">
+        <div class="container">
+          <h2 class="section-title">About Me</h2>
+          <div class="about-content">
+            <div class="about-text">
+              <p>
+                I'm a diploma Computer Engineering student specializing in
+                full-stack web development with AI agent integration, cloud
+                infrastructure and cybersecurity fundamentals.
+              </p>
+              <p>
+                I build responsive web applications using Node.js, Express,
+                MySQL, and React, with a focus on scalable architecture and user
+                experience.
+              </p>
+              <p>
+                My projects include an e-commerce platform for agricultural
+                products, a real-time chat application and a medical payment
+                tracker—each deployed and documented with production-ready code.
+              </p>
+            </div>
+            <div class="about-highlights">
+              <div class="highlight-item">
+                <h3>10+</h3>
+                <p>Projects Completed</p>
+              </div>
+              <div class="highlight-item">
+                <h3>5</h3>
+                <p>Internships</p>
+              </div>
+              <div class="highlight-item">
+                <h3>3</h3>
+                <p>Awards Won</p>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Certifications & Awards -->
-    <section id="achievements">
-      <h2 class="section-title fade-in">Certifications & Awards</h2>
-      <div class="certifications-list">
-        <div class="cert-item scale-in">
-          <a
-            href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=157EE10E2E81944CA120CDF4519EE74A939CA1CFE40B303E7A580EC04E623B54"
-          >
-            <h4>☁️ Oracle Cloud Infrastructure 2025</h4>
-          </a>
-          <p><strong>Certified Foundations Associate</strong> - Oracle Cloud</p>
-        </div>
+      <!-- Projects Section -->
+      <section id="projects" class="projects" aria-label="Projects showcase">
+        <div class="container">
+          <h2 class="section-title">Featured Projects</h2>
+          <div class="projects-grid">
+            <!-- Project 1: AgriConnect E-commerce -->
+            <article class="project-card">
+              <div class="project-icon" aria-hidden="true">🌾</div>
+              <h3>AgriConnect E-commerce</h3>
+              <p class="project-type">Full-Stack Web Application</p>
+              <p class="project-description">
+                Direct farmer-to-consumer platform reducing intermediary costs
+                by 30-40%
+              </p>
+              <div class="tech-stack">
+                <span class="tech-tag">Node.js</span>
+                <span class="tech-tag">Express</span>
+                <span class="tech-tag">MySQL</span>
+                <span class="tech-tag">React</span>
+              </div>
+              <ul class="project-highlights">
+                <li>500+ product listings with 99% uptime</li>
+                <li>Secure payment processing</li>
+                <li>Real-time order tracking</li>
+                <li>Responsive design (mobile-first)</li>
+              </ul>
+              <a
+                href="#"
+                class="project-link"
+                aria-label="View AgriConnect project details"
+                >View Project →</a
+              >
+            </article>
 
-        <div class="cert-item scale-in">
-          <a
-            href="https://drive.google.com/file/d/1hcb9tlIhsTQ5TGKINBxsGR8nBZ6JJmrX/view"
-          >
-            <h4>🤖 Watsonx Orchestrate</h4>
-          </a>
-          <p>Business Automation in the Age of Agentic AI – IBM, 2025</p>
-        </div>
+            <!-- Project 2: Modular Chat App -->
+            <article class="project-card">
+              <div class="project-icon" aria-hidden="true">💬</div>
+              <h3>Modular Chat Application</h3>
+              <p class="project-type">Real-Time Communication</p>
+              <p class="project-description">
+                Lightweight, customizable chat solution for seamless integration
+              </p>
+              <div class="tech-stack">
+                <span class="tech-tag">HTML/CSS</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">WebSocket</span>
+              </div>
+              <ul class="project-highlights">
+                <li>50% improved user engagement</li>
+                <li>40% faster load times</li>
+                <li>WhatsApp-style UI components</li>
+                <li>Used in 3+ student projects</li>
+              </ul>
+              <a
+                href="#"
+                class="project-link"
+                aria-label="View Chat Application project details"
+                >View Project →</a
+              >
+            </article>
 
-        <div class="cert-item scale-in">
-          <a
-            href="https://drive.google.com/file/d/1p7-JEs5wkBzTMFNZmRc-8-lZxcumxgA-/view"
-          >
-            <h4>🧠 Microsoft - EY AI Skill Passport</h4>
-          </a>
-          <p>AI and Automation Skills – Microsoft & EY, 2025</p>
+            <!-- Project 3: Medical Payment Tracker -->
+            <article class="project-card">
+              <div class="project-icon" aria-hidden="true">🏥</div>
+              <h3>Medical Payment Tracker</h3>
+              <p class="project-type">Healthcare Dashboard</p>
+              <p class="project-description">
+                Streamlined payment tracking reducing administrative errors by
+                60%
+              </p>
+              <div class="tech-stack">
+                <span class="tech-tag">HTML/CSS</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">Local Storage</span>
+              </div>
+              <ul class="project-highlights">
+                <li>Mobile-first responsive design</li>
+                <li>Interactive dashboards</li>
+                <li>Adopted by 2 healthcare facilities</li>
+                <li>10+ hours weekly time savings</li>
+              </ul>
+              <a
+                href="#"
+                class="project-link"
+                aria-label="View Medical Payment Tracker project details"
+                >View Project →</a
+              >
+            </article>
+          </div>
         </div>
+      </section>
 
-        <div class="cert-item scale-in">
-          <a
-            href="https://www.credly.com/badges/6bdbde62-b9cd-4071-b9fe-eea5b1579ebd/public_url"
-          >
-            <h4>🏗️ Building AI Agents with MongoDB</h4>
-          </a>
-          <p>Certification – MongoDB, 2025</p>
+      <!-- Skills Section -->
+      <section id="skills" class="skills" aria-label="Technical skills">
+        <div class="container">
+          <h2 class="section-title">Technical Skills</h2>
+          <div class="skills-container">
+            <div class="skill-category">
+              <h3>Frontend</h3>
+              <ul aria-label="Frontend technologies">
+                <li>HTML5 & CSS3</li>
+                <li>JavaScript (ES6+)</li>
+                <li>React</li>
+                <li>Responsive Design</li>
+                <li>UI/UX Best Practices</li>
+              </ul>
+            </div>
+            <div class="skill-category">
+              <h3>Backend</h3>
+              <ul aria-label="Backend technologies">
+                <li>Node.js</li>
+                <li>Express.js</li>
+                <li>MySQL</li>
+                <li>RESTful APIs</li>
+                <li>Authentication</li>
+              </ul>
+            </div>
+            <div class="skill-category">
+              <h3>AI & Emerging</h3>
+              <ul aria-label="AI and emerging technologies">
+                <li>AI Agent Integration</li>
+                <li>MongoDB</li>
+                <li>Cloud Infrastructure</li>
+                <li>Agentic AI</li>
+                <li>Automation</li>
+              </ul>
+            </div>
+            <div class="skill-category">
+              <h3>DevOps & Tools</h3>
+              <ul aria-label="DevOps and tools">
+                <li>Git & GitHub</li>
+                <li>Linux</li>
+                <li>Cloud Platforms</li>
+                <li>Code Quality</li>
+                <li>Documentation</li>
+              </ul>
+            </div>
+          </div>
         </div>
+      </section>
 
-        <div class="cert-item scale-in">
-          <a
-            href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/9PBTqmSxAf6zZTseP/E9pA6qsdbeyEkp3ti_9PBTqmSxAf6zZTseP_dvGcw9MjruqTa6rrg_1742657936063_completion_certificate.pdf"
-          >
-            <h4>🔐 Cyber Job Simulation</h4>
-          </a>
-          <p>Cybersecurity Fundamentals – Deloitte, 2025</p>
-        </div>
-
-        <div class="cert-item scale-in">
-          <a
-            href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/ifobHAoMjQs9s6bKS/gmf3ypEXBj2wvfQWC_ifobHAoMjQs9s6bKS_dvGcw9MjruqTa6rrg_1742652770299_completion_certificate.pdf"
-          >
-            <h4>🛡️ Cybersecurity Analyst Job Simulation</h4>
-          </a>
-          <p>Professional Skills – Forage, 2025</p>
-        </div>
-
-        <div class="cert-item scale-in">
-          <a
-            href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/prBZoAihniNijyD6d/oX6f9BbCL9kJDJzfg_prBZoAihniNijyD6d_dvGcw9MjruqTa6rrg_1742656836512_completion_certificate.pdf"
-          >
-            <h4>⚙️ Advanced Software Engineering</h4>
-          </a>
-          <p>Job Simulation – Forage, 2025</p>
-        </div>
-
-        <div class="cert-item scale-in">
-          <a
-            href="https://cyberyodha.net/cyberyodha-certifications/?cert_hash=c4968b61d7c164ef"
-          >
-            <h4>🥋 Cyber Yodha</h4>
-          </a>
-          <p>Basic Ethical Hacking Course – Cyber Yodha, 2025</p>
-        </div>
-
-        <div class="cert-item scale-in">
-          <a
-            href="https://drive.google.com/file/d/16DUBB14ojyH-_ZCA6X9ITRwnl9RAJXE0/view"
-          >
-            <h4>🔤 Gemini for Google Workspace</h4>
-          </a>
-          <p>AI Tools – Google Cloud, 2025</p>
-        </div>
-        <div class="cert-item scale-in">
-          <a
-            href="https://drive.google.com/file/d/14SiYzKa0Xsxtjuhv2nRTjlOashm5tJy5/view"
-          >
-            <h4>Coding Chaska</h4>
-          </a>
-          <p>AI Agent Workshop, 2025</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Code Quality Standards Section -->
-    <section id="code-quality">
-      <h2 class="section-title fade-in">Code Quality Standards</h2>
-      <div class="standards-container">
-        <div class="standard-item scale-in">
-          <h3>🔧 Clean Code Principles</h3>
-          <p>
-            Following SOLID principles, DRY (Don't Repeat Yourself) and KISS
-            (Keep It Simple, Stupid) for maintainable and readable code.
-          </p>
-        </div>
-
-        <div class="standard-item scale-in">
-          <h3>📱 Responsive Design</h3>
-          <p>
-            Mobile-first approach ensuring websites work perfectly on all
-            devices and screen sizes.
-          </p>
-        </div>
-
-        <div class="standard-item scale-in">
-          <h3>⚡ Performance Optimization</h3>
-          <p>
-            Optimized loading times, efficient algorithms and best practices for
-            fast, smooth user experiences.
-          </p>
-        </div>
-
-        <div class="standard-item scale-in">
-          <h3>🔒 Security Best Practices</h3>
-          <p>
-            Implementing secure coding practices, input validation and
-            protection against common vulnerabilities.
-          </p>
-        </div>
-
-        <div class="standard-item scale-in">
-          <h3>♿ Accessibility Standards</h3>
-          <p>
-            WCAG compliant websites ensuring equal access for all users,
-            including those with disabilities.
-          </p>
-        </div>
-
-        <div class="standard-item scale-in">
-          <h3>🔍 SEO Optimization</h3>
-          <p>
-            Search engine friendly code structure, semantic HTML and meta tags
-            for better discoverability.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Freelance Pricing Section -->
-    <!-- <section id="pricing" class="pricing-section">
-      <h2 class="section-title fade-in">Freelance Web Development Services</h2>
-      <p
-        style="
-          text-align: center;
-          margin-bottom: 3rem;
-          color: #555;
-          font-size: 1.1rem;
-        "
+      <!-- Experience Section -->
+      <section
+        id="experience"
+        class="experience"
+        aria-label="Professional experience"
       >
-        Professional website development tailored to your business needs.
-        Competitive pricing with high-quality results.
-      </p>
-      <div class="pricing-container">
-        <div class="pricing-card scale-in">
-          <h3 class="pricing-title">Basic Website</h3>
-          <div class="pricing-price">₹23,999<span> - ₹47,999</span></div>
-          <p class="pricing-description">
-            Perfect for small businesses, portfolios, or landing pages. Clean,
-            responsive design with essential features.
-          </p>
-          <ul class="pricing-features">
-            <li>Up to 5 pages</li>
-            <li>Responsive design</li>
-            <li>Contact form</li>
-            <li>Basic SEO optimization</li>
-            <li>3 month support</li>
-            <li>HTML/CSS/JavaScript</li>
-          </ul>
-          <a href="#contact" class="pricing-btn">Get Started</a>
-        </div>
+        <div class="container">
+          <h2 class="section-title">Experience & Recognition</h2>
+          <div class="experience-content">
+            <!-- Internships -->
+            <div class="experience-category">
+              <h3>Internships</h3>
+              <div class="internship-list">
+                <div class="internship-card">
+                  <div class="company-info">
+                    <h4>Cognifyz Technologies</h4>
+                    <p class="role">Full-Stack Developer Intern</p>
+                  </div>
+                  <p class="description">
+                    Delivered live demos, complete source code and detailed
+                    documentation. Transformed every task into structured README
+                    guides.
+                  </p>
+                  <span class="badge">Documentation • Time Management</span>
+                </div>
+                <div class="internship-card">
+                  <div class="company-info">
+                    <h4>CodSoft</h4>
+                    <p class="role">Web Development Intern</p>
+                  </div>
+                  <p class="description">
+                    Developed responsive websites and dashboards using modern
+                    frameworks. Collaborated with senior developers.
+                  </p>
+                  <span class="badge">Frontend • Backend Integration</span>
+                </div>
+              </div>
+            </div>
 
-        <div class="pricing-card popular scale-in">
-          <h3 class="pricing-title">Business Website</h3>
-          <div class="pricing-price">₹49,999<span> - ₹1,49,999</span></div>
-          <p class="pricing-description">
-            Complete business website with dynamic features, database
-            integration andadvanced functionality.
-          </p>
-          <ul class="pricing-features">
-            <li>Up to 15 pages</li>
-            <li>Database integration</li>
-            <li>User authentication</li>
-            <li>Admin dashboard</li>
-            <li>E-commerce ready</li>
-            <li>API integration</li>
-            <li>6 months support</li>
-            <li>Full-stack development</li>
-          </ul>
-          <a href="#contact" class="pricing-btn">Get Started</a>
-        </div>
+            <!-- Awards & Achievements -->
+            <div class="experience-category">
+              <h3>Awards & Achievements</h3>
+              <ul
+                class="achievements-list"
+                aria-label="Awards and achievements"
+              >
+                <li>
+                  🥇 <strong>1st Prize</strong> - StartUp Pitching Competition |
+                  Vidyavardhini Bhausaheb Vartak Polytechnic
+                </li>
+                <li>
+                  🥇 <strong>1st Prize</strong> - Building AI Agents using Azure
+                  AI Agent Service
+                </li>
+                <li>
+                  🥉 <strong>3rd Prize</strong> - Building AI Agents with
+                  MongoDB
+                </li>
+                <li>
+                  ✅ <strong>Oracle Cloud Certified</strong> - Foundations
+                  Associate
+                </li>
+              </ul>
+            </div>
 
-        <div class="pricing-card scale-in">
-          <h3 class="pricing-title">Custom Web Application</h3>
-          <div class="pricing-price">₹1,59,999<span> - ₹4,99,999+</span></div>
-          <p class="pricing-description">
-            Complex web applications with advanced features, AI integration and
-            scalable architecture.
-          </p>
-          <ul class="pricing-features">
-            <li>Unlimited pages</li>
-            <li>Custom functionality</li>
-            <li>AI/ML integration</li>
-            <li>Cloud deployment</li>
-            <li>Advanced security</li>
-            <li>Performance optimization</li>
-            <li>12 months support</li>
-            <li>Complete documentation</li>
-          </ul>
-          <a href="#contact" class="pricing-btn">Get Started</a>
-        </div>
-      </div>
-
-      <div style="text-align: center; margin-top: 3rem">
-        <p style="color: #555; margin-bottom: 1rem">
-          Need something custom? Let's discuss your project requirements.
-        </p>
-        <a href="#contact" class="btn btn-primary"
-          >Contact Me for Custom Quote</a
-        >
-      </div>
-    </section> -->
-
-    <!-- Resume Section -->
-    <section>
-      <div class="resume-section fade-in">
-        <h3>Download My Resume</h3>
-        <p style="color: #555; margin-bottom: 1.5rem">
-          Get a complete overview of my qualifications, experience and
-          certifications
-        </p>
-        <a href="Ajinkya Furange - Web Dev & AI Resume.pdf" class="download-btn"
-          >Download Resume (PDF)</a
-        >
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact">
-      <div class="contact-section">
-        <h2 style="color: white; font-size: 2.5rem; margin-bottom: 1rem">
-          Let's Connect
-        </h2>
-        <p style="font-size: 1.1rem; margin-bottom: 2rem">
-          I'm always eager to collaborate on innovative projects and exchange
-          ideas.
-        </p>
-
-        <div class="contact-info">
-          <div class="contact-item">
-            <h4>📱 Phone</h4>
-            <a href="tel:+918108171769">+91 8108171769</a>
+            <!-- Certifications -->
+            <div class="experience-category">
+              <h3>Certifications</h3>
+              <div class="certifications-grid">
+                <div class="cert-item">
+                  <span class="cert-icon">📜</span>
+                  <h4>Business Automation in the Age of Agentic AI</h4>
+                  <p>IBM, 2025</p>
+                </div>
+                <div class="cert-item">
+                  <span class="cert-icon">🔧</span>
+                  <h4>AI and Automation Skills</h4>
+                  <p>Microsoft & EY, 2025</p>
+                </div>
+                <div class="cert-item">
+                  <span class="cert-icon">🗄️</span>
+                  <h4>MongoDB Certification</h4>
+                  <p>MongoDB, 2025</p>
+                </div>
+                <div class="cert-item">
+                  <span class="cert-icon">🔐</span>
+                  <h4>Cybersecurity Fundamentals</h4>
+                  <p>Deloitte, 2025</p>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="contact-item">
-            <h4>📧 Email</h4>
-            <a href="mailto:ajinkyafurange@zohomail.in"
-              >ajinkyafurange@zohomail.in</a
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact" class="contact" aria-label="Contact information">
+        <div class="container">
+          <h2 class="section-title">Get In Touch</h2>
+          <div class="contact-section">
+            <p class="contact-intro">
+              I'm always eager to collaborate on innovative projects and
+              exchange ideas.
+            </p>
+
+            <div class="contact-info">
+              <div class="contact-item">
+                <h3>Email</h3>
+                <a href="mailto:ajinkyafurange@zohomail.in"
+                  >ajinkyafurange@zohomail.in</a
+                >
+              </div>
+              <div class="contact-item">
+                <h3>LinkedIn</h3>
+                <a
+                  href="https://www.linkedin.com/in/ajinkya-furange"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >View Profile</a
+                >
+              </div>
+              <div class="contact-item">
+                <h3>GitHub</h3>
+                <a
+                  href="https://github.com/Ajinkya-Furange-Patil/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >@Ajinkya-Furange-Patil</a
+                >
+              </div>
+            </div>
+
+            <form
+              class="contact-form"
+              method="POST"
+              name="contact"
+              action="https://formspree.io/f/xyzzwjvz"
+              id="contact-form"
+              aria-label="Contact form"
             >
-          </div>
-          <div class="contact-item">
-            <h4>🔗 LinkedIn</h4>
-            <a href="https://linkedin.com/in/ajinkya-furange"
-              >linkedin.com/in/ajinkya-furange</a
-            >
+              <div class="form-group">
+                <label for="name">Full Name *</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  aria-required="true"
+                  placeholder="Your name"
+                  minlength="2"
+                  maxlength="100"
+                />
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  aria-required="true"
+                  placeholder="your@email.com"
+                />
+              </div>
+              <div class="form-group">
+                <label for="subject">Subject *</label>
+                <input
+                  type="text"
+                  id="subject"
+                  name="subject"
+                  required
+                  aria-required="true"
+                  placeholder="Project inquiry"
+                  minlength="5"
+                  maxlength="100"
+                />
+              </div>
+              <div class="form-group">
+                <label for="message">Message *</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  required
+                  aria-required="true"
+                  placeholder="Tell me about your project..."
+                  minlength="10"
+                  maxlength="1000"
+                  rows="5"
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                class="btn btn--primary"
+                aria-label="Send message"
+              >
+                Send Message
+              </button>
+              <p class="form-note">* Required fields</p>
+            </form>
           </div>
         </div>
+      </section>
 
-        <h3 style="color: white; margin-top: 2rem">Send Me a M essage</h3>
-        <!-- <form class="contact-form" onsubmit="handleSubmit(event)" > -->
-        <form
-          class="contact-form"
-          action="https://formspree.io/f/xyzzwjvz"
-          method="post"
-        >
-          <div class="form-group">
-            <label for="name">Your Name</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              placeholder="John Doe"
-              required
-            />
+      <!-- Resume Section -->
+      <section
+        id="resume"
+        class="resume-container"
+        aria-label="Resume download"
+      >
+        <div class="container">
+          <div class="resume-section">
+            <h2>Download Resume</h2>
+            <p>
+              Get a complete overview of my qualifications, experience and
+              certifications
+            </p>
+            <a
+              href="Ajinkya Furange - Web Dev & AI Resume.pdf"
+              class="download-btn"
+              download
+              aria-label="Download resume PDF"
+            >
+              ↓ Download Resume (PDF)
+            </a>
           </div>
-          <div class="form-group">
-            <label for="email">Your Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="john@example.com"
-              required
-            />
-          </div>
-          <div class="form-group">
-            <label for="message">Your Message</label>
-            <textarea
-              id="message"
-              name="message"
-              placeholder="Your message here..."
-              required
-            ></textarea>
-          </div>
-          <button
-            type="submit"
-            class="btn btn-primary"
-            style="width: 100%; border: none"
-          >
-            Send Message
-          </button>
-        </form>
-      </div>
-    </section>
+        </div>
+      </section>
+    </main>
 
     <!-- Footer -->
-    <footer>
-      <p>&copy; 2025 Ajinkya Furange. All rights reserved.</p>
-      <p style="margin-top: 0.5rem; font-size: 0.9rem">
-        Built with passion • Designed with care
+    <footer role="contentinfo" aria-label="Footer">
+      <p>
+        &copy; 2025 Full-Stack Developer. All rights reserved. |
+        <a href="/privacy">Privacy</a> | <a href="/terms">Terms</a>
       </p>
     </footer>
 
+    <!-- Scripts -->
+    <script src="app.js" defer></script>
+
+    <!-- Service Worker Registration (PWA) -->
     <script>
-      // Register ScrollTrigger
-      // gsap.registerPlugin(ScrollTrigger);
-      gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
-
-      // Typewriter effect for name
-      const nameElement = document.getElementById("typing-name");
-      const nameText = "Ajinkya Furange";
-      let index = 0;
-
-      function typeWriter() {
-        if (index < nameText.length) {
-          nameElement.innerHTML += nameText.charAt(index);
-          index++;
-          setTimeout(typeWriter, 100);
-        }
-      }
-
-      // Start typewriter after a short delay
-      setTimeout(typeWriter, 500);
-
-      // Animate hero content on load
-      const tl = gsap.timeline();
-      tl.from(
-        ".hero-content .subtitle",
-        {
-          duration: 1,
-          opacity: 0,
-          y: 20,
-          ease: "power2.out",
-        },
-        "-=0.5"
-      )
-        .from(
-          ".hero-description",
-          {
-            duration: 1,
-            opacity: 0,
-            y: 20,
-            ease: "power2.out",
-          },
-          "-=0.5"
-        )
-        .from(
-          ".cta-buttons .btn",
-          {
-            duration: 0.8,
-            opacity: 0,
-            scale: 0.8,
-            ease: "back.out",
-            stagger: 0.2,
-          },
-          "-=0.5"
-        );
-
-      // Animate on scroll - fade-in elements
-      gsap.utils.toArray(".fade-in").forEach((element) => {
-        // Skip hero section elements as they're animated by timeline
-        if (element.closest("#home")) return;
-
-        gsap.to(element, {
-          scrollTrigger: {
-            trigger: element,
-            start: "top 80%",
-            toggleActions: "play none none none",
-          },
-          opacity: 1,
-          duration: 0.8,
-          ease: "power2.out",
-        });
-      });
-
-      // Animate on scroll - slide-in-left
-      gsap.utils.toArray(".slide-in-left").forEach((element) => {
-        gsap.to(element, {
-          scrollTrigger: {
-            trigger: element,
-            start: "top 80%",
-            toggleActions: "play none none none",
-          },
-          opacity: 1,
-          x: 0,
-          duration: 0.8,
-          ease: "power2.out",
-        });
-      });
-
-      // Animate on scroll - slide-in-right
-      gsap.utils.toArray(".slide-in-right").forEach((element) => {
-        gsap.to(element, {
-          scrollTrigger: {
-            trigger: element,
-            start: "top 80%",
-            toggleActions: "play none none none",
-          },
-          opacity: 1,
-          x: 0,
-          duration: 0.8,
-          ease: "power2.out",
-        });
-      });
-
-      // Animate on scroll - scale-in
-      gsap.utils.toArray(".scale-in").forEach((element) => {
-        gsap.to(element, {
-          scrollTrigger: {
-            trigger: element,
-            start: "top 85%",
-            toggleActions: "play none none none",
-          },
-          opacity: 1,
-          scale: 1,
-          duration: 0.6,
-          ease: "back.out",
-          stagger: 0.1,
-        });
-      });
-
-      // Animate skill progress bars
-      gsap.utils.toArray(".skill-progress").forEach((element) => {
-        const width = element.style.width;
-        gsap.to(element, {
-          scrollTrigger: {
-            trigger: element.closest(".skill-category"),
-            start: "top 80%",
-            toggleActions: "play none none none",
-          },
-          width: width,
-          duration: 1.2,
-          ease: "power2.out",
-        });
-        element.style.width = "0%";
-      });
-
-      // Smooth scroll behavior for nav links
-      document.querySelectorAll("nav a, .mobile-menu a").forEach((link) => {
-        link.addEventListener("click", (e) => {
-          const href = link.getAttribute("href");
-          if (href.startsWith("#")) {
-            e.preventDefault();
-            const target = document.querySelector(href);
-            if (target) {
-              gsap.to(window, {
-                duration: 1,
-                scrollTo: {
-                  y: target,
-                  offsetY: 60,
-                },
-                ease: "power2.inOut",
-              });
-            }
-          }
-        });
-      });
-
-      // Form submission
-      function handleSubmit(e) {
-        e.preventDefault();
-        const name = document.getElementById("name").value;
-        const email = document.getElementById("email").value;
-        const message = document.getElementById("message").value;
-
-        // Compose email link
-        const mailtoLink = `mailto:ajinkyafurange@zohomail.in?subject=Portfolio Contact from ${encodeURIComponent(
-          name
-        )}&body=${encodeURIComponent("From: " + email + "\n\n" + message)}`;
-        window.location.href = mailtoLink;
-
-        // Reset form
-        document.querySelector(".contact-form").reset();
-      }
-
-      // Add hover animation to cards
-      document
-        .querySelectorAll(".project-card, .cert-item, .internship-card")
-        .forEach((card) => {
-          card.addEventListener("mouseenter", () => {
-            gsap.to(card, {
-              duration: 0.3,
-              y: -10,
-              ease: "power2.out",
-            });
-          });
-          card.addEventListener("mouseleave", () => {
-            gsap.to(card, {
-              duration: 0.3,
-              y: 0,
-              ease: "power2.out",
-            });
-          });
-        });
-
-      // Mobile menu toggle with GSAP animation
-      function toggleMenu() {
-        const menu = document.getElementById("mobileMenu");
-        const overlay = document.getElementById("overlay");
-        const hamburger = document.querySelector(".hamburger");
-
-        if (menu.classList.contains("active")) {
-          closeMenu();
-        } else {
-          // Animate menu in from left
-          gsap.to(menu, {
-            left: 0,
-            duration: 0.3,
-            ease: "power2.out",
-          });
-          gsap.to(overlay, {
-            opacity: 1,
-            visibility: "visible",
-            duration: 0.3,
-          });
-
-          menu.classList.add("active");
-          overlay.classList.add("active");
-
-          // Animate hamburger to X
-          gsap.to(hamburger.children[0], { rotation: 45, y: 8, duration: 0.3 });
-          gsap.to(hamburger.children[1], { opacity: 0, duration: 0.3 });
-          gsap.to(hamburger.children[2], {
-            rotation: -45,
-            y: -8,
-            duration: 0.3,
-          });
-        }
-      }
-
-      function closeMenu() {
-        const menu = document.getElementById("mobileMenu");
-        const overlay = document.getElementById("overlay");
-        const hamburger = document.querySelector(".hamburger");
-
-        // Animate menu out to left
-        gsap.to(menu, {
-          left: "-100%",
-          duration: 0.3,
-          ease: "power2.in",
-        });
-        gsap.to(overlay, {
-          opacity: 0,
-          visibility: "hidden",
-          duration: 0.3,
-        });
-
-        menu.classList.remove("active");
-        overlay.classList.remove("active");
-
-        // Reset hamburger
-        gsap.to(hamburger.children[0], { rotation: 0, y: 0, duration: 0.3 });
-        gsap.to(hamburger.children[1], { opacity: 1, duration: 0.3 });
-        gsap.to(hamburger.children[2], { rotation: 0, y: 0, duration: 0.3 });
-      }
-
-      // Highlight active section in navbar
-      function updateActiveSection() {
-        const sections = document.querySelectorAll("section[id]");
-        const navLinks = document.querySelectorAll(
-          'nav a[href^="#"], .mobile-menu a[href^="#"]'
-        );
-
-        let current = "";
-
-        sections.forEach((section) => {
-          const sectionTop = section.offsetTop - 100;
-          if (window.pageYOffset >= sectionTop) {
-            current = section.getAttribute("id");
-          }
-        });
-
-        navLinks.forEach((link) => {
-          link.classList.remove("active");
-          if (link.getAttribute("href") === `#${current}`) {
-            link.classList.add("active");
-          }
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function () {
+          navigator.serviceWorker
+            .register("sw.js")
+            .then((reg) => console.log("Service Worker registered"))
+            .catch((err) => console.log("SW registration failed"));
         });
       }
-
-      window.addEventListener("scroll", updateActiveSection);
-      window.addEventListener("load", updateActiveSection);
     </script>
   </body>
 </html>

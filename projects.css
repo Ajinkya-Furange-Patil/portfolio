@@ -3,17 +3,17 @@ html {
 }
 
 :root {
-  --primary-color: #00fff2;
-  --secondary-color: #0ff0ff;
-  --accent-color: #00ffcc;
-  --dark-bg: #0a0a1f;
+  --primary-color: #EFECE3;
+  --secondary-color: #8FABD4;
+  --accent-color: #4A70A9;
+  --dark-bg: #000000;
   --darker-bg: #050510;
-  --light-text: #ffffff;
+  --light-text: #EFECE3;
   --card-bg: rgba(255, 255, 255, 0.05);
   --nav-height: 70px;
   --transition-speed: 0.3s;
-  --neon-glow: 0 0 10px rgba(0, 255, 242, 0.5), 0 0 20px rgba(0, 255, 242, 0.3),
-    0 0 30px rgba(0, 255, 242, 0.1);
+  --neon-glow: 0 0 10px rgba(239, 236, 227, 0.5), 0 0 20px rgba(239, 236, 227, 0.3),
+    0 0 30px rgba(239, 236, 227, 0.1);
 }
 
 * {
@@ -204,7 +204,7 @@ body::before {
 }
 
 .category-description {
-  color: #a0a0a0;
+  color: var(--secondary-color);
   margin-bottom: 2rem;
   font-size: 1.1rem;
   padding-left: 1rem;
@@ -277,7 +277,7 @@ body::before {
 
 .project-title {
   font-size: 1.4rem;
-  color: #ffffff;
+  color: var(--light-text);
   margin-bottom: 1rem;
   line-height: 1.3;
   font-weight: 600;
@@ -301,7 +301,7 @@ body::before {
 }
 
 .project-description {
-  color: #a0a0a0;
+  color: var(--secondary-color);
   line-height: 1.7;
   margin-bottom: 1.5rem;
   font-size: 0.95rem;
