@@ -1,0 +1,47 @@
+# Generated for Ajinkya Furange Portfolio
+# Website: https://ajinkyafurange.netlify.app
+
+User-agent: *
+Allow: /
+Allow: /index.html
+Allow: /projects.html
+Allow: /style.css
+Allow: /animations.js
+
+# Disallow markdown source documentation files from indexing
+Disallow: /DESIGN.md
+Disallow: /SKILL.md
+Disallow: /node_modules/
+Disallow: /.git/
+
+# Crawl delay
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://ajinkyafurange.netlify.app/sitemap.xml
+
+# Allow specific crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Disallow aggressive/unwanted bots
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: BytedanceSpider
+Disallow: /
+
+User-agent: Yandex
+Disallow: /

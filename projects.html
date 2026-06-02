@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+  <!-- SEO -->
+  <title>Projects — Ajinkya Furange | Full-Stack & AI Engineer</title>
+  <meta name="description" content="Complete showcase of Ajinkya Furange's projects — individual innovations and team-led hackathon victories." />
+  <meta name="keywords" content="Ajinkya Furange, Projects, Web Development, Hackathon, Team Leader, Full Stack, AI" />
+  <meta name="author" content="Ajinkya Furange" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* Projects-page specific overrides */
+    .projects-page-hero {
+      padding-top: calc(56px + var(--space-24));
+      padding-bottom: var(--space-16);
+      border-top: none;
+    }
+    .projects-page-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(48px, 8vw, 96px);
+      text-transform: uppercase;
+      line-height: 0.9;
+      margin-bottom: var(--space-6);
+    }
+    .projects-page-hero p {
+      font-size: var(--font-sm);
+      color: var(--color-text-secondary);
+      max-width: 48ch;
+    }
+
+    /* Filter tabs */
+    .filter-bar {
+      display: flex;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-12);
+    }
+    .filter-btn {
+      font-family: var(--font-display);
+      font-size: var(--font-nano);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      border: 1px solid var(--color-border-default);
+      background: transparent;
+      color: var(--color-text-secondary);
+      padding: var(--space-2) var(--space-6);
+      height: 36px;
+      transition: all var(--dur-fast) var(--ease-inout);
+    }
+    .filter-btn:hover {
+      border-color: var(--color-accent-primary);
+      color: var(--color-accent-primary);
+    }
+    .filter-btn.active {
+      background: var(--color-accent-primary);
+      border-color: var(--color-accent-primary);
+      color: var(--color-text-inverse);
+    }
+    .filter-btn:focus-visible {
+      outline: 2px solid var(--color-accent-primary);
+      outline-offset: 2px;
+    }
+
+    /* Category label */
+    .category-heading {
+      font-family: var(--font-display);
+      font-size: var(--font-md);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-text-secondary);
+      margin-bottom: var(--space-2);
+      padding-bottom: var(--space-4);
+      border-bottom: 1px solid var(--color-border-default);
+    }
+    .category-desc {
+      font-size: var(--font-sm);
+      color: var(--color-text-secondary);
+      margin-bottom: var(--space-8);
+    }
+    .category-block { margin-bottom: var(--space-16); }
+
+    /* Card image strip */
+    .card-img {
+      width: 100%;
+      aspect-ratio: 16/7;
+      object-fit: cover;
+      display: block;
+      border-bottom: 1px solid var(--color-border-default);
+      margin-bottom: var(--space-6);
+      filter: grayscale(20%);
+      transition: filter var(--dur-fast) var(--ease-inout);
+    }
+    .project-card:hover .card-img { filter: grayscale(0%); }
+
+    .card-img-placeholder {
+      width: 100%;
+      aspect-ratio: 16/7;
+      background: var(--color-surface-overlay);
+      border-bottom: 1px solid var(--color-border-default);
+      margin-bottom: var(--space-6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: var(--font-nano);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--color-border-default);
+    }
+
+    /* Key features list */
+    .features-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+    .features-list li {
+      font-size: var(--font-xs);
+      color: var(--color-text-secondary);
+      padding-left: var(--space-4);
+      position: relative;
+    }
+    .features-list li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--color-accent-primary);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Skip Link -->
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- Custom Cursor -->
+  <div id="cursor-dot" aria-hidden="true"></div>
+  <div id="cursor-ring" aria-hidden="true"></div>
+
+  <!-- ── NAVIGATION ── -->
+  <header>
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+      <a href="index.html" class="nav-logo">AJINKYA<span>.</span>DEV</a>
+      <ul class="nav-links" role="list">
+        <li><a href="index.html#hero">Genesis</a></li>
+        <li><a href="index.html#about">Philosophy</a></li>
+        <li><a href="index.html#skills">Stack</a></li>
+        <li><a href="projects.html" class="active">Deployments</a></li>
+        <li><a href="index.html#experience">Legacy</a></li>
+        <li><a href="index.html#contact">Connect</a></li>
+      </ul>
+      <button class="nav-hamburger" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-mobile">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <div class="nav-mobile" id="nav-mobile" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+      <button class="nav-mobile-close" id="nav-close" aria-label="Close menu">✕</button>
+      <a href="index.html"           onclick="closeNav()">Home</a>
+      <a href="index.html#about"     onclick="closeNav()">Philosophy</a>
+      <a href="projects.html"        onclick="closeNav()">Deployments</a>
+      <a href="index.html#experience"onclick="closeNav()">Legacy</a>
+      <a href="index.html#contact"   onclick="closeNav()">Connect</a>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ── PAGE HERO ── -->
+    <section class="section projects-page-hero" aria-label="Projects page introduction">
+      <div class="container">
+        <p class="section-label">Project Arsenal</p>
+        <h1>All<br /><span style="color:var(--color-accent-primary)">Deployments</span></h1>
+        <p>Complete collection — from individual innovations to team-led hackathon victories.</p>
+      </div>
+    </section>
+
+    <!-- ── FILTER BAR ── -->
+    <section class="section" style="padding-block: 0 var(--space-12); border-top: none;" aria-label="Filter projects">
+      <div class="container">
+        <div class="filter-bar" role="group" aria-label="Filter by category">
+          <button class="filter-btn active" onclick="filter(this,'all')"         aria-pressed="true">All Projects</button>
+          <button class="filter-btn"        onclick="filter(this,'individual')"  aria-pressed="false">Individual</button>
+          <button class="filter-btn"        onclick="filter(this,'team')"        aria-pressed="false">Team</button>
+          <button class="filter-btn"        onclick="filter(this,'hackathon')"   aria-pressed="false">Hackathons</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── INDIVIDUAL PROJECTS ── -->
+    <section class="section category-block" data-category="individual" aria-labelledby="individual-heading" style="border-top:none;">
+      <div class="container">
+        <h2 class="category-heading" id="individual-heading">Individual Projects</h2>
+        <p class="category-desc">Self-initiated projects showcasing personal skills and innovation.</p>
+
+        <div class="projects-grid">
+
+          <!-- E-commerce -->
+          <article class="project-card reveal" tabindex="0">
+            <img src="images/ecommerce.webp" alt="AgriConnect e-commerce platform desktop view" class="card-img" width="800" height="350" loading="lazy" />
+            <p class="project-type">Full Stack Web App</p>
+            <h3 class="project-title">Full-Stack E-Commerce for Farming Products</h3>
+            <p class="project-desc">
+              Comprehensive e-commerce platform for agricultural products. Inventory management and direct farmer-to-consumer sales with secure payment processing.
+            </p>
+            <ul class="features-list">
+              <li>500+ product listings, 99.9% availability</li>
+              <li>Integrated secure payment gateways & real-time tracking</li>
+              <li>Reduces intermediary overhead by 30–40%</li>
+            </ul>
+            <div class="project-stack">
+              <span class="skill-tag">HTML</span>
+              <span class="skill-tag">CSS</span>
+              <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">Node.js</span>
+              <span class="skill-tag">Express.js</span>
+              <span class="skill-tag">MySQL</span>
+            </div>
+            <div class="project-links">
+              <a href="https://shivansh-krushi-seva-kendra.onrender.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Live Demo</a>
+              <a href="https://github.com/Ajinkya-Furange-Patil/Shivansh-Krushi-Seva-Kendra" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Code</a>
+            </div>
+          </article>
+
+          <!-- Chat App -->
+          <article class="project-card reveal" tabindex="0">
+            <img src="images/whatsapp.webp" alt="Ajinkya Sampark chat application desktop preview" class="card-img" width="800" height="350" loading="lazy" />
+            <p class="project-type">Web Application</p>
+            <h3 class="project-title">Chat Application — Ajinkya Sampark</h3>
+            <p class="project-desc">
+              Real-time chat built with modularity in mind. Clean folder-based separation of chats, seamless scalability, WhatsApp-style UI for familiar UX.
+            </p>
+            <ul class="features-list">
+              <li>Sub-50ms latency via WebSocket protocols</li>
+              <li>40% faster load times vs. AJAX polling</li>
+              <li>Cross-browser synchronization</li>
+            </ul>
+            <div class="project-stack">
+              <span class="skill-tag">HTML</span>
+              <span class="skill-tag">CSS</span>
+              <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">Socket.io</span>
+            </div>
+            <div class="project-links">
+              <a href="https://ajinkya-sampark.netlify.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Live Demo</a>
+              <a href="https://github.com/Ajinkya-Furange-Patil/sampark" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Code</a>
+            </div>
+          </article>
+
+          <!-- Medical Tracker -->
+          <article class="project-card reveal" tabindex="0">
+            <img src="images/medical-tracker.webp" alt="Medical Payment Tracker UI preview" class="card-img" width="800" height="350" loading="lazy" />
+            <p class="project-type">Healthcare Management</p>
+            <h3 class="project-title">Medical Payment Tracker</h3>
+            <p class="project-desc">
+              Smart system tracking patient medical payments with real-time updates and reminder alerts. 60% reduction in human error. No backend required.
+            </p>
+            <div class="project-stack">
+              <span class="skill-tag">HTML</span>
+              <span class="skill-tag">CSS</span>
+              <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">LocalStorage</span>
+            </div>
+            <div class="project-links">
+              <a href="https://payment-list.netlify.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Live Demo</a>
+              <a href="https://github.com/Ajinkya-Furange-Patil/medical-payment-tracker" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Code</a>
+            </div>
+          </article>
+
+          <!-- Weather App -->
+          <article class="project-card reveal" tabindex="0">
+            <img src="images/whether.webp" alt="Weather App Desktop Preview" class="card-img" width="800" height="350" loading="lazy" />
+            <p class="project-type">API Integration</p>
+            <h3 class="project-title">Global Weather Dashboard</h3>
+            <p class="project-desc">
+              Real-time weather monitoring fetching live climate conditions via OpenWeather API. Accurate updates for any global city with detailed forecasts.
+            </p>
+            <div class="project-stack">
+              <span class="skill-tag">HTML</span>
+              <span class="skill-tag">CSS</span>
+              <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">OpenWeather API</span>
+            </div>
+            <div class="project-links">
+              <a href="https://weather-app-ajinkya-furange.netlify.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Live Demo</a>
+              <a href="https://github.com/Ajinkya-Furange-Patil/whether" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Code</a>
+            </div>
+          </article>
+
+          <!-- AI Chatbot -->
+          <article class="project-card reveal" tabindex="0">
+            <div class="card-img-placeholder" aria-label="AI Chatbot project placeholder">AI Chat Bot</div>
+            <p class="project-type">AI Integration · Gemini API</p>
+            <h3 class="project-title">AI Chat Bot</h3>
+            <p class="project-desc">
+              Functional AI chatbot using Google Gemini API. Real-time conversations via async API handling with loading animations.
+            </p>
+            <ul class="features-list">
+              <li>Real-time chat with Google Gemini AI</li>
+              <li>Dynamic user input handling</li>
+              <li>Instant bot response display with loading states</li>
+            </ul>
+            <div class="project-stack">
+              <span class="skill-tag">HTML5</span>
+              <span class="skill-tag">CSS3</span>
+              <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">Gemini API</span>
+              <span class="skill-tag">Fetch API</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/Ajinkya-Furange-Patil/Ai-Chat-Bot" target="_blank" rel="noopener noreferrer" class="btn btn-outline">View Code</a>
+            </div>
+          </article>
+
+          <!-- Order Placing System -->
+          <article class="project-card reveal" tabindex="0">
+            <div class="card-img-placeholder" aria-label="Order Placing System placeholder">Order System</div>
+            <p class="project-type">PHP Form Handling</p>
+            <h3 class="project-title">Order Placing System</h3>
+            <p class="project-desc">
+              PHP-based order placement system — processes product and contact data server-side, displays orders instantly without a database.
+            </p>
+            <ul class="features-list">
+              <li>Order form: name, product, quantity</li>
+              <li>Core PHP data handling</li>
+              <li>Form validation & confirmation display</li>
+              <li>Beginner-friendly, no database required</li>
+            </ul>
+            <div class="project-stack">
+              <span class="skill-tag">PHP</span>
+              <span class="skill-tag">HTML5</span>
+              <span class="skill-tag">CSS3</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/Ajinkya-Furange-Patil/order-placing-php" target="_blank" rel="noopener noreferrer" class="btn btn-outline">View Code</a>
+            </div>
+          </article>
+
+          <!-- College Timetable -->
+          <article class="project-card reveal" tabindex="0">
+            <img src="images/timetable.webp" alt="College Timetable System Desktop Preview" class="card-img" width="800" height="350" loading="lazy" />
+            <p class="project-type">Educational Tool</p>
+            <h3 class="project-title">College Timetable System</h3>
+            <p class="project-desc">
+              Smart responsive timetable manager. Full week at a glance, real-time lecture alerts, personalized themes, batch-specific timetable selection.
+            </p>
+            <div class="project-stack">
+              <span class="skill-tag">HTML</span>
+              <span class="skill-tag">CSS</span>
+              <span class="skill-tag">JavaScript</span>
+            </div>
+            <div class="project-links">
+              <a href="https://co1-tt.netlify.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Live Demo</a>
+              <a href="https://github.com/Ajinkya-Furange-Patil/timetable" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Code</a>
+            </div>
+          </article>
+
+          <!-- Portfolio -->
+          <article class="project-card reveal" tabindex="0">
+            <img src="images/portfolio.webp" alt="Personal Portfolio Website Preview" class="card-img" width="800" height="350" loading="lazy" />
+            <p class="project-type">Professional Portfolio</p>
+            <h3 class="project-title">Personal Portfolio Website</h3>
+            <p class="project-desc">
+              This portfolio — responsive, animated, Three.js particle background, GSAP scroll reveals, Formspree contact form.
+            </p>
+            <ul class="features-list">
+              <li>Responsive design with modern UI/UX</li>
+              <li>Smooth scrolling & GSAP animations</li>
+              <li>Interactive project showcase</li>
+              <li>Contact form with validation</li>
+            </ul>
+            <div class="project-stack">
+              <span class="skill-tag">HTML</span>
+              <span class="skill-tag">CSS</span>
+              <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">GSAP</span>
+              <span class="skill-tag">Three.js</span>
+            </div>
+            <div class="project-links">
+              <a href="https://ajinkyafurange.netlify.app" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Live Demo</a>
+              <a href="https://github.com/Ajinkya-Furange-Patil/portfolio" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Code</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── TEAM / HACKATHON PROJECTS ── -->
+    <section class="section category-block" data-category="team hackathon" aria-labelledby="team-heading">
+      <div class="container">
+        <h2 class="category-heading" id="team-heading">Team Leadership Projects</h2>
+        <p class="category-desc">Hackathon victories and collaborative projects where I led development teams.</p>
+
+        <div class="projects-grid">
+
+          <!-- OTP Phishing Simulator -->
+          <article class="project-card reveal" tabindex="0">
+            <img src="images/simsetu.webp" alt="OTP Phishing Awareness Simulator Preview" class="card-img" width="800" height="350" loading="lazy" />
+            <p class="project-type">Cyber Security · Simulation</p>
+            <h3 class="project-title">OTP Phishing Awareness Simulator</h3>
+            <p class="project-desc">
+              48-hour hackathon build. Exposes users to real-world OTP phishing tactics from both scammer and victim perspectives — driving 2FA awareness.
+            </p>
+            <div class="project-stack">
+              <span class="skill-tag">HTML5</span>
+              <span class="skill-tag">CSS3</span>
+              <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">jQuery</span>
+            </div>
+            <div class="project-links">
+              <a href="https://simsetu.netlify.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Live Demo</a>
+              <a href="https://github.com/samruddhidurge05/codewave-hackthon" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Code</a>
+            </div>
+          </article>
+
+          <!-- Skill-Swap -->
+          <article class="project-card reveal" tabindex="0">
+            <img src="images/skillswap.webp" alt="Skill-Swap Platform Preview" class="card-img" width="800" height="350" loading="lazy" />
+            <p class="project-type">EdTech · Peer Learning</p>
+            <h3 class="project-title">Skill-Swap — Learn. Teach. Grow.</h3>
+            <p class="project-desc">
+              48-hour hackathon-built P2P learning platform. Students host or join skill-sharing sessions — growing together through teaching and collaboration.
+            </p>
+            <div class="project-stack">
+              <span class="skill-tag">HTML5</span>
+              <span class="skill-tag">CSS3</span>
+              <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">Node.js (Planned)</span>
+              <span class="skill-tag">MongoDB (Planned)</span>
+            </div>
+            <div class="project-links">
+              <a href="https://skilllswap.netlify.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Live Demo</a>
+              <a href="https://github.com/Avikapawar/SKILL-SWAP" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Code</a>
+            </div>
+          </article>
+
+          <!-- ExpiryWatchDog -->
+          <article class="project-card reveal" tabindex="0">
+            <img src="images/watchdog.webp" alt="ExpiryWatchDog MVP Preview" class="card-img" width="800" height="350" loading="lazy" />
+            <p class="project-type">MVP · Product Expiry Tracker</p>
+            <h3 class="project-title">ExpiryWatchDog</h3>
+            <p class="project-desc">
+              Smart MVP tracking product expiry dates. Reduces waste and keeps users safe with a clean, responsive UI and real-time alerts.
+            </p>
+            <div class="project-stack">
+              <span class="skill-tag">HTML5</span>
+              <span class="skill-tag">CSS3</span>
+              <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">LocalStorage</span>
+            </div>
+            <div class="project-links">
+              <a href="https://expirywatchdog.netlify.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Live Demo</a>
+              <a href="https://github.com/Ajinkya-Furange-Patil/ExpiryWatchDog" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Code</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <span>© 2026 Ajinkya Furange</span>
+    <a href="index.html" class="contact-link" style="font-size:var(--font-nano);">← Back to Portfolio</a>
+  </footer>
+
+  <script>
+    // ── Custom Cursor ──
+    const dot  = document.getElementById('cursor-dot');
+    const ring = document.getElementById('cursor-ring');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+
+    if (window.innerWidth > 1024) {
+      document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+      (function moveRing() {
+        rx += (mx - rx) * 0.12;
+        ry += (my - ry) * 0.12;
+        dot.style.left  = mx + 'px'; dot.style.top  = my + 'px';
+        ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+        requestAnimationFrame(moveRing);
+      })();
+    }
+
+    // ── Mobile Nav ──
+    const toggle    = document.getElementById('nav-toggle');
+    const mobileNav = document.getElementById('nav-mobile');
+    const closeBtn  = document.getElementById('nav-close');
+    function openNav()  { mobileNav.classList.add('open');    toggle.setAttribute('aria-expanded','true'); }
+    function closeNav() { mobileNav.classList.remove('open'); toggle.setAttribute('aria-expanded','false'); }
+    toggle.addEventListener('click', openNav);
+    closeBtn.addEventListener('click', closeNav);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeNav(); });
+
+    // ── Scroll Reveal ──
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ── Filter ──
+    function filter(btn, cat) {
+      // update button states
+      document.querySelectorAll('.filter-btn').forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-pressed','false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-pressed','true');
+
+      const blocks = document.querySelectorAll('.category-block');
+      blocks.forEach(block => {
+        const cats = block.dataset.category?.split(' ') || [];
+        const show = cat === 'all' || cats.includes(cat);
+        block.style.display = show ? '' : 'none';
+      });
+    }
+  </script>
+
+</body>
+</html>

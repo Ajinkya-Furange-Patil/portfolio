@@ -1,0 +1,38 @@
+# Generated for production deployment
+
+User-agent: *
+Allow: /
+Allow: /index.html
+Allow: /style.css
+Allow: /app.js
+Allow: /manifest.json
+
+# Disallow admin/private pages (if any)
+Disallow: /admin/
+Disallow: /private/
+Disallow: /temp/
+Disallow: /.git/
+Disallow: /node_modules/
+
+# Crawl delay (optional - allows time between requests)
+Crawl-delay: 1
+
+# Sitemap location (create this file!)
+Sitemap: https://your-domain.com/sitemap.xml
+
+# Allow specific crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Disallow bad bots
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
